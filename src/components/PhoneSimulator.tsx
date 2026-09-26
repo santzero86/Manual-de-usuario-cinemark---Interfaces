@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Step } from '../types/modules';
 import { 
   ChevronLeft, 
@@ -45,7 +45,6 @@ import {
 
 interface PhoneSimulatorProps {
   step: Step;
-  moduleSteps?: Step[];
   onNextStep: () => void;
   onPrevStep: () => void;
   onSelectStep: (stepNumber: number) => void;
@@ -58,7 +57,6 @@ interface PhoneSimulatorProps {
 
 export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
   step,
-  moduleSteps,
   onNextStep,
   onPrevStep,
   customScreenshotUrl,
@@ -76,40 +74,6 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
   const [seatSelected, setSeatSelected] = useState('A6');
   const [ticketCount, setTicketCount] = useState(1);
   const [selectedBank, setSelectedBank] = useState<string | null>(null);
-  const [activeScreenshotStepNumber, setActiveScreenshotStepNumber] = useState(step.stepNumber);
-
-  useEffect(() => {
-    setActiveScreenshotStepNumber(step.stepNumber);
-  }, [step.stepNumber]);
-
-  const displayedStep = moduleSteps?.find(item => item.stepNumber === activeScreenshotStepNumber) || step;
-  const displayedScreenshotUrl = displayedStep.stepNumber === step.stepNumber
-    ? customScreenshotUrl || displayedStep.customImageUrl
-    : displayedStep.customImageUrl;
-
-  const handleTabChange = (tab: 'cartelera' | 'confiteria' | 'teatros' | 'cineclub' | 'menu') => {
-    setActiveTab(tab);
-
-    const categoryByTab = {
-      cartelera: ['cartelera', 'pelicula'],
-      confiteria: ['confiteria'],
-      teatros: ['teatros'],
-      cineclub: ['cineclub'],
-      menu: ['soporte', 'pqrsf'],
-    } as const;
-    const matchingStep = moduleSteps?.find(item =>
-      categoryByTab[tab].some(category => category === item.category)
-    );
-    const fallbackStepNumber = {
-      cartelera: 1,
-      confiteria: 2,
-      teatros: 3,
-      cineclub: 4,
-      menu: moduleSteps?.length || 1,
-    }[tab];
-
-    setActiveScreenshotStepNumber(matchingStep?.stepNumber || fallbackStepNumber);
-  };
 
   const handleHotspotClick = () => {
     setIsTapped(true);
@@ -206,32 +170,32 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
           {/* Screen Content: Either Custom Screenshot or High-Fidelity UI Simulator */}
           <div className="relative flex-1 overflow-y-auto bg-white flex flex-col">
             {viewMode === 'screenshot' ? (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-black text-slate-300 relative overflow-hidden">
-                {displayedScreenshotUrl ? (
+              <div key={`screen-${step.id}`} className="w-full h-full flex flex-col items-center justify-center bg-black text-slate-300 relative overflow-hidden animate-fade-scale">
+                {customScreenshotUrl ? (
                   <div className="relative w-full h-full flex items-center justify-center bg-black">
                     <img
-                      src={displayedScreenshotUrl}
-                      alt={`Paso ${displayedStep.stepNumber} - ${displayedStep.title}`}
-                      className="w-full h-full object-contain max-h-[620px]"
+                      src={customScreenshotUrl}
+                      alt={`Paso ${step.stepNumber} - ${step.title}`}
+                      className="w-full h-full object-contain max-h-[620px] transition-transform duration-300"
                     />
                     {/* Hotspot overlay over the real screenshot as well */}
                     <div
                       style={{
-                        left: `${displayedStep.hotspot.x}%`,
-                        top: `${displayedStep.hotspot.y}%`,
+                        left: `${step.hotspot.x}%`,
+                        top: `${step.hotspot.y}%`,
                         transform: 'translate(-50%, -50%)',
                       }}
                       onClick={handleHotspotClick}
-                      className="absolute z-40 cursor-pointer group flex flex-col items-center"
+                      className="absolute z-40 cursor-pointer group flex flex-col items-center transition-all duration-300"
                     >
                       <span className="absolute w-12 h-12 rounded-full bg-red-500/30 animate-ping"></span>
                       <span className="absolute w-8 h-8 rounded-full bg-red-500/50 animate-pulse"></span>
-                      <div className={`relative w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-lg flex items-center justify-center transition-transform ${isTapped ? 'scale-125 bg-emerald-600' : 'group-hover:scale-110'}`}>
+                      <div className={`relative w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-lg flex items-center justify-center transition-all duration-200 ${isTapped ? 'scale-125 bg-emerald-600' : 'group-hover:scale-115'}`}>
                         <div className="w-2 h-2 rounded-full bg-white"></div>
                       </div>
-                      <div className="mt-1 px-2 py-0.5 bg-black/85 text-white text-[10px] font-medium rounded-full shadow-md whitespace-nowrap pointer-events-none opacity-90 group-hover:opacity-100 flex items-center gap-1 border border-white/20">
+                      <div className="mt-1 px-2.5 py-0.5 bg-black/90 text-white text-[10px] font-medium rounded-full shadow-md whitespace-nowrap pointer-events-none opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 flex items-center gap-1 border border-white/20">
                         <Sparkles className="w-2.5 h-2.5 text-amber-400" />
-                        <span>{displayedStep.hotspot.label}</span>
+                        <span>{step.hotspot.label}</span>
                       </div>
                     </div>
                   </div>
@@ -241,14 +205,14 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                       <Film className="w-7 h-7" />
                     </div>
                     <span className="font-bold text-white text-sm mb-1">
-                      Captura {displayedStep.stepNumber}.jpg
+                      Captura {step.stepNumber}.jpg
                     </span>
                     <p className="text-xs text-slate-300 mb-4 max-w-[220px]">
                       Para mostrar tu captura de pantalla real exactamente como la tomaste:
                     </p>
                     <label className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer flex items-center gap-1.5 mb-2">
                       <Upload className="w-3.5 h-3.5" />
-                      <span>Cargar {displayedStep.stepNumber}.jpg ahora</span>
+                      <span>Cargar {step.stepNumber}.jpg ahora</span>
                       <input
                         type="file"
                         accept="image/*"
@@ -267,9 +231,9 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
               </div>
             ) : (
               /* High-Fidelity Interactive Screen Render */
-              <div className="flex-1 flex flex-col bg-[#fdfdfd]">
+              <div key={`sim-${step.id}`} className="flex-1 flex flex-col bg-[#fdfdfd] animate-fade-scale">
                 {renderScreenContent(
-                  displayedStep.stepNumber, 
+                  step.stepNumber, 
                   seatSelected, 
                   setSeatSelected, 
                   ticketCount, 
@@ -286,24 +250,24 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             {viewMode === 'simulated' && (
               <div
                 style={{
-                  left: `${displayedStep.hotspot.x}%`,
-                  top: `${displayedStep.hotspot.y}%`,
+                  left: `${step.hotspot.x}%`,
+                  top: `${step.hotspot.y}%`,
                   transform: 'translate(-50%, -50%)',
                 }}
                 onClick={handleHotspotClick}
-                className="absolute z-40 cursor-pointer group flex flex-col items-center"
+                className="absolute z-40 cursor-pointer group flex flex-col items-center transition-all duration-300"
               >
                 {/* Pulsing Ripple Effect */}
                 <span className="absolute w-12 h-12 rounded-full bg-red-500/30 animate-ping"></span>
                 <span className="absolute w-8 h-8 rounded-full bg-red-500/50 animate-pulse"></span>
-                <div className={`relative w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-lg flex items-center justify-center transition-transform ${isTapped ? 'scale-125 bg-emerald-600' : 'group-hover:scale-110'}`}>
+                <div className={`relative w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-lg flex items-center justify-center transition-all duration-200 ${isTapped ? 'scale-125 bg-emerald-600' : 'group-hover:scale-115'}`}>
                   <div className="w-2 h-2 rounded-full bg-white"></div>
                 </div>
 
                 {/* Hotspot Action Tooltip */}
-                <div className="mt-1 px-2 py-0.5 bg-black/85 text-white text-[10px] font-medium rounded-full shadow-md whitespace-nowrap pointer-events-none opacity-90 group-hover:opacity-100 flex items-center gap-1 border border-white/20">
+                <div className="mt-1 px-2.5 py-0.5 bg-black/90 text-white text-[10px] font-medium rounded-full shadow-md whitespace-nowrap pointer-events-none opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 flex items-center gap-1 border border-white/20">
                   <Sparkles className="w-2.5 h-2.5 text-amber-400" />
-                  <span>{displayedStep.hotspot.label}</span>
+                  <span>{step.hotspot.label}</span>
                 </div>
               </div>
             )}
@@ -312,7 +276,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
           {/* Bottom App Navigation Bar (Cinemark standard app tabs) */}
           <div className="h-14 bg-white border-t border-slate-200 px-2 flex items-center justify-around shrink-0 z-30">
             <button
-              onClick={() => handleTabChange('cartelera')}
+              onClick={() => setActiveTab('cartelera')}
               className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
                 activeTab === 'cartelera' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
               }`}
@@ -324,7 +288,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabChange('confiteria')}
+              onClick={() => setActiveTab('confiteria')}
               className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
                 activeTab === 'confiteria' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
               }`}
@@ -336,7 +300,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabChange('teatros')}
+              onClick={() => setActiveTab('teatros')}
               className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
                 activeTab === 'teatros' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
               }`}
@@ -348,7 +312,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabChange('cineclub')}
+              onClick={() => setActiveTab('cineclub')}
               className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
                 activeTab === 'cineclub' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
               }`}
@@ -360,7 +324,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             </button>
 
             <button
-              onClick={() => handleTabChange('menu')}
+              onClick={() => setActiveTab('menu')}
               className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
                 activeTab === 'menu' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
               }`}

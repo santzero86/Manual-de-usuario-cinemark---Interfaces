@@ -108,7 +108,7 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
 
   return (
     <div 
-      className="w-full bg-[#111218] border-b border-white/10 relative group"
+      className="w-full bg-[#C4C4C4] border-b border-slate-300 relative group"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -116,10 +116,10 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
       {canScrollLeft && (
         <button
           onClick={() => scrollByAmount(-260)}
-          className="absolute left-0 top-0 bottom-0 z-20 px-2 bg-gradient-to-r from-[#111218] via-[#111218]/90 to-transparent flex items-center justify-center text-white/70 hover:text-white transition-opacity"
+          className="absolute left-0 top-0 bottom-0 z-20 px-2 bg-gradient-to-r from-[#C4C4C4] via-[#C4C4C4]/90 to-transparent flex items-center justify-center text-slate-700 hover:text-slate-900 transition-opacity"
           title="Desplazar a la izquierda"
         >
-          <div className="w-7 h-7 rounded-full bg-white/10 hover:bg-red-600 flex items-center justify-center shadow-md transition-colors">
+          <div className="w-7 h-7 rounded-full bg-white/60 hover:bg-red-600 hover:text-white flex items-center justify-center shadow-sm transition-colors">
             <ChevronLeft className="w-4 h-4" />
           </div>
         </button>
@@ -129,10 +129,10 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
       {canScrollRight && (
         <button
           onClick={() => scrollByAmount(260)}
-          className="absolute right-0 top-0 bottom-0 z-20 px-2 bg-gradient-to-l from-[#111218] via-[#111218]/90 to-transparent flex items-center justify-center text-white/70 hover:text-white transition-opacity"
+          className="absolute right-0 top-0 bottom-0 z-20 px-2 bg-gradient-to-l from-[#C4C4C4] via-[#C4C4C4]/90 to-transparent flex items-center justify-center text-slate-700 hover:text-slate-900 transition-opacity"
           title="Desplazar a la derecha"
         >
-          <div className="w-7 h-7 rounded-full bg-white/10 hover:bg-red-600 flex items-center justify-center shadow-md transition-colors">
+          <div className="w-7 h-7 rounded-full bg-white/60 hover:bg-red-600 hover:text-white flex items-center justify-center shadow-sm transition-colors">
             <ChevronRight className="w-4 h-4" />
           </div>
         </button>
@@ -146,7 +146,7 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
         className="w-full px-4 lg:px-8 py-3 overflow-x-auto scrollbar-none scroll-smooth"
       >
         <div className="flex items-center gap-2 max-w-7xl mx-auto min-w-max">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2 hidden md:inline-block">
+          <span className="text-xs font-black text-slate-700 uppercase tracking-wider mr-2 hidden md:inline-block">
             Módulos:
           </span>
 
@@ -167,17 +167,17 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
                 }}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold shrink-0 transition-all duration-200 transform hover:scale-[1.03] hover:-translate-y-0.5 cursor-pointer ${
                   isActive
-                    ? 'bg-red-600 text-white shadow-lg shadow-red-950/50 ring-2 ring-red-400/80 scale-[1.02]'
-                    : 'bg-white/5 hover:bg-white/12 text-slate-300 hover:text-white border border-white/10 hover:border-white/20'
+                    ? 'bg-red-600 text-white shadow-md shadow-red-950/30 ring-2 ring-red-400 scale-[1.02]'
+                    : 'bg-white/80 hover:bg-white text-slate-800 hover:text-slate-900 border border-slate-300 shadow-xs'
                 }`}
               >
-                <span className={isActive ? 'text-white' : 'text-red-400'}>
+                <span className={isActive ? 'text-white' : 'text-red-600'}>
                   {getIcon(mod.iconName)}
                 </span>
                 <span className="tracking-tight">{mod.title}</span>
 
                 <span className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${
-                  isActive ? 'bg-white/25 text-white font-bold' : 'bg-white/10 text-slate-400'
+                  isActive ? 'bg-white/25 text-white font-bold' : 'bg-slate-200/90 text-slate-700'
                 }`}>
                   {mod.steps.length} pasos
                 </span>
@@ -187,7 +187,7 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
 
           <button
             onClick={onOpenAddModule}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 border border-dashed border-white/20 transition-all hover:scale-105 shrink-0"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-700 hover:text-slate-900 bg-white/40 hover:bg-white/80 border border-dashed border-slate-400 transition-all hover:scale-105 shrink-0"
           >
             <span>+ Nuevo Módulo</span>
           </button>

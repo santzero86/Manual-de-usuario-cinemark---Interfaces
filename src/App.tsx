@@ -7,6 +7,7 @@ import { PhoneSimulator } from './components/PhoneSimulator';
 import { StepGuidePanel } from './components/StepGuidePanel';
 import { CoverPageView } from './components/CoverPageView';
 import { WelcomeLandingView } from './components/WelcomeLandingView';
+import { MoreInfoView } from './components/MoreInfoView';
 import { AddModuleModal } from './components/AddModuleModal';
 import { BatchUploadModal } from './components/BatchUploadModal';
 import { 
@@ -21,11 +22,10 @@ import {
   Sparkles, 
   Award, 
   ArrowRight, 
-  ArrowLeft,
+  ArrowLeft, 
   Smartphone, 
   Info, 
   CheckCircle2, 
-  RotateCcw,
   Film
 } from 'lucide-react';
 
@@ -182,14 +182,21 @@ export default function App() {
     setModules(prev => [...prev]);
   };
 
-  const currentScreenshot = getScreenshotForStep(activeModule.id, activeStepNumber) || activeStep.customImageUrl;
+  const currentScreenshot = activeStep.customImageUrl || getScreenshotForStep(activeModule.id, activeStepNumber);
 
   return (
-    <div className="min-h-screen bg-[#0c0d10] text-slate-100 flex flex-col font-sans selection:bg-red-600 selection:text-white">
+    <div className="min-h-screen bg-[#F2F2F2] text-slate-800 flex flex-col font-sans selection:bg-red-600 selection:text-white">
       {/* Top Bar Header */}
       <Header
         currentView={viewMode}
         onChangeView={setViewMode}
+        modules={modules}
+        onSelectTutorial={(modId, stepNum) => {
+          setActiveModuleId(modId);
+          setActiveStepNumber(stepNum || 1);
+          setShowCompletionBanner(false);
+          setViewMode('simulator');
+        }}
         onOpenAddModule={() => setIsAddModuleOpen(true)}
         onOpenBatchUpload={() => setIsBatchUploadOpen(true)}
         completedCount={completedSteps.length}
@@ -211,163 +218,166 @@ export default function App() {
         
         {/* Module Sub-Header & Info Banner (Only in simulator view) */}
         {viewMode === 'simulator' && (
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-300">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold text-red-500 uppercase tracking-widest">
+                <span className="text-xs font-bold text-red-600 uppercase tracking-widest">
                   {activeModule.badge}
                 </span>
-                <span className="text-slate-500 text-xs">·</span>
-                <span className="text-xs text-slate-400">
+                <span className="text-slate-400 text-xs">·</span>
+                <span className="text-xs text-slate-600">
                   {activeModule.steps.length} pantallas interactivas
                 </span>
-                <span className="text-slate-500 text-xs">·</span>
-                <span className="text-xs text-slate-400">
+                <span className="text-slate-400 text-xs">·</span>
+                <span className="text-xs text-slate-600">
                   {activeModule.durationMinutes} min de aprendizaje
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 {activeModule.title}
               </h1>
-              <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl">
+              <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl">
                 {activeModule.shortDescription}
               </p>
-            </div>
-
-            <div className="flex items-center gap-2 text-xs">
-              <button
-                onClick={() => {
-                  setCompletedSteps([]);
-                  saveStoredProgress({
-                    completedSteps: [],
-                    completedModules: [],
-                    lastActiveModuleId: activeModuleId,
-                    lastActiveStepId: 1
-                  });
-                }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5 transition-colors cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Reiniciar Progreso</span>
-              </button>
             </div>
           </div>
         )}
 
         {/* View Mode Switching */}
-        {viewMode === 'landing' && (
-          <WelcomeLandingView
-            onContinue={() => setViewMode('cover')}
-          />
-        )}
+        <div key={viewMode} className="animate-fade-scale">
+          {viewMode === 'landing' && (
+            <WelcomeLandingView
+              onContinue={() => setViewMode('cover')}
+            />
+          )}
 
-        {viewMode === 'cover' && (
-          <CoverPageView
-            modules={modules}
-            onOpenSimulator={(modId) => {
-              if (modId) setActiveModuleId(modId);
-              setActiveStepNumber(1);
-              setViewMode('simulator');
-            }}
-            onBackToLanding={() => setViewMode('landing')}
-          />
-        )}
+          {viewMode === 'cover' && (
+            <CoverPageView
+              modules={modules}
+              onOpenSimulator={(modId) => {
+                if (modId) setActiveModuleId(modId);
+                setActiveStepNumber(1);
+                setViewMode('simulator');
+              }}
+              onBackToLanding={() => setViewMode('landing')}
+            />
+          )}
 
-        {viewMode === 'simulator' && (
-          <div className="space-y-6">
-            {/* Top Return Button matching reference image */}
-            <div className="flex items-center justify-between pb-1">
-              <button
-                onClick={() => setViewMode('cover')}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all border border-white/15 cursor-pointer shadow-sm group hover:scale-[1.02]"
-              >
-                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                <span>Volver a la bienvenida / Portada</span>
-              </button>
+          {viewMode === 'info' && (
+            <MoreInfoView
+              onGoToTutorials={() => setViewMode('cover')}
+              onGoToSimulator={(modId) => {
+                if (modId) setActiveModuleId(modId);
+                setActiveStepNumber(1);
+                setViewMode('simulator');
+              }}
+            />
+          )}
 
-              <span className="text-xs text-slate-400 hidden sm:inline-block">
-                Módulo actual: <strong className="text-white">{activeModule.title}</strong> ({activeModule.steps.length} pasos)
-              </span>
-            </div>
+          {viewMode === 'simulator' && (
+            <div className="space-y-6">
+              {/* Top Return Button matching reference image */}
+              <div className="flex items-center justify-between pb-1">
+                <button
+                  onClick={() => setViewMode('cover')}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold transition-all duration-200 border border-slate-300 cursor-pointer shadow-xs group hover:scale-[1.02] active:scale-95"
+                >
+                  <ArrowLeft className="w-4 h-4 text-red-600 group-hover:-translate-x-1 transition-transform duration-200" />
+                  <span>Volver a la portada / Bienvenida</span>
+                </button>
 
-            {/* Completion Dialog / Alert if finished all steps */}
-            {showCompletionBanner && (
-              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-neutral-900 to-[#12231c] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-fade-in">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center font-bold shrink-0 shadow-md">
-                    <Award className="w-6 h-6" />
+                <span className="text-xs text-slate-600 hidden sm:inline-block">
+                  Módulo actual: <strong className="text-slate-900">{activeModule.title}</strong> ({activeModule.steps.length} pasos)
+                </span>
+              </div>
+
+              {/* Completion Dialog / Alert if finished all steps */}
+              {showCompletionBanner && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-neutral-900 to-[#12231c] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-fade-scale">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center font-bold shrink-0 shadow-md animate-pulse">
+                      <Award className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white text-base">
+                        ¡Excelente trabajo! Has completado los {activeModule.steps.length} pasos
+                      </h3>
+                      <p className="text-xs text-emerald-300">
+                        Has finalizado exitosamente este recorrido interactivo en la app de Cinemark.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-white text-base">
-                      ¡Excelente trabajo! Has completado los {activeModule.steps.length} pasos
-                    </h3>
-                    <p className="text-xs text-emerald-300">
-                      Has finalizado exitosamente este recorrido interactivo en la app de Cinemark.
-                    </p>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={() => setViewMode('cover')}
+                      className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-bold shadow-md transition-all duration-200 active:scale-95 flex items-center gap-1.5 cursor-pointer hover:scale-105"
+                    >
+                      <span>Ver Otros Tutoriales</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() => setShowCompletionBanner(false)}
+                      className="px-3 py-2 bg-white/10 hover:bg-white/15 text-white rounded-xl text-xs font-semibold transition-colors duration-150 cursor-pointer"
+                    >
+                      Cerrar
+                    </button>
                   </div>
                 </div>
+              )}
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <button
-                    onClick={() => setViewMode('cover')}
-                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-bold shadow-md transition-colors flex items-center gap-1.5 cursor-pointer"
-                  >
-                    <span>Ver Otros Tutoriales</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    onClick={() => setShowCompletionBanner(false)}
-                    className="px-3 py-2 bg-white/10 hover:bg-white/15 text-white rounded-xl text-xs font-semibold cursor-pointer"
-                  >
-                    Cerrar
-                  </button>
+              {/* Two-Column Layout: Mobile Simulator + Step Guidance */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                {/* Left Column: Interactive Mobile Phone Simulator */}
+                <div className="lg:col-span-5 xl:col-span-5 flex justify-center">
+                  <PhoneSimulator
+                    step={activeStep}
+                    onNextStep={handleNextStep}
+                    onPrevStep={handlePrevStep}
+                    onSelectStep={handleSelectStep}
+                    customScreenshotUrl={currentScreenshot}
+                    onUploadScreenshot={handleUploadScreenshotForCurrentStep}
+                    onOpenBatchUpload={() => setIsBatchUploadOpen(true)}
+                    moduleId={activeModule.id}
+                    totalSteps={activeModule.steps.length}
+                  />
+                </div>
+
+                {/* Right Column: Step Guidance & Learning Panel */}
+                <div className="lg:col-span-7 xl:col-span-7 h-full min-h-[600px] flex flex-col">
+                  <StepGuidePanel
+                    step={activeStep}
+                    totalSteps={activeModule.steps.length}
+                    onNext={handleNextStep}
+                    onPrev={handlePrevStep}
+                    onSelectStep={handleSelectStep}
+                    isCompleted={completedSteps.includes(activeStep.id)}
+                    onToggleComplete={() => toggleStepComplete(activeStep.id)}
+                  />
                 </div>
               </div>
-            )}
-
-            {/* Two-Column Layout: Mobile Simulator + Step Instructions */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-              {/* Left Column: Interactive Mobile Phone Simulator */}
-              <div className="lg:col-span-5 xl:col-span-5 flex justify-center">
-                <PhoneSimulator
-                  step={activeStep}
-                  moduleSteps={activeModule.steps}
-                  onNextStep={handleNextStep}
-                  onPrevStep={handlePrevStep}
-                  onSelectStep={handleSelectStep}
-                  customScreenshotUrl={currentScreenshot}
-                  onUploadScreenshot={handleUploadScreenshotForCurrentStep}
-                  onOpenBatchUpload={() => setIsBatchUploadOpen(true)}
-                  moduleId={activeModule.id}
-                  totalSteps={activeModule.steps.length}
-                />
-              </div>
-
-              {/* Right Column: Step Guidance & Learning Panel */}
-              <div className="lg:col-span-7 xl:col-span-7 h-full min-h-[600px] flex flex-col">
-                <StepGuidePanel
-                  step={activeStep}
-                  totalSteps={activeModule.steps.length}
-                  onNext={handleNextStep}
-                  onPrev={handlePrevStep}
-                  onSelectStep={handleSelectStep}
-                  isCompleted={completedSteps.includes(activeStep.id)}
-                  onToggleComplete={() => toggleStepComplete(activeStep.id)}
-                />
-              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
 
       {/* Footer */}
-      <footer className="mt-auto border-t border-white/10 py-6 px-4 text-center text-xs text-slate-500 bg-[#0c0d10]">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <footer className="mt-auto border-t border-slate-300/80 py-6 px-4 text-xs text-slate-600 bg-[#F2F2F2]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-red-600"></span>
-            <span>Cinemark Academy · Manual Educativo Interactivo</span>
+            <span className="font-semibold text-slate-700">Cinemark Academy · Manual Educativo Interactivo</span>
           </div>
-          <div>
+
+          {/* Centered Version Badge */}
+          <div className="flex items-center justify-center">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 font-mono text-[11px] font-bold border border-slate-300 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+              <span>Versión v1.0.0.00</span>
+            </span>
+          </div>
+
+          <div className="text-slate-500">
             Diseñado para aprendizaje paso a paso por módulos · Cinemark Colombia
           </div>
         </div>
