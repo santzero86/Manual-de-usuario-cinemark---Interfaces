@@ -182,7 +182,7 @@ export default function App() {
     setModules(prev => [...prev]);
   };
 
-  const currentScreenshot = activeStep.customImageUrl || getScreenshotForStep(activeModule.id, activeStepNumber);
+  const currentScreenshot = getScreenshotForStep(activeModule.id, activeStepNumber) || activeStep.customImageUrl;
 
   return (
     <div className="min-h-screen bg-[#0c0d10] text-slate-100 flex flex-col font-sans selection:bg-red-600 selection:text-white">
@@ -331,6 +331,7 @@ export default function App() {
               <div className="lg:col-span-5 xl:col-span-5 flex justify-center">
                 <PhoneSimulator
                   step={activeStep}
+                  moduleSteps={activeModule.steps}
                   onNextStep={handleNextStep}
                   onPrevStep={handlePrevStep}
                   onSelectStep={handleSelectStep}
