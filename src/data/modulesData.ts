@@ -1,6 +1,20 @@
 import { Module, QuizQuestion } from '../types/modules';
 
-export const MODULES_DATA: Module[] = [
+const SCREENSHOT_ASSETS = import.meta.glob('../assets/**/*.{jpg,jpeg}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>;
+
+const MODULE_SCREENSHOT_FOLDERS: Record<string, string> = {
+  'compra-boletas-confiteria': 'Evento de compra de tiquetes',
+  'confiteria-express': 'Evento de compra de aperitivos',
+  'exploracion-teatros-cercanos': 'Cambiar de cine',
+  'login-registro-cuenta': 'Login-SignUp',
+  'atencion-soporte-pqrsf': 'Soporte',
+};
+
+const MODULES_DATA_BASE: Module[] = [
   {
     id: 'compra-boletas-confiteria',
     title: 'Compra de Boletas y Confitería',
@@ -1214,6 +1228,22 @@ export const MODULES_DATA: Module[] = [
     ]
   }
 ];
+
+export const MODULES_DATA: Module[] = MODULES_DATA_BASE.map((module) => {
+  const folder = MODULE_SCREENSHOT_FOLDERS[module.id];
+
+  if (!folder) return module;
+
+  return {
+    ...module,
+    steps: module.steps.map((step) => ({
+      ...step,
+      customImageUrl:
+        SCREENSHOT_ASSETS[`../assets/${folder}/${step.imagePlaceholderName}`] ||
+        step.customImageUrl,
+    })),
+  };
+});
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
