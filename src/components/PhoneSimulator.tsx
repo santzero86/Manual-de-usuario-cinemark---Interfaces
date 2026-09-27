@@ -49,7 +49,7 @@ interface PhoneSimulatorProps {
   onPrevStep: () => void;
   onSelectStep: (stepNumber: number) => void;
   customScreenshotUrl?: string | null;
-  onUploadScreenshot: (file: File) => void;
+  onUploadScreenshot?: (file: File) => void;
   onOpenBatchUpload?: () => void;
   moduleId?: string;
   totalSteps?: number;
@@ -84,7 +84,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
   };
 
   const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
+    if (e.target.files && e.target.files[0] && onUploadScreenshot) {
       onUploadScreenshot(e.target.files[0]);
       setViewMode('screenshot');
     }
@@ -128,16 +128,18 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             </button>
           )}
 
-          <label className="flex items-center gap-1 px-2 py-1 rounded-md bg-[#1a1c23] hover:bg-[#252834] text-slate-300 hover:text-white border border-white/10 cursor-pointer transition-colors text-[11px]">
-            <Upload className="w-3 h-3 text-red-400" />
-            <span>Subir {step.stepNumber}.jpg</span>
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleImageFileChange}
-            />
-          </label>
+          {onUploadScreenshot && (
+            <label className="flex items-center gap-1 px-2 py-1 rounded-md bg-[#1a1c23] hover:bg-[#252834] text-slate-300 hover:text-white border border-white/10 cursor-pointer transition-colors text-[11px]">
+              <Upload className="w-3 h-3 text-red-400" />
+              <span>Subir {step.stepNumber}.jpg</span>
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleImageFileChange}
+              />
+            </label>
+          )}
         </div>
       </div>
 
@@ -208,18 +210,22 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                       Captura {step.stepNumber}.jpg
                     </span>
                     <p className="text-xs text-slate-300 mb-4 max-w-[220px]">
-                      Para mostrar tu captura de pantalla real exactamente como la tomaste:
+                      {onUploadScreenshot
+                        ? 'Para mostrar tu captura de pantalla real exactamente como la tomaste:'
+                        : 'Esta pantalla usa la imagen incluida en el manual.'}
                     </p>
-                    <label className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer flex items-center gap-1.5 mb-2">
-                      <Upload className="w-3.5 h-3.5" />
-                      <span>Cargar {step.stepNumber}.jpg ahora</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handleImageFileChange}
-                      />
-                    </label>
+                    {onUploadScreenshot && (
+                      <label className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer flex items-center gap-1.5 mb-2">
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>Cargar {step.stepNumber}.jpg ahora</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={handleImageFileChange}
+                        />
+                      </label>
+                    )}
                     <button
                       onClick={() => setViewMode('simulated')}
                       className="text-[11px] text-slate-400 hover:text-white underline mt-1"
