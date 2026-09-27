@@ -4,17 +4,15 @@ import {
   Ticket, 
   Crown, 
   UtensilsCrossed, 
-  QrCode, 
-  CreditCard, 
-  Sparkles, 
-  Clock, 
-  CheckCircle, 
   Building, 
   MapPin, 
+  QrCode, 
+  CreditCard, 
   User, 
   LogIn, 
   Headphones, 
   HelpCircle,
+  Sparkles,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -23,19 +21,16 @@ interface ModuleSelectorBarProps {
   modules: Module[];
   activeModuleId: string;
   onSelectModule: (moduleId: string) => void;
-  onOpenAddModule: () => void;
 }
 
 export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
   modules,
   activeModuleId,
   onSelectModule,
-  onOpenAddModule,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
 
   const getIcon = (name: string) => {
     switch (name) {
@@ -54,7 +49,6 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
     }
   };
 
-  // Check scroll positions
   const checkScroll = () => {
     if (!containerRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
@@ -68,28 +62,23 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
     return () => window.removeEventListener('resize', checkScroll);
   }, [modules]);
 
-  // Smooth scroll with mouse movement over the container
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const width = rect.width;
-    
-    // Determine edge zones (first 25% scrolls left, last 25% scrolls right)
     const edgeRatio = 0.28;
     const maxScroll = containerRef.current.scrollWidth - containerRef.current.clientWidth;
     
     if (maxScroll <= 0) return;
 
     if (mouseX < width * edgeRatio) {
-      // Near left edge - scroll left proportional to proximity
       const intensity = (width * edgeRatio - mouseX) / (width * edgeRatio);
       containerRef.current.scrollBy({
         left: -intensity * 35,
         behavior: 'smooth'
       });
     } else if (mouseX > width * (1 - edgeRatio)) {
-      // Near right edge - scroll right proportional to proximity
       const intensity = (mouseX - width * (1 - edgeRatio)) / (width * edgeRatio);
       containerRef.current.scrollBy({
         left: intensity * 35,
@@ -107,12 +96,8 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
   };
 
   return (
-    <div 
-      className="w-full bg-[#C4C4C4] border-b border-slate-300 relative group"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      {/* Left Scroll Button / Gradient */}
+    <div className="w-full bg-[#C4C4C4] border-b border-slate-300 relative group">
+      {/* Scroll Buttons */}
       {canScrollLeft && (
         <button
           onClick={() => scrollByAmount(-260)}
@@ -125,7 +110,6 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
         </button>
       )}
 
-      {/* Right Scroll Button / Gradient */}
       {canScrollRight && (
         <button
           onClick={() => scrollByAmount(260)}
@@ -138,7 +122,7 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
         </button>
       )}
 
-      {/* Scrollable Container with mouse-move displacement */}
+      {/* Container */}
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
@@ -157,14 +141,6 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
               <button
                 key={mod.id}
                 onClick={() => onSelectModule(mod.id)}
-                onMouseEnter={(e) => {
-                  // Bring button smoothly toward center on hover
-                  e.currentTarget.scrollIntoView({
-                    behavior: 'smooth',
-                    inline: 'nearest',
-                    block: 'nearest'
-                  });
-                }}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold shrink-0 transition-all duration-200 transform hover:scale-[1.03] hover:-translate-y-0.5 cursor-pointer ${
                   isActive
                     ? 'bg-red-600 text-white shadow-md shadow-red-950/30 ring-2 ring-red-400 scale-[1.02]'
@@ -184,13 +160,6 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
               </button>
             );
           })}
-
-          <button
-            onClick={onOpenAddModule}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-700 hover:text-slate-900 bg-white/40 hover:bg-white/80 border border-dashed border-slate-400 transition-all hover:scale-105 shrink-0"
-          >
-            <span>+ Nuevo Módulo</span>
-          </button>
         </div>
       </div>
     </div>
