@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MODULES_DATA } from './data/modulesData';
-import { Module, Step } from './types/modules';
+import { Module } from './types/modules';
 import { Header, AppViewMode } from './components/Header';
 import { ModuleSelectorBar } from './components/ModuleSelectorBar';
 import { PhoneSimulator } from './components/PhoneSimulator';
@@ -8,26 +8,19 @@ import { StepGuidePanel } from './components/StepGuidePanel';
 import { CoverPageView } from './components/CoverPageView';
 import { WelcomeLandingView } from './components/WelcomeLandingView';
 import { MoreInfoView } from './components/MoreInfoView';
-import { AddModuleModal } from './components/AddModuleModal';
 import { BatchUploadModal } from './components/BatchUploadModal';
 import { 
   getStoredProgress, 
   saveStoredProgress, 
   saveScreenshotForStep, 
   getScreenshotForStep,
-  UserProgress 
 } from './utils/storage';
 import { getBundledScreenshot, hasBundledScreenshots } from './utils/moduleScreenshots';
 import confetti from 'canvas-confetti';
 import { 
-  Sparkles, 
   Award, 
   ArrowRight, 
   ArrowLeft, 
-  Smartphone, 
-  Info, 
-  CheckCircle2, 
-  Film
 } from 'lucide-react';
 
 export default function App() {
@@ -35,7 +28,6 @@ export default function App() {
   const [activeModuleId, setActiveModuleId] = useState<string>('login-registro-cuenta');
   const [activeStepNumber, setActiveStepNumber] = useState<number>(1);
   const [viewMode, setViewMode] = useState<AppViewMode>('landing');
-  const [isAddModuleOpen, setIsAddModuleOpen] = useState(false);
   const [isBatchUploadOpen, setIsBatchUploadOpen] = useState(false);
   const [completedSteps, setCompletedSteps] = useState<number[]>([1]);
   const [showCompletionBanner, setShowCompletionBanner] = useState(false);
@@ -48,7 +40,6 @@ export default function App() {
     }
   }, []);
 
-  // Save progress whenever completedSteps changes
   const markStepComplete = (stepId: number) => {
     setCompletedSteps(prev => {
       const next = prev.includes(stepId) ? prev : [...prev, stepId];
@@ -97,7 +88,6 @@ export default function App() {
     if (activeStepNumber < activeModule.steps.length) {
       setActiveStepNumber(n => n + 1);
     } else {
-      // Completed all steps in the module!
       setShowCompletionBanner(true);
       confetti({
         particleCount: 100,
@@ -121,33 +111,12 @@ export default function App() {
   const handleSelectModule = (moduleId: string) => {
     const mod = modules.find(m => m.id === moduleId);
     if (mod && !mod.isAvailable) {
-      alert(`El módulo "${mod.title}" estará disponible pronto con tu nuevo lote de imágenes.`);
+      alert(`El módulo "${mod.title}" estará disponible pronto.`);
       return;
     }
     setActiveModuleId(moduleId);
     setActiveStepNumber(1);
     setShowCompletionBanner(false);
-  };
-
-  const handleAddNewModule = (newModuleData: Partial<Module>) => {
-    const created: Module = {
-      id: newModuleData.id || `mod-${Date.now()}`,
-      title: newModuleData.title || 'Nuevo Módulo',
-      shortDescription: newModuleData.shortDescription || 'Módulo personalizado.',
-      fullDescription: newModuleData.fullDescription || '',
-      category: newModuleData.category || 'Boletas',
-      badge: 'Personalizado',
-      durationMinutes: newModuleData.durationMinutes || 5,
-      difficulty: 'Principiante',
-      totalSteps: newModuleData.steps?.length || 1,
-      isAvailable: true,
-      steps: newModuleData.steps || [],
-      iconName: 'Sparkles'
-    };
-
-    setModules(prev => [...prev, created]);
-    setActiveModuleId(created.id);
-    setActiveStepNumber(1);
   };
 
   const handleUploadScreenshotForCurrentStep = (file: File) => {
@@ -156,19 +125,6 @@ export default function App() {
       const dataUrl = e.target?.result as string;
       if (dataUrl) {
         saveScreenshotForStep(activeModule.id, activeStepNumber, dataUrl);
-        // Force refresh component
-        setModules(prev => [...prev]);
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const handleUploadScreenshotForStep = (stepNumber: number, file: File) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      if (dataUrl) {
-        saveScreenshotForStep(activeModule.id, stepNumber, dataUrl);
         setModules(prev => [...prev]);
       }
     };
@@ -183,7 +139,6 @@ export default function App() {
     setModules(prev => [...prev]);
   };
 
-  // Modules with bundled screenshots use src/assets/ images instead of user uploads
   const usesBundledScreenshots = hasBundledScreenshots(activeModule.id);
   const currentScreenshot =
     getBundledScreenshot(activeModule, activeStep) ||
@@ -203,7 +158,6 @@ export default function App() {
           setShowCompletionBanner(false);
           setViewMode('simulator');
         }}
-        onOpenAddModule={() => setIsAddModuleOpen(true)}
         onOpenBatchUpload={usesBundledScreenshots ? undefined : () => setIsBatchUploadOpen(true)}
         completedCount={completedSteps.length}
         totalCount={activeModule.steps.length}
@@ -215,14 +169,13 @@ export default function App() {
           modules={modules}
           activeModuleId={activeModuleId}
           onSelectModule={handleSelectModule}
-          onOpenAddModule={() => setIsAddModuleOpen(true)}
         />
       )}
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
         
-        {/* Module Sub-Header & Info Banner (Only in simulator view) */}
+        {/* Module Sub-Header */}
         {viewMode === 'simulator' && (
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-300">
             <div>
@@ -282,14 +235,13 @@ export default function App() {
 
           {viewMode === 'simulator' && (
             <div className="space-y-6">
-              {/* Top Return Button matching reference image */}
               <div className="flex items-center justify-between pb-1">
                 <button
                   onClick={() => setViewMode('cover')}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold transition-all duration-200 border border-slate-300 cursor-pointer shadow-xs group hover:scale-[1.02] active:scale-95"
                 >
                   <ArrowLeft className="w-4 h-4 text-red-600 group-hover:-translate-x-1 transition-transform duration-200" />
-                  <span>Volver a la portada / Bienvenida</span>
+                  <span>Volver a tutoriales</span>
                 </button>
 
                 <span className="text-xs text-slate-600 hidden sm:inline-block">
@@ -297,7 +249,7 @@ export default function App() {
                 </span>
               </div>
 
-              {/* Completion Dialog / Alert if finished all steps */}
+              {/* Completion Banner */}
               {showCompletionBanner && (
                 <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-neutral-900 to-[#12231c] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-fade-scale">
                   <div className="flex items-center gap-3.5">
@@ -332,9 +284,8 @@ export default function App() {
                 </div>
               )}
 
-              {/* Two-Column Layout: Mobile Simulator + Step Guidance */}
+              {/* Layout: Phone Simulator + Step Guidance */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-                {/* Left Column: Interactive Mobile Phone Simulator */}
                 <div className="lg:col-span-5 xl:col-span-5 flex justify-center">
                   <PhoneSimulator
                     step={activeStep}
@@ -349,7 +300,6 @@ export default function App() {
                   />
                 </div>
 
-                {/* Right Column: Step Guidance & Learning Panel */}
                 <div className="lg:col-span-7 xl:col-span-7 h-full min-h-[600px] flex flex-col">
                   <StepGuidePanel
                     step={activeStep}
@@ -375,11 +325,10 @@ export default function App() {
             <span className="font-semibold text-slate-700">Cinemark Academy · Manual Educativo Interactivo</span>
           </div>
 
-          {/* Centered Version Badge */}
           <div className="flex items-center justify-center">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 font-mono text-[11px] font-bold border border-slate-300 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-              <span>Versión v1.0.0.00</span>
+              <span>Versión v1.0.0</span>
             </span>
           </div>
 
@@ -389,14 +338,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Add Module Modal */}
-      <AddModuleModal
-        isOpen={isAddModuleOpen}
-        onClose={() => setIsAddModuleOpen(false)}
-        onAddNewModule={handleAddNewModule}
-      />
-
-      {/* Batch Upload Modal for Module Screenshots */}
+      {/* Batch Upload Modal for custom modules if needed */}
       {!usesBundledScreenshots && (
         <BatchUploadModal
           isOpen={isBatchUploadOpen}
