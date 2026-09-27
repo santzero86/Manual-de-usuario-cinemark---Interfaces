@@ -34,7 +34,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 68,
+          y: 77,
           label: 'Película Destacada',
           actionText: 'Tocar sobre el póster de Avengers Endgame'
         },
@@ -64,7 +64,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 46,
+          y: 52,
           label: 'Seleccionar Estreno',
           actionText: 'Tocar sobre el título para abrir funciones'
         },
@@ -92,8 +92,8 @@ export const MODULES_DATA: Module[] = [
           'Ten presente la duración total de la película para organizar tu transporte y parqueadero.'
         ],
         hotspot: {
-          x: 50,
-          y: 28,
+          x: 58,
+          y: 42,
           label: 'Clasificaciones y Horas',
           actionText: 'Observar sellos informativos 12-A / 15-A'
         },
@@ -122,8 +122,8 @@ export const MODULES_DATA: Module[] = [
           'Las funciones Premier cuentan con silletería de cuero reclinable y servicio a la sala.'
         ],
         hotspot: {
-          x: 35,
-          y: 74,
+          x: 33,
+          y: 77.5,
           label: 'Horario [17:35]',
           actionText: 'Pulsar en el botón del horario 17:35'
         },
@@ -153,8 +153,8 @@ export const MODULES_DATA: Module[] = [
           'Si un horario está agotado en un centro comercial, revisa las sedes vecinas.'
         ],
         hotspot: {
-          x: 48,
-          y: 65,
+          x: 35,
+          y: 27,
           label: 'Sede Cercana',
           actionText: 'Verificar distancias y funciones alternas'
         },
@@ -184,7 +184,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 91,
-          y: 81,
+          y: 73,
           label: 'Añadir Boleta (+)',
           actionText: 'Tocar el botón (+) en BOLETA XD PREMIER 3D'
         },
@@ -250,7 +250,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 88,
-          y: 45,
+          y: 47,
           label: 'Agregar Alimento (+)',
           actionText: 'Tocar (+) en Hamburguesa Callejera'
         },
@@ -281,7 +281,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 82,
-          y: 91,
+          y: 97,
           label: 'Confirmar y Continuar',
           actionText: 'Tocar en CONTINUAR'
         },
@@ -315,7 +315,7 @@ export const MODULES_DATA: Module[] = [
           'Si guardas tu sesión en la app, estos datos se llenarán automáticamente en tus próximas visitas.'
         ],
         hotspot: {
-          x: 48,
+          x: 4,
           y: 72,
           label: 'Casillas de Aceptación',
           actionText: 'Marcar casillas de términos y pulsar CONTINUAR'
@@ -347,7 +347,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 80,
+          y: 85,
           label: 'Opción PSE',
           actionText: 'Pulsar en la tarjeta de pago PSE'
         },
@@ -379,7 +379,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 82,
-          y: 91,
+          y: 97,
           label: 'Botón PAGAR',
           actionText: 'Tocar en PAGAR para procesar el débito'
         },
@@ -409,7 +409,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 84,
+          y: 89,
           label: 'Selector de Banco',
           actionText: 'Tocar el campo para desplegar bancos'
         },
@@ -438,8 +438,8 @@ export const MODULES_DATA: Module[] = [
           'Guarda una captura de pantalla del código QR generado o ábrelo desde la sección "Mis Boletas" en el menú de la app.'
         ],
         hotspot: {
-          x: 48,
-          y: 53,
+          x: 28,
+          y: 57.5,
           label: 'Elegir NEQUI / NU',
           actionText: 'Tocar sobre la entidad y confirmar con PAGAR'
         },
@@ -575,7 +575,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 80,
+          y: 90,
           label: 'Iniciar Sesión / Crear Cuenta',
           actionText: 'Pulsar botón de autenticación'
         },
@@ -609,8 +609,8 @@ export const MODULES_DATA: Module[] = [
           'El teatro de preferencia se guardará como tu sede predeterminada para futuras compras.'
         ],
         hotspot: {
-          x: 50,
-          y: 75,
+          x: 75,
+          y: 76,
           label: 'Diligenciar Datos y Bajar',
           actionText: 'Llenar campos y desplazarse a la sección final'
         },
@@ -643,7 +643,7 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 91,
+          y: 96,
           label: 'Pulsar CONTINUAR',
           actionText: 'Tocar botón CONTINUAR para finalizar el registro'
         },

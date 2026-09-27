@@ -17,6 +17,7 @@ import {
   getScreenshotForStep,
   UserProgress 
 } from './utils/storage';
+import { getBundledScreenshot, hasBundledScreenshots } from './utils/moduleScreenshots';
 import confetti from 'canvas-confetti';
 import { 
   Sparkles, 
@@ -182,7 +183,12 @@ export default function App() {
     setModules(prev => [...prev]);
   };
 
-  const currentScreenshot = activeStep.customImageUrl || getScreenshotForStep(activeModule.id, activeStepNumber);
+  // Modules with bundled screenshots use src/assets/ images instead of user uploads
+  const usesBundledScreenshots = hasBundledScreenshots(activeModule.id);
+  const currentScreenshot =
+    getBundledScreenshot(activeModule, activeStep) ||
+    activeStep.customImageUrl ||
+    getScreenshotForStep(activeModule.id, activeStepNumber);
 
   return (
     <div className="min-h-screen bg-[#F2F2F2] text-slate-800 flex flex-col font-sans selection:bg-red-600 selection:text-white">
@@ -198,7 +204,7 @@ export default function App() {
           setViewMode('simulator');
         }}
         onOpenAddModule={() => setIsAddModuleOpen(true)}
-        onOpenBatchUpload={() => setIsBatchUploadOpen(true)}
+        onOpenBatchUpload={usesBundledScreenshots ? undefined : () => setIsBatchUploadOpen(true)}
         completedCount={completedSteps.length}
         totalCount={activeModule.steps.length}
       />
@@ -336,8 +342,8 @@ export default function App() {
                     onPrevStep={handlePrevStep}
                     onSelectStep={handleSelectStep}
                     customScreenshotUrl={currentScreenshot}
-                    onUploadScreenshot={handleUploadScreenshotForCurrentStep}
-                    onOpenBatchUpload={() => setIsBatchUploadOpen(true)}
+                    onUploadScreenshot={usesBundledScreenshots ? undefined : handleUploadScreenshotForCurrentStep}
+                    onOpenBatchUpload={usesBundledScreenshots ? undefined : () => setIsBatchUploadOpen(true)}
                     moduleId={activeModule.id}
                     totalSteps={activeModule.steps.length}
                   />
@@ -391,13 +397,15 @@ export default function App() {
       />
 
       {/* Batch Upload Modal for Module Screenshots */}
-      <BatchUploadModal
-        isOpen={isBatchUploadOpen}
-        onClose={() => setIsBatchUploadOpen(false)}
-        onSaveBatch={handleSaveBatchScreenshots}
-        totalSteps={activeModule.steps.length}
-        moduleTitle={activeModule.title}
-      />
+      {!usesBundledScreenshots && (
+        <BatchUploadModal
+          isOpen={isBatchUploadOpen}
+          onClose={() => setIsBatchUploadOpen(false)}
+          onSaveBatch={handleSaveBatchScreenshots}
+          totalSteps={activeModule.steps.length}
+          moduleTitle={activeModule.title}
+        />
+      )}
     </div>
   );
 }

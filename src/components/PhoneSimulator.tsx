@@ -9,7 +9,6 @@ import {
   Sparkles, 
   Check, 
   Info, 
-  Building, 
   Upload, 
   RefreshCw,
   Film,
@@ -49,7 +48,7 @@ interface PhoneSimulatorProps {
   onPrevStep: () => void;
   onSelectStep: (stepNumber: number) => void;
   customScreenshotUrl?: string | null;
-  onUploadScreenshot: (file: File) => void;
+  onUploadScreenshot?: (file: File) => void;
   onOpenBatchUpload?: () => void;
   moduleId?: string;
   totalSteps?: number;
@@ -70,7 +69,6 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
     customScreenshotUrl ? 'screenshot' : 'screenshot'
   );
   const [isTapped, setIsTapped] = useState(false);
-  const [activeTab, setActiveTab] = useState<'cartelera' | 'confiteria' | 'teatros' | 'cineclub' | 'menu'>('cartelera');
   const [seatSelected, setSeatSelected] = useState('A6');
   const [ticketCount, setTicketCount] = useState(1);
   const [selectedBank, setSelectedBank] = useState<string | null>(null);
@@ -84,7 +82,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
   };
 
   const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
+    if (e.target.files && e.target.files[0] && onUploadScreenshot) {
       onUploadScreenshot(e.target.files[0]);
       setViewMode('screenshot');
     }
@@ -128,16 +126,18 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             </button>
           )}
 
-          <label className="flex items-center gap-1 px-2 py-1 rounded-md bg-[#1a1c23] hover:bg-[#252834] text-slate-300 hover:text-white border border-white/10 cursor-pointer transition-colors text-[11px]">
-            <Upload className="w-3 h-3 text-red-400" />
-            <span>Subir {step.stepNumber}.jpg</span>
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleImageFileChange}
-            />
-          </label>
+          {onUploadScreenshot && (
+            <label className="flex items-center gap-1 px-2 py-1 rounded-md bg-[#1a1c23] hover:bg-[#252834] text-slate-300 hover:text-white border border-white/10 cursor-pointer transition-colors text-[11px]">
+              <Upload className="w-3 h-3 text-red-400" />
+              <span>Subir {step.stepNumber}.jpg</span>
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleImageFileChange}
+              />
+            </label>
+          )}
         </div>
       </div>
 
@@ -150,25 +150,9 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
         </div>
 
         {/* Screen Bezel Container */}
-        <div className="relative w-full h-full bg-[#f8f9fa] rounded-[34px] overflow-hidden flex flex-col text-slate-900 font-sans shadow-inner">
-          
-          {/* Mobile Status Bar (Android Style) */}
-          <div className="h-7 bg-white px-4 flex items-center justify-between text-[11px] font-semibold text-slate-700 shrink-0 border-b border-slate-100 z-30">
-            <span>10:24 a.m.</span>
-            <div className="flex items-center gap-1.5 text-[10px]">
-              <span className="text-[9px] bg-slate-200 px-1 rounded">VoLTE</span>
-              <span>4G</span>
-              <div className="flex items-center gap-0.5">
-                <div className="w-1 h-2 bg-slate-700 rounded-xs"></div>
-                <div className="w-1 h-2.5 bg-slate-700 rounded-xs"></div>
-                <div className="w-1 h-3 bg-slate-700 rounded-xs"></div>
-              </div>
-              <span className="text-slate-800">96%</span>
-            </div>
-          </div>
-
+        <div className="relative w-full h-full bg-black rounded-[34px] overflow-hidden flex flex-col text-slate-900 font-sans shadow-inner">
           {/* Screen Content: Either Custom Screenshot or High-Fidelity UI Simulator */}
-          <div className="relative flex-1 overflow-y-auto bg-white flex flex-col">
+          <div className="relative flex-1 overflow-hidden bg-black flex flex-col">
             {viewMode === 'screenshot' ? (
               <div key={`screen-${step.id}`} className="w-full h-full flex flex-col items-center justify-center bg-black text-slate-300 relative overflow-hidden animate-fade-scale">
                 {customScreenshotUrl ? (
@@ -176,7 +160,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                     <img
                       src={customScreenshotUrl}
                       alt={`Paso ${step.stepNumber} - ${step.title}`}
-                      className="w-full h-full object-contain max-h-[620px] transition-transform duration-300"
+                      className="w-full h-full object-cover transition-transform duration-300"
                     />
                     {/* Hotspot overlay over the real screenshot as well */}
                     <div
@@ -208,18 +192,22 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                       Captura {step.stepNumber}.jpg
                     </span>
                     <p className="text-xs text-slate-300 mb-4 max-w-[220px]">
-                      Para mostrar tu captura de pantalla real exactamente como la tomaste:
+                      {onUploadScreenshot
+                        ? 'Para mostrar tu captura de pantalla real exactamente como la tomaste:'
+                        : 'Esta pantalla usa la imagen incluida en el manual.'}
                     </p>
-                    <label className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer flex items-center gap-1.5 mb-2">
-                      <Upload className="w-3.5 h-3.5" />
-                      <span>Cargar {step.stepNumber}.jpg ahora</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handleImageFileChange}
-                      />
-                    </label>
+                    {onUploadScreenshot && (
+                      <label className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer flex items-center gap-1.5 mb-2">
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>Cargar {step.stepNumber}.jpg ahora</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={handleImageFileChange}
+                        />
+                      </label>
+                    )}
                     <button
                       onClick={() => setViewMode('simulated')}
                       className="text-[11px] text-slate-400 hover:text-white underline mt-1"
@@ -273,75 +261,6 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
             )}
           </div>
 
-          {/* Bottom App Navigation Bar (Cinemark standard app tabs) */}
-          <div className="h-14 bg-white border-t border-slate-200 px-2 flex items-center justify-around shrink-0 z-30">
-            <button
-              onClick={() => setActiveTab('cartelera')}
-              className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
-                activeTab === 'cartelera' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
-              }`}
-            >
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center ${activeTab === 'cartelera' ? 'bg-red-600 text-white' : ''}`}>
-                <Film className="w-3.5 h-3.5" />
-              </div>
-              <span>Cartelera</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('confiteria')}
-              className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
-                activeTab === 'confiteria' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
-              }`}
-            >
-              <div className="w-7 h-7 rounded-full flex items-center justify-center">
-                <UtensilsCrossed className="w-3.5 h-3.5" />
-              </div>
-              <span>Confitería</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('teatros')}
-              className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
-                activeTab === 'teatros' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
-              }`}
-            >
-              <div className="w-7 h-7 rounded-full flex items-center justify-center">
-                <Building className="w-3.5 h-3.5" />
-              </div>
-              <span>Teatros</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('cineclub')}
-              className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
-                activeTab === 'cineclub' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
-              }`}
-            >
-              <div className="w-7 h-7 rounded-full flex items-center justify-center">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-              </div>
-              <span>Cine Club</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('menu')}
-              className={`flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors ${
-                activeTab === 'menu' ? 'text-red-600' : 'text-slate-500 hover:text-slate-800'
-              }`}
-            >
-              <div className="w-7 h-7 rounded-full flex items-center justify-center">
-                <User className="w-3.5 h-3.5" />
-              </div>
-              <span>Menú</span>
-            </button>
-          </div>
-
-          {/* Android Navigation Bar (Home indicator) */}
-          <div className="h-5 bg-white flex items-center justify-around px-8 border-t border-slate-100">
-            <div className="w-4 h-0.5 bg-slate-300 rounded-full"></div>
-            <div className="w-3 h-3 border border-slate-300 rounded-full"></div>
-            <div className="w-3.5 h-2.5 border-l-2 border-t-2 border-slate-300 rotate-45"></div>
-          </div>
         </div>
       </div>
     </div>
