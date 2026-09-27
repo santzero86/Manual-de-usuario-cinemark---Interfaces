@@ -8,9 +8,9 @@ export const MODULES_DATA: Module[] = [
     fullDescription: 'Guía oficial interactiva paso a paso para la aplicación móvil de Cinemark. Domina todo el flujo de compra desde la cartelera hasta la pasarela de pagos segura.',
     category: 'Boletas',
     badge: 'Módulo Principal',
-    durationMinutes: 7,
+    durationMinutes: 6,
     difficulty: 'Principiante',
-    totalSteps: 14,
+    totalSteps: 13,
     isAvailable: true,
     iconName: 'Ticket',
     steps: [
@@ -115,13 +115,13 @@ export const MODULES_DATA: Module[] = [
         actionRequired: 'Selecciona la fecha deseada (ej: HOY Sáb. 26) y pulsa en la hora deseada, como el botón [17:35].',
         detailedInstructions: [
           'En el carrusel de fechas puedes elegir entre "HOY" o los días consecutivos de la semana.',
-          'Se especifica el cine actual ("PACIFIC MALL"). Si no es tu cine, tienes el botón "Cambiar cine".',
-          'Cada función especifica sus tecnologías: "3D INFINITY VISION XD PREMIER" o "2D PREMIER", además del idioma: Doblada o Subtitulada.',
-          'Toca el botón con la hora deseada (ej: [17:35]) para reservar tus boletas.'
+          'Se especifica el cine actual ("PACIFIC MALL").',
+          'Cada función detalla sus formatos: "3D INFINITY VISION XD PREMIER" o "2D PREMIER", además del idioma.',
+          'Toca el botón con la hora deseada (ej: [17:35]) para avanzar directamente a la selección de tarifas.'
         ],
         tips: [
           'Las salas XD cuentan con pantalla gigante de 4 pisos y sonido envolvente de alta potencia.',
-          'Las funciones Premier cuentan con silletería de cuero reclinable y servicio a la sala.'
+          'Las funciones Premier cuentan con silletería de cuero reclinable.'
         ],
         hotspot: {
           x: 33,
@@ -138,50 +138,21 @@ export const MODULES_DATA: Module[] = [
         imagePlaceholderName: '4.jpg'
       },
       {
-        id: 5,
-        stepNumber: 5,
-        title: 'Cambio de Cine o Ver Teatros Cercanos',
-        screenTitle: 'Avengers: Endgame Bon - Teatros',
-        category: 'teatros',
-        summary: 'Cómo verificar salas alternativas y distancias si los horarios de tu cine favorito no se ajustan a tu plan.',
-        actionRequired: 'Si deseas cambiar de ubicación, pulsa "Cambiar cine" para desplegar otros teatros como Unicentro Palmira o San Pedro Plaza.',
-        detailedInstructions: [
-          'La app muestra cines alternos con la distancia en kilómetros (ej: Unicentro Palmira a 29.24 km).',
-          'Cada cine alternativo detalla sus propios horarios disponibles (ej: 2D Doblada 21:30, 3D Doblada 17:20).',
-          'Puedes tocar el ícono de corazón para guardar tu teatro como favorito y que aparezca siempre de primero.'
-        ],
-        tips: [
-          'Activar la geolocalización en tu celular permite que Cinemark ordene automáticamente los cines por cercanía.',
-          'Si un horario está agotado en un centro comercial, revisa las sedes vecinas.'
-        ],
-        hotspot: {
-          x: 35,
-          y: 27,
-          label: 'Sede Cercana',
-          actionText: 'Verificar distancias y funciones alternas'
-        },
-        keyDetails: [
-          { label: 'Cine principal', value: 'Pacific Mall' },
-          { label: 'Cine alterno', value: 'Unicentro Palmira (29.24 km)' }
-        ],
-        imagePlaceholderName: '5.jpg'
-      },
-      {
         id: 6,
-        stepNumber: 6,
+        stepNumber: 5,
         title: 'Selección de Boletas y Tarifas',
         screenTitle: 'Avengers: Endgame Bon - Tarifas',
         category: 'boletas',
         summary: 'Configuración de tipos de boleta, promociones de tarjetas aliadas (AMEX 2x1) y descuentos de membresía.',
         actionRequired: 'Usa los botones (+) y (-) para seleccionar el número de boletas deseado y luego presiona "CONTINUAR".',
         detailedInstructions: [
-          'En la parte superior se destacan las membresías Cine Club Gold ($28.900/año) y Pro ($32.500/mes) para obtener hasta 50% de descuento.',
-          'Puedes activar el interruptor "Ver tarifas promocionales" si cuentas con convenios bancarios.',
+          'En la parte superior se destacan las membresías Cine Club Gold y Pro para obtener tarifas preferenciales.',
           'Elige tu tipo de boleta (ej: "BOLETA XD PREMIER 3D" por $32.250 o tarifa 2x1 si cumples requisitos).',
-          'Al seleccionar al menos 1 boleta, la barra inferior roja se iluminará mostrando el monto y el botón "CONTINUAR".'
+          'Al seleccionar al menos 1 boleta, la barra inferior roja se iluminará mostrando el monto acumulado.',
+          'Presiona el botón "CONTINUAR" para pasar a la selección de tus asientos en sala.'
         ],
         tips: [
-          'Si vas en pareja y pagas con tarjeta American Express, la opción "2X1 AMEX 3DXD PREMIER" te permite pagar solo 1 entrada.',
+          'Si vas en pareja y pagas con tarjeta American Express, la opción "2X1 AMEX" te permite pagar solo 1 entrada.',
           'En la pestaña "CINEBONO" puedes canjear códigos corporativos o tarjetas de regalo.'
         ],
         hotspot: {
@@ -199,24 +170,24 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 7,
-        stepNumber: 7,
+        stepNumber: 6,
         title: 'Selección de Asientos en la Sala',
         screenTitle: 'Ubicación en sala - Pacific Mall Sala 5',
         category: 'asientos',
-        summary: 'Mapa interactivo de la sala para elegir tus butacas frente a la pantalla. Cuenta con cronómetro de reserva.',
+        summary: 'Mapa interactivo de la sala para elegir tus butacas frente a la pantalla con cronómetro de retención.',
         actionRequired: 'Toca la silla disponible que prefieras (aparecerá en verde con tu código de butaca, ej: A6) y pulsa "CONTINUAR".',
         detailedInstructions: [
-          'En la parte superior se ilustra la curva de la "Pantalla" para orientarte.',
-          'Código de colores: Gris (Ocupada), Negro (No disponible), Verde (Tu selección), Borde dorado (Sillas Premier), Ícono azul (Discapacidad / Acompañante).',
-          'En la sección inferior se confirma tu selección con el ícono del sillón rojo: "Tus asientos son: BOLETA XD PREMIER 3D -> A6".',
-          'Tienes un contador regresivo visible (ej: 09:35 min) para finalizar la reserva antes de que el asiento se libere.'
+          'En la parte superior se ilustra la curva de la "Pantalla" para orientar la vista.',
+          'Código de colores: Gris (Ocupada), Verde (Tu selección actual), Borde dorado (Sillas Premier).',
+          'En la sección inferior se confirma tu butaca elegida (ej: A6).',
+          'Tienes un contador regresivo de 10 minutos para finalizar antes de que los asientos se liberen al público.'
         ],
         tips: [
-          'Las butacas de las filas centrales (filas E a G) ofrecen la mejor simetría acústica y visual.',
-          'Para personas en condición de movilidad reducida o sillas de ruedas, los asientos azules tienen rampas de acceso directo.'
+          'Las butacas de las filas centrales ofrecen la mejor simetría visual y acústica.',
+          'Para personas con movilidad reducida existen espacios designados con rampa de acceso directo.'
         ],
         warnings: [
-          '¡Atención al cronómetro! Si se acaban los 10 minutos asignados, el sistema liberará los asientos automáticamente.'
+          '¡Atención al cronómetro! Si se agotan los 10 minutos asignados, el sistema liberará los asientos.'
         ],
         timerNotice: '09:35 restantes',
         hotspot: {
@@ -234,21 +205,21 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 8,
-        stepNumber: 8,
+        stepNumber: 7,
         title: 'Confitería y Alimentos Premier',
         screenTitle: 'Avengers: Endgame Bon - Confitería',
         category: 'confiteria',
-        summary: 'Menú gastronómico para añadir hamburguesas gourmet, combos de crispetas, gaseosas y coleccionables a tu orden.',
-        actionRequired: 'Si deseas snacks o cena, pulsa el botón (+) en el producto deseado (ej: Hamburguesa Callejera) o presiona "CONTINUAR".',
+        summary: 'Menú gastronómico para añadir hamburguesas gourmet, combos de crispetas, gaseosas o coleccionables a tu orden.',
+        actionRequired: 'Si deseas snacks o comida, pulsa el botón (+) en el producto deseado (ej: Hamburguesa Callejera) o presiona "CONTINUAR".',
         detailedInstructions: [
           'Cinemark cuenta con categorías: MENU, COLECCIONABLES, COMBOS y CRISPETAS.',
-          'En las salas Premier se ofrece cocina caliente: Hamburguesa Callejera ($38.000), Hamburguesa Mexicana ($38.000) o de Pollo ($38.000).',
-          'Puedes aplicar un "Código promocional para confitería" si tienes cupones de descuento.',
-          'La barra inferior sumará tus boletas y alimentos de manera automática.'
+          'En salas Premier se ofrece cocina caliente directa a tu asiento.',
+          'Puedes aplicar un "Código promocional para confitería" si posees cupones.',
+          'Este paso es opcional: si no deseas comida puedes simplemente presionar "CONTINUAR".'
         ],
         tips: [
-          'Comprar la comida desde la app te ahorra filas extensas en el mostrador del cine.',
-          'Al llegar a la sala Premier, el personal de atención llevará tu pedido directamente a tu butaca.'
+          'Comprar comida desde la app te ahorra filas en la confitería tradicional.',
+          'Al llegar a la sala Premier, el personal de atención lleva tu pedido a tu butaca.'
         ],
         hotspot: {
           x: 88,
@@ -265,21 +236,21 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 9,
-        stepNumber: 9,
+        stepNumber: 8,
         title: 'Resumen de Carrito y Cargos por Servicio',
         screenTitle: 'Carrito de compras - Pacific Mall',
         category: 'carrito',
-        summary: 'Revisión final de ítems, fecha, hora, sala, sillas, cargos por servicio en línea y costo total.',
+        summary: 'Revisión final de ítems, fecha, hora, sala, sillas, cargos por servicio en línea y costo consolidado.',
         actionRequired: 'Verifica meticulosamente la fecha, hora, sala y asientos elegidos. Si todo es correcto, pulsa "CONTINUAR".',
         detailedInstructions: [
-          'La ventana emergente desglosa: Boleta XD Premier 3D ($32.250), Hamburguesa Premier ($38.000) = Subtotal $70.250.',
-          'Transparencia tarifaria: Se detalla el "Cargo por servicio por transacción de confitería ($1.600)" y el "Cargo por servicio por boleta ($1.600)".',
-          'El total consolidado de la compra en este ejemplo es de $73.450 COP.',
-          'Se muestra una notificación de Cine Club Pro indicando el ahorro potencial de hasta el 53%.'
+          'La ventana desglosa: Boleta XD Premier 3D ($32.250) + Hamburguesa ($38.000) = Subtotal $70.250.',
+          'Transparencia tarifaria: Se detalla el cargo por servicio de confitería ($1.600) y de boleta ($1.600).',
+          'El total consolidado es de $73.450 COP.',
+          'Verifica dos veces la fecha y sala antes de proceder al pago.'
         ],
         tips: [
-          'Una vez realizada la compra en línea, los cambios de función o cancelaciones están sujetos a políticas estrictas de taquilla.',
-          'Verifica dos veces la fecha para evitar comprar por error para el día siguiente.'
+          'Una vez realizada la compra en línea, los cambios de función o cancelaciones quedan sujetos a políticas de taquilla.',
+          'Asegúrate de haber seleccionado el complejo correcto (Pacific Mall).'
         ],
         hotspot: {
           x: 82,
@@ -296,25 +267,25 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 10,
-        stepNumber: 10,
+        stepNumber: 9,
         title: 'Datos de Facturación y Términos',
         screenTitle: 'Avengers: Endgame Bon - Pago (Facturación)',
         category: 'facturacion',
-        summary: 'Ingreso obligatorio de datos del titular para emisión de factura legal colombiana y envío de boletas al correo.',
+        summary: 'Ingreso obligatorio de datos del titular para emisión de factura legal y envío de las entradas QR al correo.',
         actionRequired: 'Diligencia tus nombres, cédula, dirección, teléfono y correo electrónico. Marca las dos casillas obligatorias y pulsa "CONTINUAR".',
         detailedInstructions: [
           'Selecciona tipo de persona: "Natural" o "Jurídica".',
           'Ingresa tus Nombres y Apellidos completos.',
-          'Elige tu documento (Cédula de ciudadanía, extranjería, pasaporte) e ingresa el número.',
-          'Completa Ciudad (ej: CALI, VALLE), Dirección física y Número telefónico celular.',
-          'Verifica cuidadosamente el Correo Electrónico: a este buzón llegarán las boletas digitales con código QR para ingresar a la sala.',
-          'Es indispensable marcar: [✓] "Acepto los términos y condiciones" y [✓] "Acepto el tratamiento de datos personales".'
+          'Ingresa tu tipo y número de documento (Cédula de Ciudadanía).',
+          'Completa Ciudad (Cali), Dirección física y Celular.',
+          'Revisa con especial cuidado el correo electrónico: allí se enviarán las boletas con código QR de acceso.',
+          'Marca obligatoriamente las dos casillas de Términos y Tratamiento de datos personales.'
         ],
         warnings: [
-          'Si escribes mal tu correo electrónico no recibirás el código QR de acceso ni el comprobante de compra.'
+          'Si escribes mal tu correo electrónico no recibirás el código QR de entrada a las salas.'
         ],
         tips: [
-          'Si guardas tu sesión en la app, estos datos se llenarán automáticamente en tus próximas visitas.'
+          'Si iniciaste sesión previamente, estos datos se rellenarán automáticamente.'
         ],
         hotspot: {
           x: 4,
@@ -331,21 +302,21 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 11,
-        stepNumber: 11,
+        stepNumber: 10,
         title: 'Selección del Medio de Pago',
         screenTitle: 'Medios de pago disponibles',
         category: 'pagos',
         summary: 'Menú con las alternativas autorizadas por Cinemark Colombia para procesar la transacción.',
-        actionRequired: 'Toca sobre "Tarjeta crédito / débito" o sobre "PSE" según el método con el que desees transferir tus fondos.',
+        actionRequired: 'Toca sobre "Tarjeta crédito / débito" o sobre "PSE" según el método con el que desees pagar.',
         detailedInstructions: [
-          'Cinemark ofrece dos canales primordiales de pago seguro:',
-          '1. "Tarjeta crédito / débito": Para plásticos con código CVV (Visa, Mastercard, Amex, Diners).',
-          '2. "PSE": Para pagos directos con débito a cuentas de ahorro colombianas o billeteras virtuales (Nequi, Daviplata, Dale, bancos tradicionales).',
-          'En la parte inferior se muestra el total y el botón "PAGAR".'
+          'Cinemark ofrece dos opciones principales:',
+          '1. "Tarjeta crédito / débito": Visa, Mastercard, American Express o Diners.',
+          '2. "PSE": Para pagos directos con débito a cuentas de ahorros colombianas o billeteras (Nequi, Daviplata, Nu).',
+          'Pulsa sobre PSE para transferir de forma rápida sin costo de tarjeta.'
         ],
         tips: [
-          'PSE no genera cobros por comisiones bancarias adicionales al usuario.',
-          'Si utilizas tarjeta de crédito puedes diferir el pago a cuotas en el siguiente paso.'
+          'PSE no genera costos bancarios de comisión adicionales.',
+          'Si utilizas tarjeta de crédito puedes diferir el pago a cuotas en el siguiente formulario.'
         ],
         hotspot: {
           x: 50,
@@ -361,23 +332,22 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 12,
-        stepNumber: 12,
+        stepNumber: 11,
         title: 'Pago con Tarjeta de Crédito / Débito',
         screenTitle: 'Tarjeta crédito / débito',
         category: 'tarjetas',
         summary: 'Formulario seguro para procesar cobros con tarjeta bancaria nacional o internacional.',
-        actionRequired: 'Escribe el nombre del titular, los 16 dígitos de la tarjeta, fecha de vencimiento (MM/AA), código de seguridad (CVV) y cuotas.',
+        actionRequired: 'Escribe el nombre del titular, los 16 dígitos, fecha de vencimiento (MM/AA), código de seguridad (CVV) y cuotas.',
         detailedInstructions: [
-          'Nombre del titular de la tarjeta: exactamente como aparece impreso en el plástico.',
-          'Número de tarjeta: los 16 dígitos sin guiones ni espacios.',
-          'Fecha de vencimiento: mes y año de expiración.',
-          'Código de seguridad: los 3 o 4 dígitos al respaldo del plástico (CVV/CVC).',
-          'Número de cuotas: selecciona 1 cuota si deseas evitar intereses, o la cantidad que prefieras.',
-          'Opcional: Marca "Quiero guardar esta tarjeta para mi próxima compra" para futuras compras en 1 solo clic.'
+          'Nombre del titular: tal como aparece en el plástico.',
+          'Número de tarjeta: los 16 dígitos continuos.',
+          'Fecha de vencimiento y CVV (código de 3 o 4 dígitos al respaldo).',
+          'Selecciona 1 cuota para evitar intereses bancarios.',
+          'Presiona el botón rojo "PAGAR" para procesar la transacción.'
         ],
         tips: [
-          'Muchas tarjetas de débito actuales con chip (Visa/Mastercard Débito) pueden ingresarse aquí siempre que tengan código de seguridad.',
-          'Tu banco podría solicitarte una clave dinámica o validación por SMS/OTP.'
+          'Las tarjetas débito con código CVV al reverso también funcionan en este formulario.',
+          'Tu entidad bancaria puede solicitarte una clave dinámica o código SMS de confirmación.'
         ],
         hotspot: {
           x: 82,
@@ -393,21 +363,20 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 13,
-        stepNumber: 13,
+        stepNumber: 12,
         title: 'Pago con PSE (Pagos Seguros en Línea)',
         screenTitle: 'PSE - Pagos Seguros en Línea',
         category: 'pse',
-        summary: 'Configuración para pago directo desde cuentas bancarias y billeteras de Colombia a través del botón PSE.',
+        summary: 'Configuración para pago directo desde cuentas bancarias y billeteras de Colombia a través de ACH PSE.',
         actionRequired: 'Deja seleccionada la casilla "Usar mismos datos de facturación" y toca sobre el campo "Banco" para abrir el listado.',
         detailedInstructions: [
-          'Se despliega el sello oficial de "ach pse".',
-          'La casilla [✓] "Usar mismos datos de facturación" traslada automáticamente tu correo y cédula a la plataforma de ACH.',
-          'Toca la caja de texto "Banco * - A continuación seleccione su banco" para desplegar la lista de instituciones financieras.',
-          'Al escoger el banco, se habilitará el botón rojo "PAGAR".'
+          'Se despliega el sello oficial de ACH PSE.',
+          'La casilla [✓] "Usar mismos datos de facturación" traslada automáticamente tus datos a la pasarela bancaria.',
+          'Toca el selector "A continuación seleccione su banco" para desplegar la lista de instituciones financieras.'
         ],
         tips: [
-          'Debes estar previamente registrado en el portal de PSE con tu correo electrónico personal.',
-          'Ten a la mano la aplicación de tu banco o billetera en el teléfono para autorizar la notificación push.'
+          'Debes estar registrado previamente en el portal de PSE con tu correo electrónico personal.',
+          'Ten a la mano la aplicación de tu banco o billetera en el teléfono.'
         ],
         hotspot: {
           x: 50,
@@ -423,21 +392,21 @@ export const MODULES_DATA: Module[] = [
       },
       {
         id: 14,
-        stepNumber: 14,
+        stepNumber: 13,
         title: 'Selección de Banco o Billetera en PSE',
         screenTitle: 'Seleccionar Entidad Bancaria PSE',
         category: 'pse',
-        summary: 'Listado de neobancos, billeteras y bancos colombianos (Nequi, Nu, Lulo, Movii, Bancolombia, Davivienda, etc.).',
+        summary: 'Listado de neobancos, billeteras y bancos colombianos (Nequi, Nu, Bancolombia, Davivienda, etc.).',
         actionRequired: 'Selecciona tu banco (ej: NEQUI o NU) y pulsa "PAGAR" para ser redirigido a la banca en línea y confirmar la transacción.',
         detailedInstructions: [
-          'La lista incluye neobancos modernos como: LULO BANK, MOVII S.A., NEQUI, NU, PAYCASH, POWWI, RAPPIPAY, UALÁ, así como BANCOLOMBIA, DAVIVIENDA, BBVA y BANCO DE BOGOTÁ.',
-          'Toca el nombre de tu entidad financiera para seleccionarla.',
-          'Al pulsar el botón rojo "PAGAR", la aplicación te redirigirá a la pasarela bancaria o abrirá la app de tu billetera (ej: Nequi) para que apruebes el débito.',
-          '¡Listo! Una vez aprobado el pago, recibirás en tu pantalla y correo el código QR para entrar directo a la sala sin pasar por taquilla.'
+          'La lista incluye opciones como NEQUI, NU, LULO, BANCOLOMBIA, DAVIVIENDA, entre otros.',
+          'Toca tu entidad para marcarla.',
+          'Al pulsar el botón rojo "PAGAR", la app te redirige a tu banco o envía una notificación de débito a tu app móvil.',
+          '¡Listo! Al aprobarse el pago, recibes en pantalla y en tu correo el código QR para entrar directo a la sala sin pasar por taquilla.'
         ],
         tips: [
-          'En el caso de Nequi o Daviplata, recibirás una notificación de cobro en tu celular que debes aceptar antes de 5 minutos.',
-          'Guarda una captura de pantalla del código QR generado o ábrelo desde la sección "Mis Boletas" en el menú de la app.'
+          'En el caso de Nequi o Daviplata, aprueba la notificación push en tu celular dentro de los primeros 5 minutos.',
+          'Guarda el código QR generado en tu galería o consúltalo en la sección "Mis Boletas" de la app.'
         ],
         hotspot: {
           x: 28,
@@ -446,7 +415,7 @@ export const MODULES_DATA: Module[] = [
           actionText: 'Tocar sobre la entidad y confirmar con PAGAR'
         },
         keyDetails: [
-          { label: 'Entidades visibles', value: 'Nequi, Nu, Lulo, Movii, RappiPay, Ualá...' },
+          { label: 'Entidades visibles', value: 'Nequi, Nu, Bancolombia, Davivienda...' },
           { label: 'Paso final', value: 'Aprobación en tu banco y descarga de Boleta QR' }
         ],
         imagePlaceholderName: '14.jpg'

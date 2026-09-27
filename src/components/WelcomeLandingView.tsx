@@ -72,7 +72,7 @@ export const WelcomeLandingView: React.FC<WelcomeLandingViewProps> = ({ onContin
               <FileText className="w-5 h-5 text-[#d6001c]" />
               <div>
                 <span className="text-[10px] text-slate-400 block font-medium">Versión</span>
-                <span className="font-extrabold text-slate-900 text-xs sm:text-sm font-mono">1.0.0.00</span>
+                <span className="font-extrabold text-slate-900 text-xs sm:text-sm font-mono">1.0.0</span>
               </div>
             </div>
 
