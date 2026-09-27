@@ -21,12 +21,11 @@ export const MODULES_DATA: Module[] = [
         screenTitle: 'BIENVENIDO - Ingreso o registro',
         category: 'cartelera',
         summary: 'Pantalla principal de la app de Cinemark. Permite explorar la cartelera, promociones activas y estrenos destacados.',
-        actionRequired: 'Toca en la película destacada "Avengers: Endgame Bonus" o pulsa en "Cartelera por cine" para ver los títulos en proyección.',
+        actionRequired: 'Desliza hacia abajo para explorar los estrenos y títulos en cartelera.',
         detailedInstructions: [
           'Al abrir la app de Cinemark te encontrarás en la pestaña principal de Cartelera.',
           'En la parte superior puedes elegir entre "Cartelera por cine" o "Seleccionar cine" para filtrar según tu teatro preferido.',
-          'Revisa el carrusel superior con beneficios y promociones activas de cartelera.',
-          'En la sección "DESTACADOS" podrás ver los grandes estrenos actuales.'
+          'Haz scroll hacia abajo para descubrir los estrenos de la semana y contenido destacado.'
         ],
         tips: [
           'Si inicias sesión con tu cuenta de Cinemark guardas tu historial y agilizas tus compras.',
@@ -34,9 +33,10 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 77,
-          label: 'Película Destacada',
-          actionText: 'Tocar sobre el póster de Avengers Endgame'
+          y: 84,
+          label: 'Desliza hacia abajo (Scroll)',
+          actionText: 'Hacer scroll hacia abajo para ver estrenos',
+          type: 'scroll-down'
         },
         keyDetails: [
           { label: 'Pestaña activa', value: 'Cartelera' },
@@ -52,11 +52,11 @@ export const MODULES_DATA: Module[] = [
         screenTitle: 'AVENGERS: ENDGAME BON - ESTRENO',
         category: 'pelicula',
         summary: 'Vista previa de la película seleccionada con etiqueta de ESTRENO y cartelera de próximas funciones y preventas.',
-        actionRequired: 'Toca sobre el título o póster de "Avengers: Endgame Bon" para acceder a la selección de fechas, salas y horarios.',
+        actionRequired: 'Desliza hacia abajo para revisar la programación, preventas y formatos de proyección.',
         detailedInstructions: [
           'La app muestra la ficha con la carátula oficial y el estado (ESTRENO o PREVENTA).',
-          'En la parte inferior puedes ver la sección de preventas especiales (como conciertos de Queen Budapest, Linkin Park o películas próximas).',
-          'Tocar sobre la película seleccionada te llevará a la programación de funciones disponibles.'
+          'Al deslizar hacia abajo verás las preventas y títulos asociados.',
+          'Continúa bajando para pasar a la cartelera y formatos.'
         ],
         tips: [
           'Los estrenos con alta demanda suelen habilitar salas XD y formatos especiales con días de anticipación.',
@@ -64,9 +64,10 @@ export const MODULES_DATA: Module[] = [
         ],
         hotspot: {
           x: 50,
-          y: 52,
-          label: 'Seleccionar Estreno',
-          actionText: 'Tocar sobre el título para abrir funciones'
+          y: 84,
+          label: 'Desliza hacia abajo (Scroll)',
+          actionText: 'Hacer scroll hacia abajo para ver preventas',
+          type: 'scroll-down'
         },
         keyDetails: [
           { label: 'Estado', value: 'Estreno Oficial' },
@@ -95,7 +96,8 @@ export const MODULES_DATA: Module[] = [
           x: 58,
           y: 42,
           label: 'Clasificaciones y Horas',
-          actionText: 'Observar sellos informativos 12-A / 15-A'
+          actionText: 'Observar sellos informativos 12-A / 15-A',
+          type: 'point'
         },
         keyDetails: [
           { label: 'Clasificaciones visibles', value: '15-A, 12-A, Todos' },

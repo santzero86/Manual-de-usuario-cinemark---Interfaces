@@ -328,7 +328,7 @@ export default function App() {
           <div className="flex items-center justify-center">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 font-mono text-[11px] font-bold border border-slate-300 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-              <span>Versión v1.0.0.00</span>
+              <span>Versión v1.0.0</span>
             </span>
           </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Step } from '../types/modules';
-import { Sparkles, Film, Upload } from 'lucide-react';
+import { Sparkles, Film, Upload, ChevronsDown } from 'lucide-react';
 
 interface PhoneSimulatorProps {
   step: Step;
@@ -20,6 +20,7 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
   customScreenshotUrl,
   onUploadScreenshot,
   onOpenBatchUpload,
+  moduleId,
   totalSteps,
 }) => {
   const [isTapped, setIsTapped] = useState(false);
@@ -38,11 +39,14 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
     }
   };
 
-  const showUploadControls = Boolean(onUploadScreenshot || onOpenBatchUpload);
+  const showUploadControls = Boolean(onUploadScreenshot || onOpenBatchUpload)
+
+  // Solo muestra flecha si el paso tiene configurado explícitamente 'scroll-down' (pasos 1 y 2)
+  const isScrollIndicator = step.hotspot.type === 'scroll-down';
 
   return (
     <div className="flex flex-col items-center select-none">
-      {/* Controles de carga solo si están habilitados para el módulo */}
+      {/* Controles de carga solo si aplican */}
       {showUploadControls && (
         <div className="flex items-center justify-end w-full max-w-[380px] mb-3 px-1 text-xs gap-1.5">
           {onOpenBatchUpload && (
@@ -70,15 +74,15 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
         </div>
       )}
 
-      {/* Smartphone Chassis */}
+      {/* Chasis del Smartphone */}
       <div className="relative w-[340px] sm:w-[370px] h-[720px] bg-[#000000] rounded-[44px] p-3 shadow-2xl border-[4px] border-[#2a2c36] ring-1 ring-white/10 flex flex-col justify-between overflow-hidden">
-        {/* Notch / Speaker Ear-piece */}
+        {/* Notch superior */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-5 bg-black rounded-b-xl z-50 flex items-center justify-center">
           <div className="w-12 h-1 bg-neutral-800 rounded-full"></div>
           <div className="w-2.5 h-2.5 bg-neutral-900 rounded-full ml-3 border border-neutral-800"></div>
         </div>
 
-        {/* Screen Bezel Container */}
+        {/* Pantalla del Teléfono */}
         <div className="relative w-full h-full bg-black rounded-[34px] overflow-hidden flex flex-col text-slate-900 font-sans shadow-inner">
           <div className="relative flex-1 overflow-hidden bg-black flex flex-col">
             <div key={`screen-${step.id}`} className="w-full h-full flex flex-col items-center justify-center bg-black text-slate-300 relative overflow-hidden animate-fade-scale">
@@ -89,7 +93,8 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                     alt={`Paso ${step.stepNumber} - ${step.title}`}
                     className="w-full h-full object-cover transition-transform duration-300"
                   />
-                  {/* Hotspot overlay interactivo sobre la captura real */}
+
+                  {/* Renderizado condicional: Flecha de Scroll vs Punto */}
                   <div
                     style={{
                       left: `${step.hotspot.x}%`,
@@ -99,15 +104,43 @@ export const PhoneSimulator: React.FC<PhoneSimulatorProps> = ({
                     onClick={handleHotspotClick}
                     className="absolute z-40 cursor-pointer group flex flex-col items-center transition-all duration-300"
                   >
-                    <span className="absolute w-12 h-12 rounded-full bg-red-500/30 animate-ping"></span>
-                    <span className="absolute w-8 h-8 rounded-full bg-red-500/50 animate-pulse"></span>
-                    <div className={`relative w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-lg flex items-center justify-center transition-all duration-200 ${isTapped ? 'scale-125 bg-emerald-600' : 'group-hover:scale-115'}`}>
-                      <div className="w-2 h-2 rounded-full bg-white"></div>
-                    </div>
-                    <div className="mt-1 px-2.5 py-0.5 bg-black/90 text-white text-[10px] font-medium rounded-full shadow-md whitespace-nowrap pointer-events-none opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 flex items-center gap-1 border border-white/20">
-                      <Sparkles className="w-2.5 h-2.5 text-amber-400" />
-                      <span>{step.hotspot.label}</span>
-                    </div>
+                    {isScrollIndicator ? (
+                      /* === INDICADOR DE FLECHA DE SCROLL === */
+                      <div className="flex flex-col items-center">
+                        <span className="absolute -inset-2 rounded-full bg-red-600/30 animate-ping"></span>
+                        
+                        {/* Botón con flechas que rebotan hacia abajo */}
+                        <div
+                          className={`relative flex items-center justify-center w-11 h-11 rounded-full bg-[#d6001c] text-white border-2 border-white shadow-2xl transition-all duration-200 animate-bounce ${
+                            isTapped ? 'scale-125 bg-emerald-600' : 'group-hover:scale-110'
+                          }`}
+                        >
+                          <ChevronsDown className="w-6 h-6 stroke-[3]" />
+                        </div>
+
+                        {/* Etiqueta indicativa */}
+                        <div className="mt-1 px-3 py-1 bg-black/90 text-white text-[10px] font-bold rounded-full shadow-lg whitespace-nowrap pointer-events-none opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 flex items-center gap-1.5 border border-white/20">
+                          <span>{step.hotspot.label || 'Desliza hacia abajo'}</span>
+                        </div>
+                      </div>
+                    ) : (
+                      /* === INDICADOR CONVENCIONAL DE PUNTO === */
+                      <>
+                        <span className="absolute w-12 h-12 rounded-full bg-red-500/30 animate-ping"></span>
+                        <span className="absolute w-8 h-8 rounded-full bg-red-500/50 animate-pulse"></span>
+                        <div
+                          className={`relative w-7 h-7 rounded-full bg-red-600 border-2 border-white shadow-lg flex items-center justify-center transition-all duration-200 ${
+                            isTapped ? 'scale-125 bg-emerald-600' : 'group-hover:scale-115'
+                          }`}
+                        >
+                          <div className="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                        <div className="mt-1 px-2.5 py-0.5 bg-black/90 text-white text-[10px] font-medium rounded-full shadow-md whitespace-nowrap pointer-events-none opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-200 flex items-center gap-1 border border-white/20">
+                          <Sparkles className="w-2.5 h-2.5 text-amber-400" />
+                          <span>{step.hotspot.label}</span>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               ) : (
