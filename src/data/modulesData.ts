@@ -2,452 +2,239 @@ import { Module, QuizQuestion } from '../types/modules';
 
 export const MODULES_DATA: Module[] = [
   {
-    id: 'compra-boletas-confiteria',
-    title: 'Compra de Boletas y Confitería',
-    shortDescription: 'Aprende a elegir película, formato XD/Premier, asientos en sala, combos de comida y pagar con PSE o tarjeta.',
-    fullDescription: 'Guía oficial interactiva paso a paso para la aplicación móvil de Cinemark. Domina todo el flujo de compra desde la cartelera hasta la pasarela de pagos segura.',
-    category: 'Boletas',
-    badge: 'Módulo Principal',
-    durationMinutes: 7,
+    id: 'descarga-del-aplicativo',
+    title: 'Descarga e Instalación del Aplicativo',
+    shortDescription: 'Aprende a buscar, descargar e instalar la app oficial de Cinemark Colombia desde Google Play Store en Android.',
+    fullDescription: 'Guía paso a paso para la instalación en dispositivos móviles Android: búsqueda en la tienda de apps de Google, validación del desarrollador oficial (SunDevs), instalación, permisos de notificaciones y primer ingreso.',
+    category: 'Cuenta y Pagos',
+    badge: 'Inicio / Instalación',
+    durationMinutes: 3,
     difficulty: 'Principiante',
-    totalSteps: 14,
+    totalSteps: 8,
     isAvailable: true,
-    iconName: 'Ticket',
+    iconName: 'Download',
     steps: [
       {
-        id: 1,
+        id: 101,
         stepNumber: 1,
-        title: 'Inicio y Cartelera Principal',
-        screenTitle: 'BIENVENIDO - Ingreso o registro',
+        title: 'Abrir la Google Play Store',
+        screenTitle: 'Menú de Aplicaciones / Carpeta Google',
         category: 'cartelera',
-        summary: 'Pantalla principal de la app de Cinemark. Permite explorar la cartelera, promociones activas y estrenos destacados.',
-        actionRequired: 'Toca en la película destacada "Avengers: Endgame Bonus" o pulsa en "Cartelera por cine" para ver los títulos en proyección.',
+        summary: 'En tu dispositivo móvil Android, ingresa a la tienda oficial de aplicaciones para iniciar la búsqueda.',
+        actionRequired: 'Toca el ícono de Google Play Store para abrir la tienda.',
         detailedInstructions: [
-          'Al abrir la app de Cinemark te encontrarás en la pestaña principal de Cartelera.',
-          'En la parte superior puedes elegir entre "Cartelera por cine" o "Seleccionar cine" para filtrar según tu teatro preferido.',
-          'Revisa el carrusel superior con beneficios y promociones activas de cartelera.',
-          'En la sección "DESTACADOS" podrás ver los grandes estrenos actuales.'
+          'Desbloquea tu teléfono y abre el cajón de aplicaciones o la carpeta de Google.',
+          'Localiza el ícono triangular multicolor de "Play Store".',
+          'Púlsalo para ingresar a la tienda de apps.'
         ],
         tips: [
-          'Si inicias sesión con tu cuenta de Cinemark guardas tu historial y agilizas tus compras.',
-          'No es estrictamente obligatorio iniciar sesión: puedes continuar el flujo y completar tus datos en el paso de facturación.'
+          'Asegúrate de contar con conexión a Wi-Fi o datos móviles activos.'
         ],
         hotspot: {
-          x: 50,
-          y: 77,
-          label: 'Película Destacada',
-          actionText: 'Tocar sobre el póster de Avengers Endgame'
+          x: 27,
+          y: 82,
+          label: 'Abrir Play Store',
+          actionText: 'Tocar el ícono de Play Store',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Pestaña activa', value: 'Cartelera' },
-          { label: 'Formato destacado', value: 'Salas XD y 2D' },
-          { label: 'Película destacada', value: 'Avengers: Endgame Bonus' }
+          { label: 'Sistema Operativo', value: 'Android 8.0 o superior' },
+          { label: 'Tienda Oficial', value: 'Google Play Store' }
         ],
         imagePlaceholderName: '1.jpg'
       },
       {
-        id: 2,
+        id: 102,
         stepNumber: 2,
-        title: 'Ficha de Película y Preventas',
-        screenTitle: 'AVENGERS: ENDGAME BON - ESTRENO',
-        category: 'pelicula',
-        summary: 'Vista previa de la película seleccionada con etiqueta de ESTRENO y cartelera de próximas funciones y preventas.',
-        actionRequired: 'Toca sobre el título o póster de "Avengers: Endgame Bon" para acceder a la selección de fechas, salas y horarios.',
+        title: 'Buscar la Aplicación',
+        screenTitle: 'Google Play Store - Explorador',
+        category: 'cartelera',
+        summary: 'Utiliza el buscador integrado en la parte superior para encontrar la app oficial de Cinemark.',
+        actionRequired: 'Toca la barra superior "Buscar apps y juegos" y escribe "cinemark".',
         detailedInstructions: [
-          'La app muestra la ficha con la carátula oficial y el estado (ESTRENO o PREVENTA).',
-          'En la parte inferior puedes ver la sección de preventas especiales (como conciertos de Queen Budapest, Linkin Park o películas próximas).',
-          'Tocar sobre la película seleccionada te llevará a la programación de funciones disponibles.'
+          'En la parte superior de la Play Store ubica la barra de búsqueda con el ícono de lupa.',
+          'Toca sobre el campo de texto.',
+          'Escribe la palabra "cinemark" y presiona la tecla de búsqueda.'
         ],
         tips: [
-          'Los estrenos con alta demanda suelen habilitar salas XD y formatos especiales con días de anticipación.',
-          'Verifica si el evento es un reestreno especial con contenido adicional ("Bonus").'
+          'No es necesario escribir el nombre completo, con "cinemark" aparecerá de primera.'
         ],
         hotspot: {
-          x: 50,
-          y: 52,
-          label: 'Seleccionar Estreno',
-          actionText: 'Tocar sobre el título para abrir funciones'
+          x: 42,
+          y: 7.5,
+          label: 'Barra de Búsqueda',
+          actionText: 'Tocar barra para escribir "cinemark"',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Estado', value: 'Estreno Oficial' },
-          { label: 'Eventos adicionales', value: 'Preventas Linkin Park & Queen' }
+          { label: 'Término de búsqueda', value: 'cinemark' }
         ],
         imagePlaceholderName: '2.jpg'
       },
       {
-        id: 3,
+        id: 103,
         stepNumber: 3,
-        title: 'Exploración de Cartelera y Clasificaciones',
-        screenTitle: 'CARTELERA GENERAL - Películas y Clasificación',
+        title: 'Seleccionar Cinemark Colombia',
+        screenTitle: 'Resultados de Búsqueda',
         category: 'cartelera',
-        summary: 'Catálogo con toda la oferta cinematográfica y sus clasificaciones por edad (15-A, 12-A, Todos).',
-        actionRequired: 'Revisa las clasificaciones de edad y duración antes de comprar boletas para menores de edad o grupos.',
+        summary: 'Verifica la versión correspondiente a Colombia desarrollada por SunDevs.',
+        actionRequired: 'Toca el primer resultado oficial "Cinemark Colombia".',
         detailedInstructions: [
-          'Cinemark organiza las películas en una cuadrícula con duración exacta (ej: 1H 45M, 2H 50M).',
-          'Cada película cuenta con su distintivo de clasificación: "15-A" (mayores de 15 años), "12-A" (mayores de 12 años) o "Todos" (apta para todo público).',
-          'Al desplazarte hacia abajo encontrarás la sección "PRÓXIMOS ESTRENOS" para agendar tus visitas futuras.'
+          'Observa el listado de resultados.',
+          'Elige la opción que dice "Cinemark Colombia" con desarrollador "SunDevs" y el ícono del círculo rojo con la letra "C" blanca.',
+          'Toca sobre el título para entrar a la ficha técnica de la app.'
         ],
         tips: [
-          'Las clasificaciones 12-A y 15-A requieren que los menores ingresen acompañados de un adulto responsable.',
-          'Ten presente la duración total de la película para organizar tu transporte y parqueadero.'
+          'Evita descargar versiones de otros países como Centroamérica o Chile.'
         ],
         hotspot: {
-          x: 58,
-          y: 42,
-          label: 'Clasificaciones y Horas',
-          actionText: 'Observar sellos informativos 12-A / 15-A'
+          x: 48,
+          y: 17,
+          label: 'Cinemark Colombia',
+          actionText: 'Tocar el resultado oficial',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Clasificaciones visibles', value: '15-A, 12-A, Todos' },
-          { label: 'Duración promedio', value: '1H 30M a 2H 50M' }
+          { label: 'Desarrollador', value: 'SunDevs' },
+          { label: 'Peso descarga', value: '17 MB' }
         ],
         imagePlaceholderName: '3.jpg'
       },
       {
-        id: 4,
+        id: 104,
         stepNumber: 4,
-        title: 'Selección de Fecha, Formato y Horario',
-        screenTitle: 'Avengers: Endgame Bon - Funciones',
-        category: 'horarios',
-        summary: 'Elección del día de la función, cine asignado y formato de proyección (2D, 3D, XD, Premier, Doblada o Subtitulada).',
-        actionRequired: 'Selecciona la fecha deseada (ej: HOY Sáb. 26) y pulsa en la hora deseada, como el botón [17:35].',
+        title: 'Descargar e Instalar',
+        screenTitle: 'Ficha de Instalación - Cinemark Colombia',
+        category: 'cartelera',
+        summary: 'Inicia la instalación automática de la app oficial en tu dispositivo.',
+        actionRequired: 'Presiona el botón azul "Instalar".',
         detailedInstructions: [
-          'En el carrusel de fechas puedes elegir entre "HOY" o los días consecutivos de la semana.',
-          'Se especifica el cine actual ("PACIFIC MALL"). Si no es tu cine, tienes el botón "Cambiar cine".',
-          'Cada función especifica sus tecnologías: "3D INFINITY VISION XD PREMIER" o "2D PREMIER", además del idioma: Doblada o Subtitulada.',
-          'Toca el botón con la hora deseada (ej: [17:35]) para reservar tus boletas.'
+          'En la ficha de la aplicación confirma el nombre "Cinemark Colombia".',
+          'Toca el botón azul "Instalar".',
+          'Google Play verificará el archivo con Play Protect y comenzará la descarga.'
         ],
         tips: [
-          'Las salas XD cuentan con pantalla gigante de 4 pisos y sonido envolvente de alta potencia.',
-          'Las funciones Premier cuentan con silletería de cuero reclinable y servicio a la sala.'
+          'La app pesa solo 17 MB, por lo que la descarga tomará unos pocos segundos.'
         ],
         hotspot: {
-          x: 33,
-          y: 77.5,
-          label: 'Horario [17:35]',
-          actionText: 'Pulsar en el botón del horario 17:35'
+          x: 44,
+          y: 36.5,
+          label: 'Botón Instalar',
+          actionText: 'Pulsar en Instalar',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Cine seleccionado', value: 'Pacific Mall (Cali)' },
-          { label: 'Formato elegido', value: '3D Infinity Vision XD Premier' },
-          { label: 'Idioma', value: 'Doblada al español' },
-          { label: 'Horario', value: '17:35 (5:35 PM)' }
+          { label: 'Licencia', value: 'Gratuita' }
         ],
         imagePlaceholderName: '4.jpg'
       },
       {
-        id: 5,
+        id: 105,
         stepNumber: 5,
-        title: 'Cambio de Cine o Ver Teatros Cercanos',
-        screenTitle: 'Avengers: Endgame Bon - Teatros',
-        category: 'teatros',
-        summary: 'Cómo verificar salas alternativas y distancias si los horarios de tu cine favorito no se ajustan a tu plan.',
-        actionRequired: 'Si deseas cambiar de ubicación, pulsa "Cambiar cine" para desplegar otros teatros como Unicentro Palmira o San Pedro Plaza.',
+        title: 'Progreso de la Instalación',
+        screenTitle: 'Instalando en el Dispositivo...',
+        category: 'cartelera',
+        summary: 'El sistema descarga los paquetes y los instala en la memoria del teléfono.',
+        actionRequired: 'Espera a que el proceso complete el 100%. Toca la pantalla para continuar.',
         detailedInstructions: [
-          'La app muestra cines alternos con la distancia en kilómetros (ej: Unicentro Palmira a 29.24 km).',
-          'Cada cine alternativo detalla sus propios horarios disponibles (ej: 2D Doblada 21:30, 3D Doblada 17:20).',
-          'Puedes tocar el ícono de corazón para guardar tu teatro como favorito y que aparezca siempre de primero.'
+          'El círculo de progreso girará mientras finaliza la descarga.',
+          'El estado cambiará de "Descargando..." a "Instalando...".'
         ],
         tips: [
-          'Activar la geolocalización en tu celular permite que Cinemark ordene automáticamente los cines por cercanía.',
-          'Si un horario está agotado en un centro comercial, revisa las sedes vecinas.'
+          'No cierres la tienda hasta que termine la instalación.'
         ],
         hotspot: {
           x: 35,
-          y: 27,
-          label: 'Sede Cercana',
-          actionText: 'Verificar distancias y funciones alternas'
+          y: 18.5,
+          label: 'Instalando...',
+          actionText: 'Tocar para avanzar',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Cine principal', value: 'Pacific Mall' },
-          { label: 'Cine alterno', value: 'Unicentro Palmira (29.24 km)' }
+          { label: 'Estado', value: 'Instalando' }
         ],
         imagePlaceholderName: '5.jpg'
       },
       {
-        id: 6,
+        id: 106,
         stepNumber: 6,
-        title: 'Selección de Boletas y Tarifas',
-        screenTitle: 'Avengers: Endgame Bon - Tarifas',
-        category: 'boletas',
-        summary: 'Configuración de tipos de boleta, promociones de tarjetas aliadas (AMEX 2x1) y descuentos de membresía.',
-        actionRequired: 'Usa los botones (+) y (-) para seleccionar el número de boletas deseado y luego presiona "CONTINUAR".',
+        title: 'Abrir la Aplicación',
+        screenTitle: 'Instalación Finalizada',
+        category: 'cartelera',
+        summary: 'La aplicación se instaló correctamente y ya se encuentra en tu pantalla de inicio.',
+        actionRequired: 'Pulsa el botón azul "Abrir" para iniciar Cinemark.',
         detailedInstructions: [
-          'En la parte superior se destacan las membresías Cine Club Gold ($28.900/año) y Pro ($32.500/mes) para obtener hasta 50% de descuento.',
-          'Puedes activar el interruptor "Ver tarifas promocionales" si cuentas con convenios bancarios.',
-          'Elige tu tipo de boleta (ej: "BOLETA XD PREMIER 3D" por $32.250 o tarifa 2x1 si cumples requisitos).',
-          'Al seleccionar al menos 1 boleta, la barra inferior roja se iluminará mostrando el monto y el botón "CONTINUAR".'
+          'Verifica que el botón de instalación cambió a un botón azul llamado "Abrir".',
+          'Púlsalo para iniciar la app por primera vez.'
         ],
         tips: [
-          'Si vas en pareja y pagas con tarjeta American Express, la opción "2X1 AMEX 3DXD PREMIER" te permite pagar solo 1 entrada.',
-          'En la pestaña "CINEBONO" puedes canjear códigos corporativos o tarjetas de regalo.'
+          'También se habrá creado un acceso directo en tu menú de aplicaciones.'
         ],
         hotspot: {
-          x: 91,
-          y: 73,
-          label: 'Añadir Boleta (+)',
-          actionText: 'Tocar el botón (+) en BOLETA XD PREMIER 3D'
+          x: 74,
+          y: 26.5,
+          label: 'Botón Abrir',
+          actionText: 'Pulsar en Abrir',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Tarifa seleccionada', value: 'BOLETA XD PREMIER 3D' },
-          { label: 'Precio unitario', value: '$32.250 COP' },
-          { label: 'Cantidad', value: '1 boleta' }
+          { label: 'Estado', value: 'Listo para usar' }
         ],
         imagePlaceholderName: '6.jpg'
       },
       {
-        id: 7,
+        id: 107,
         stepNumber: 7,
-        title: 'Selección de Asientos en la Sala',
-        screenTitle: 'Ubicación en sala - Pacific Mall Sala 5',
-        category: 'asientos',
-        summary: 'Mapa interactivo de la sala para elegir tus butacas frente a la pantalla. Cuenta con cronómetro de reserva.',
-        actionRequired: 'Toca la silla disponible que prefieras (aparecerá en verde con tu código de butaca, ej: A6) y pulsa "CONTINUAR".',
+        title: 'Permisos de Notificaciones',
+        screenTitle: 'Primer Inicio - Permisos del Sistema',
+        category: 'cartelera',
+        summary: 'Cinemark solicita autorización para enviarte avisos de tus funciones, reservas y promociones.',
+        actionRequired: 'Toca en "Permitir" para recibir notificaciones sobre tus boletas.',
         detailedInstructions: [
-          'En la parte superior se ilustra la curva de la "Pantalla" para orientarte.',
-          'Código de colores: Gris (Ocupada), Negro (No disponible), Verde (Tu selección), Borde dorado (Sillas Premier), Ícono azul (Discapacidad / Acompañante).',
-          'En la sección inferior se confirma tu selección con el ícono del sillón rojo: "Tus asientos son: BOLETA XD PREMIER 3D -> A6".',
-          'Tienes un contador regresivo visible (ej: 09:35 min) para finalizar la reserva antes de que el asiento se libere.'
+          'Al abrir la app por primera vez, Android mostrará la ventana flotante de permisos.',
+          'Toca el botón "Permitir" para que te avisen con antelación el inicio de tu película.'
         ],
         tips: [
-          'Las butacas de las filas centrales (filas E a G) ofrecen la mejor simetría acústica y visual.',
-          'Para personas en condición de movilidad reducida o sillas de ruedas, los asientos azules tienen rampas de acceso directo.'
+          'Permitir notificaciones es útil para saber cuándo está lista tu confitería express.'
         ],
-        warnings: [
-          '¡Atención al cronómetro! Si se acaban los 10 minutos asignados, el sistema liberará los asientos automáticamente.'
-        ],
-        timerNotice: '09:35 restantes',
         hotspot: {
-          x: 48,
-          y: 31,
-          label: 'Butaca [A6]',
-          actionText: 'Tocar la butaca deseada en el plano'
+          x: 50,
+          y: 84,
+          label: 'Pulsar Permitir',
+          actionText: 'Tocar Permitir notificaciones',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Sala', value: 'Sala 5 - Pacific Mall' },
-          { label: 'Asiento seleccionado', value: 'A6 (Premier)' },
-          { label: 'Tiempo de retención', value: '10 minutos' }
+          { label: 'Permiso', value: 'Notificaciones Push' }
         ],
         imagePlaceholderName: '7.jpg'
       },
       {
-        id: 8,
+        id: 108,
         stepNumber: 8,
-        title: 'Confitería y Alimentos Premier',
-        screenTitle: 'Avengers: Endgame Bon - Confitería',
-        category: 'confiteria',
-        summary: 'Menú gastronómico para añadir hamburguesas gourmet, combos de crispetas, gaseosas y coleccionables a tu orden.',
-        actionRequired: 'Si deseas snacks o cena, pulsa el botón (+) en el producto deseado (ej: Hamburguesa Callejera) o presiona "CONTINUAR".',
+        title: 'Cerrar Pop-up de Bienvenida y Entrar a Cartelera',
+        screenTitle: 'Pantalla de Inicio - Pop-up Promocional',
+        category: 'cartelera',
+        summary: 'Al cargar la cartelera se muestra el banner de bienvenida de Cine Club. Ciérralo para empezar a navegar.',
+        actionRequired: 'Toca la "X" en la esquina superior derecha para cerrar el pop-up e ingresar a la cartelera.',
         detailedInstructions: [
-          'Cinemark cuenta con categorías: MENU, COLECCIONABLES, COMBOS y CRISPETAS.',
-          'En las salas Premier se ofrece cocina caliente: Hamburguesa Callejera ($38.000), Hamburguesa Mexicana ($38.000) o de Pollo ($38.000).',
-          'Puedes aplicar un "Código promocional para confitería" si tienes cupones de descuento.',
-          'La barra inferior sumará tus boletas y alimentos de manera automática.'
+          'Ubica el círculo blanco con la "X" roja en la esquina superior derecha.',
+          'Púlsala para cerrar el anuncio y acceder a la cartelera de películas.'
         ],
         tips: [
-          'Comprar la comida desde la app te ahorra filas extensas en el mostrador del cine.',
-          'Al llegar a la sala Premier, el personal de atención llevará tu pedido directamente a tu butaca.'
+          '¡Listo! La app ya está configurada.'
         ],
         hotspot: {
-          x: 88,
-          y: 47,
-          label: 'Agregar Alimento (+)',
-          actionText: 'Tocar (+) en Hamburguesa Callejera'
+          x: 85,
+          y: 24,
+          label: 'Cerrar Pop-up (X)',
+          actionText: 'Tocar la X para entrar a la app',
+          type: 'point'
         },
         keyDetails: [
-          { label: 'Categoría activa', value: 'Menú Premier Gourmet' },
-          { label: 'Plato sugerido', value: 'Hamburguesa Callejera ($38.000)' },
-          { label: 'Paso opcional', value: 'Puedes omitir pulsando Continuar' }
+          { label: 'Estado', value: 'App lista' }
         ],
         imagePlaceholderName: '8.jpg'
-      },
-      {
-        id: 9,
-        stepNumber: 9,
-        title: 'Resumen de Carrito y Cargos por Servicio',
-        screenTitle: 'Carrito de compras - Pacific Mall',
-        category: 'carrito',
-        summary: 'Revisión final de ítems, fecha, hora, sala, sillas, cargos por servicio en línea y costo total.',
-        actionRequired: 'Verifica meticulosamente la fecha, hora, sala y asientos elegidos. Si todo es correcto, pulsa "CONTINUAR".',
-        detailedInstructions: [
-          'La ventana emergente desglosa: Boleta XD Premier 3D ($32.250), Hamburguesa Premier ($38.000) = Subtotal $70.250.',
-          'Transparencia tarifaria: Se detalla el "Cargo por servicio por transacción de confitería ($1.600)" y el "Cargo por servicio por boleta ($1.600)".',
-          'El total consolidado de la compra en este ejemplo es de $73.450 COP.',
-          'Se muestra una notificación de Cine Club Pro indicando el ahorro potencial de hasta el 53%.'
-        ],
-        tips: [
-          'Una vez realizada la compra en línea, los cambios de función o cancelaciones están sujetos a políticas estrictas de taquilla.',
-          'Verifica dos veces la fecha para evitar comprar por error para el día siguiente.'
-        ],
-        hotspot: {
-          x: 82,
-          y: 97,
-          label: 'Confirmar y Continuar',
-          actionText: 'Tocar en CONTINUAR'
-        },
-        keyDetails: [
-          { label: 'Subtotal productos', value: '$70.250 COP' },
-          { label: 'Cargos por servicio', value: '$3.200 COP (1.600 x 2)' },
-          { label: 'Total final a pagar', value: '$73.450 COP' }
-        ],
-        imagePlaceholderName: '9.jpg'
-      },
-      {
-        id: 10,
-        stepNumber: 10,
-        title: 'Datos de Facturación y Términos',
-        screenTitle: 'Avengers: Endgame Bon - Pago (Facturación)',
-        category: 'facturacion',
-        summary: 'Ingreso obligatorio de datos del titular para emisión de factura legal colombiana y envío de boletas al correo.',
-        actionRequired: 'Diligencia tus nombres, cédula, dirección, teléfono y correo electrónico. Marca las dos casillas obligatorias y pulsa "CONTINUAR".',
-        detailedInstructions: [
-          'Selecciona tipo de persona: "Natural" o "Jurídica".',
-          'Ingresa tus Nombres y Apellidos completos.',
-          'Elige tu documento (Cédula de ciudadanía, extranjería, pasaporte) e ingresa el número.',
-          'Completa Ciudad (ej: CALI, VALLE), Dirección física y Número telefónico celular.',
-          'Verifica cuidadosamente el Correo Electrónico: a este buzón llegarán las boletas digitales con código QR para ingresar a la sala.',
-          'Es indispensable marcar: [✓] "Acepto los términos y condiciones" y [✓] "Acepto el tratamiento de datos personales".'
-        ],
-        warnings: [
-          'Si escribes mal tu correo electrónico no recibirás el código QR de acceso ni el comprobante de compra.'
-        ],
-        tips: [
-          'Si guardas tu sesión en la app, estos datos se llenarán automáticamente en tus próximas visitas.'
-        ],
-        hotspot: {
-          x: 4,
-          y: 72,
-          label: 'Casillas de Aceptación',
-          actionText: 'Marcar casillas de términos y pulsar CONTINUAR'
-        },
-        keyDetails: [
-          { label: 'Documento registrado', value: 'Cédula de ciudadanía' },
-          { label: 'Ciudad', value: 'Cali, Valle del Cauca' },
-          { label: 'Canal de entrega', value: 'Correo Electrónico (Boleta QR)' }
-        ],
-        imagePlaceholderName: '10.jpg'
-      },
-      {
-        id: 11,
-        stepNumber: 11,
-        title: 'Selección del Medio de Pago',
-        screenTitle: 'Medios de pago disponibles',
-        category: 'pagos',
-        summary: 'Menú con las alternativas autorizadas por Cinemark Colombia para procesar la transacción.',
-        actionRequired: 'Toca sobre "Tarjeta crédito / débito" o sobre "PSE" según el método con el que desees transferir tus fondos.',
-        detailedInstructions: [
-          'Cinemark ofrece dos canales primordiales de pago seguro:',
-          '1. "Tarjeta crédito / débito": Para plásticos con código CVV (Visa, Mastercard, Amex, Diners).',
-          '2. "PSE": Para pagos directos con débito a cuentas de ahorro colombianas o billeteras virtuales (Nequi, Daviplata, Dale, bancos tradicionales).',
-          'En la parte inferior se muestra el total y el botón "PAGAR".'
-        ],
-        tips: [
-          'PSE no genera cobros por comisiones bancarias adicionales al usuario.',
-          'Si utilizas tarjeta de crédito puedes diferir el pago a cuotas en el siguiente paso.'
-        ],
-        hotspot: {
-          x: 50,
-          y: 85,
-          label: 'Opción PSE',
-          actionText: 'Pulsar en la tarjeta de pago PSE'
-        },
-        keyDetails: [
-          { label: 'Métodos disponibles', value: 'Tarjeta Crédito/Débito y PSE' },
-          { label: 'Seguridad', value: 'Protocolo cifrado ACH / Pasarela PCI-DSS' }
-        ],
-        imagePlaceholderName: '11.jpg'
-      },
-      {
-        id: 12,
-        stepNumber: 12,
-        title: 'Pago con Tarjeta de Crédito / Débito',
-        screenTitle: 'Tarjeta crédito / débito',
-        category: 'tarjetas',
-        summary: 'Formulario seguro para procesar cobros con tarjeta bancaria nacional o internacional.',
-        actionRequired: 'Escribe el nombre del titular, los 16 dígitos de la tarjeta, fecha de vencimiento (MM/AA), código de seguridad (CVV) y cuotas.',
-        detailedInstructions: [
-          'Nombre del titular de la tarjeta: exactamente como aparece impreso en el plástico.',
-          'Número de tarjeta: los 16 dígitos sin guiones ni espacios.',
-          'Fecha de vencimiento: mes y año de expiración.',
-          'Código de seguridad: los 3 o 4 dígitos al respaldo del plástico (CVV/CVC).',
-          'Número de cuotas: selecciona 1 cuota si deseas evitar intereses, o la cantidad que prefieras.',
-          'Opcional: Marca "Quiero guardar esta tarjeta para mi próxima compra" para futuras compras en 1 solo clic.'
-        ],
-        tips: [
-          'Muchas tarjetas de débito actuales con chip (Visa/Mastercard Débito) pueden ingresarse aquí siempre que tengan código de seguridad.',
-          'Tu banco podría solicitarte una clave dinámica o validación por SMS/OTP.'
-        ],
-        hotspot: {
-          x: 82,
-          y: 97,
-          label: 'Botón PAGAR',
-          actionText: 'Tocar en PAGAR para procesar el débito'
-        },
-        keyDetails: [
-          { label: 'Franquicias aceptadas', value: 'Visa, Mastercard, American Express' },
-          { label: 'Cuotas habituales', value: '1 cuota (sin intereses)' }
-        ],
-        imagePlaceholderName: '12.jpg'
-      },
-      {
-        id: 13,
-        stepNumber: 13,
-        title: 'Pago con PSE (Pagos Seguros en Línea)',
-        screenTitle: 'PSE - Pagos Seguros en Línea',
-        category: 'pse',
-        summary: 'Configuración para pago directo desde cuentas bancarias y billeteras de Colombia a través del botón PSE.',
-        actionRequired: 'Deja seleccionada la casilla "Usar mismos datos de facturación" y toca sobre el campo "Banco" para abrir el listado.',
-        detailedInstructions: [
-          'Se despliega el sello oficial de "ach pse".',
-          'La casilla [✓] "Usar mismos datos de facturación" traslada automáticamente tu correo y cédula a la plataforma de ACH.',
-          'Toca la caja de texto "Banco * - A continuación seleccione su banco" para desplegar la lista de instituciones financieras.',
-          'Al escoger el banco, se habilitará el botón rojo "PAGAR".'
-        ],
-        tips: [
-          'Debes estar previamente registrado en el portal de PSE con tu correo electrónico personal.',
-          'Ten a la mano la aplicación de tu banco o billetera en el teléfono para autorizar la notificación push.'
-        ],
-        hotspot: {
-          x: 50,
-          y: 89,
-          label: 'Selector de Banco',
-          actionText: 'Tocar el campo para desplegar bancos'
-        },
-        keyDetails: [
-          { label: 'Operador', value: 'ACH Colombia (PSE)' },
-          { label: 'Requisito', value: 'Cuenta de ahorros o billetera activa' }
-        ],
-        imagePlaceholderName: '13.jpg'
-      },
-      {
-        id: 14,
-        stepNumber: 14,
-        title: 'Selección de Banco o Billetera en PSE',
-        screenTitle: 'Seleccionar Entidad Bancaria PSE',
-        category: 'pse',
-        summary: 'Listado de neobancos, billeteras y bancos colombianos (Nequi, Nu, Lulo, Movii, Bancolombia, Davivienda, etc.).',
-        actionRequired: 'Selecciona tu banco (ej: NEQUI o NU) y pulsa "PAGAR" para ser redirigido a la banca en línea y confirmar la transacción.',
-        detailedInstructions: [
-          'La lista incluye neobancos modernos como: LULO BANK, MOVII S.A., NEQUI, NU, PAYCASH, POWWI, RAPPIPAY, UALÁ, así como BANCOLOMBIA, DAVIVIENDA, BBVA y BANCO DE BOGOTÁ.',
-          'Toca el nombre de tu entidad financiera para seleccionarla.',
-          'Al pulsar el botón rojo "PAGAR", la aplicación te redirigirá a la pasarela bancaria o abrirá la app de tu billetera (ej: Nequi) para que apruebes el débito.',
-          '¡Listo! Una vez aprobado el pago, recibirás en tu pantalla y correo el código QR para entrar directo a la sala sin pasar por taquilla.'
-        ],
-        tips: [
-          'En el caso de Nequi o Daviplata, recibirás una notificación de cobro en tu celular que debes aceptar antes de 5 minutos.',
-          'Guarda una captura de pantalla del código QR generado o ábrelo desde la sección "Mis Boletas" en el menú de la app.'
-        ],
-        hotspot: {
-          x: 28,
-          y: 57.5,
-          label: 'Elegir NEQUI / NU',
-          actionText: 'Tocar sobre la entidad y confirmar con PAGAR'
-        },
-        keyDetails: [
-          { label: 'Entidades visibles', value: 'Nequi, Nu, Lulo, Movii, RappiPay, Ualá...' },
-          { label: 'Paso final', value: 'Aprobación en tu banco y descarga de Boleta QR' }
-        ],
-        imagePlaceholderName: '14.jpg'
       }
     ]
   },
@@ -475,12 +262,10 @@ export const MODULES_DATA: Module[] = [
         detailedInstructions: [
           'Inicia la aplicación de Cinemark en tu teléfono.',
           'Visualiza la pantalla de bienvenida / carga con el logotipo corporativo oficial CINEMARK™ centrado.',
-          'La app sincroniza en segundo plano tu ciudad, versión y ofertas vigentes.',
           'Toca la pantalla o espera unos segundos para ingresar a la pantalla principal.'
         ],
         tips: [
-          'Esta pantalla se presenta brevemente cada vez que la app se inicia desde cero.',
-          'Asegúrate de contar con conexión a internet para que las carteleras y promociones carguen correctamente.'
+          'Esta pantalla se presenta brevemente cada vez que la app se inicia desde cero.'
         ],
         hotspot: {
           x: 50,
@@ -489,9 +274,7 @@ export const MODULES_DATA: Module[] = [
           actionText: 'Tocar pantalla para continuar'
         },
         keyDetails: [
-          { label: 'Aplicación', value: 'Cinemark Colombia Oficial' },
-          { label: 'Estado', value: 'Carga inicial (Splash Screen)' },
-          { label: 'Transición', value: 'Automática al inicio' }
+          { label: 'Aplicación', value: 'Cinemark Colombia Oficial' }
         ],
         imagePlaceholderName: '1.jpeg'
       },
@@ -504,13 +287,11 @@ export const MODULES_DATA: Module[] = [
         summary: 'Antes de navegar, la app despliega un pop-up con la promoción de Cine Club ("Boletas gratis por comprar o renovar"). Para acceder al menú de login debes cerrarlo con la "X".',
         actionRequired: 'Toca la "X" roja dentro del círculo blanco en la esquina superior derecha del banner promocional.',
         detailedInstructions: [
-          'Al cargar la pantalla principal, se superpone una ventana emergente publicitaria con beneficios de membresía Cine Club Gold y Cine Club Pro.',
           'Ubica en la esquina superior derecha del recuadro promocional el botón circular blanco con la "X" roja.',
           'Toca firmemente la "X" para cerrar la publicidad y dejar al descubierto la pantalla de inicio.'
         ],
         tips: [
-          'Cerrar este pop-up no anula tus beneficios; la promoción sigue disponible en la pestaña inferior "Cine Club".',
-          'Si no tocas la "X", el contenido de la app permanecerá bloqueado bajo la capa oscura semitransparente.'
+          'Cerrar este pop-up no anula tus beneficios; la promoción sigue disponible en la pestaña inferior "Cine Club".'
         ],
         hotspot: {
           x: 85,
@@ -519,9 +300,7 @@ export const MODULES_DATA: Module[] = [
           actionText: 'Pulsar la "X" para cerrar el anuncio'
         },
         keyDetails: [
-          { label: 'Promoción', value: 'Boletas gratis Cine Club Gold/Pro' },
-          { label: 'Botón de cierre', value: 'Círculo blanco con "X" roja' },
-          { label: 'Ubicación botón', value: 'Esquina superior derecha del banner' }
+          { label: 'Promoción', value: 'Boletas gratis Cine Club Gold/Pro' }
         ],
         imagePlaceholderName: '2.jpeg'
       },
@@ -534,13 +313,11 @@ export const MODULES_DATA: Module[] = [
         summary: 'En la parte superior de la pantalla principal, junto al logo de Cinemark, pulsa la sección "BIENVENIDO - Ingreso o registro" para desplegar las opciones de cuenta.',
         actionRequired: 'Toca sobre el texto "BIENVENIDO - Ingreso o registro" en la barra superior izquierda de la app.',
         detailedInstructions: [
-          'Una vez en la pantalla de inicio ("Cartelera por Cine"), observa el encabezado superior.',
           'Junto al ícono circular rojo "C", lee el rótulo "BIENVENIDO" y el subtítulo "Ingreso o registro".',
           'Toca directamente sobre esta área para abrir el panel inferior de inicio de sesión y registro.'
         ],
         tips: [
-          'Iniciar sesión te permite acumular puntos Cine Club, guardar métodos de pago y recibir tus entradas digitales sin reingresar datos.',
-          'Puedes comprar boletos como invitado, pero registrarte te brinda acceso a promociones exclusivas.'
+          'Iniciar sesión te permite acumular puntos Cine Club y guardar tus boletas digitales.'
         ],
         hotspot: {
           x: 35,
@@ -549,9 +326,7 @@ export const MODULES_DATA: Module[] = [
           actionText: 'Pulsar en "BIENVENIDO - Ingreso o registro"'
         },
         keyDetails: [
-          { label: 'Encabezado', value: 'BIENVENIDO' },
-          { label: 'Acción', value: 'Ingreso o registro' },
-          { label: 'Estado usuario', value: 'No autenticado / Invitado' }
+          { label: 'Encabezado', value: 'BIENVENIDO' }
         ],
         imagePlaceholderName: '3.jpeg'
       },
@@ -564,14 +339,11 @@ export const MODULES_DATA: Module[] = [
         summary: 'En el modal inferior ingresa tu correo y contraseña para acceder, o pulsa el botón blanco "CREAR UNA CUENTA" para registrarte por primera vez.',
         actionRequired: 'Ingresa tus credenciales y pulsa "INICIAR SESIÓN", o toca "CREAR UNA CUENTA" si no tienes usuario.',
         detailedInstructions: [
-          'Se despliega el panel inferior modal titulado "INICIAR SESIÓN".',
           'Si ya estás registrado: digita tu "Email*" y "Contraseña*", y pulsa el botón rojo "INICIAR SESIÓN".',
-          'Si olvidaste tu clave, utiliza el enlace rojo "Olvidé mi contraseña".',
-          'Si eres un usuario nuevo: pulsa el botón blanco con borde rojo "CREAR UNA CUENTA" para abrir el formulario de registro.'
+          'Si eres un usuario nuevo: pulsa el botón blanco con borde rojo "CREAR UNA CUENTA".'
         ],
         tips: [
-          'El campo contraseña cuenta con un ícono de ojo para verificar que escribiste los caracteres correctamente.',
-          'Tocar "CREAR UNA CUENTA" te llevará al formulario de registro en dos secciones.'
+          'Tocar "CREAR UNA CUENTA" te llevará al formulario de registro.'
         ],
         hotspot: {
           x: 50,
@@ -580,9 +352,7 @@ export const MODULES_DATA: Module[] = [
           actionText: 'Pulsar botón de autenticación'
         },
         keyDetails: [
-          { label: 'Campos', value: 'Email*, Contraseña*' },
-          { label: 'Botón principal', value: 'INICIAR SESIÓN (Rojo)' },
-          { label: 'Botón secundario', value: 'CREAR UNA CUENTA (Blanco)' }
+          { label: 'Botón principal', value: 'INICIAR SESIÓN' }
         ],
         imagePlaceholderName: '4.jpeg'
       },
@@ -595,18 +365,13 @@ export const MODULES_DATA: Module[] = [
         summary: 'Completa la primera parte del formulario con tu información básica: nombres, apellidos, correo de confirmación, celular, dirección, cédula y ciudad (Cali).',
         actionRequired: 'Rellena los campos obligatorios marcados con asterisco (*) y desplázate hacia abajo para ver la sección de contraseña y términos.',
         detailedInstructions: [
-          'En el encabezado confirma que estás en la pantalla "<- Registrarse".',
-          'Verifica el "Tipo de persona *" (por defecto "Natural").',
           'Ingresa tus "Nombres *" y "Apellidos *" tal como figuran en tu documento.',
-          'Digita tu "Correo electrónico *" y confírmalo en "Confirmación correo electrónico *".',
-          'Escribe tu número de "Celular *" y "Dirección *".',
-          'Selecciona tu "Tipo de documento *" (Cédula de Ciudadanía) e introduce tu número.',
-          'Confirma tu "Ciudad *" (Cali) y selecciona tu "Teatro de preferencia *".',
+          'Digita tu "Correo electrónico *" y confírmalo.',
+          'Introduce tu Cédula de Ciudadanía, Ciudad (Cali) y Teatro de preferencia.',
           'Desplázate hacia la parte inferior del formulario para fijar tu contraseña y aceptar términos.'
         ],
         tips: [
-          'Asegúrate de que el correo electrónico coincida exactamente en ambos campos para evitar rechazos de registro.',
-          'El teatro de preferencia se guardará como tu sede predeterminada para futuras compras.'
+          'Asegúrate de que el correo electrónico coincida exactamente en ambos campos.'
         ],
         hotspot: {
           x: 75,
@@ -615,10 +380,7 @@ export const MODULES_DATA: Module[] = [
           actionText: 'Llenar campos y desplazarse a la sección final'
         },
         keyDetails: [
-          { label: 'Tipo persona', value: 'Natural' },
-          { label: 'Documento', value: 'Cédula de Ciudadanía' },
-          { label: 'Ciudad', value: 'Cali' },
-          { label: 'Teatro', value: 'Pacific Mall (Preferente)' }
+          { label: 'Tipo persona', value: 'Natural' }
         ],
         imagePlaceholderName: '5.jpeg'
       },
@@ -631,15 +393,13 @@ export const MODULES_DATA: Module[] = [
         summary: 'Crea tu contraseña, marca obligatoriamente las casillas de Términos y Condiciones y Tratamiento de Datos Personales, y pulsa CONTINUAR para activar tu cuenta.',
         actionRequired: 'Ingresa tu contraseña, marca los dos checkboxes requeridos y pulsa el botón "CONTINUAR" para finalizar el registro.',
         detailedInstructions: [
-          'En la parte inferior del formulario, introduce tu "Contraseña *".',
-          'Marca la casilla obligatoria: "Acepto los términos y condiciones" (enlace rojo de consulta).',
+          'Introduce tu "Contraseña *".',
+          'Marca la casilla obligatoria: "Acepto los términos y condiciones".',
           'Marca la segunda casilla obligatoria: "Acepto el tratamiento de datos personales".',
-          'Verifica que no queden campos con advertencia de error.',
-          'Pulsa el botón "CONTINUAR" para enviar tu registro y acceder a la sesión activa en Cinemark.'
+          'Pulsa el botón "CONTINUAR" para enviar tu registro.'
         ],
         tips: [
-          'Ambos checkboxes son obligatorios por ley de protección de datos (Habeas Data en Colombia).',
-          'Al pulsar CONTINUAR, tu cuenta quedará vinculada automáticamente a la app y se cerrará el modal de bienvenida.'
+          'Ambos checkboxes son obligatorios por ley de protección de datos (Habeas Data).'
         ],
         hotspot: {
           x: 50,
@@ -648,11 +408,1002 @@ export const MODULES_DATA: Module[] = [
           actionText: 'Tocar botón CONTINUAR para finalizar el registro'
         },
         keyDetails: [
-          { label: 'Seguridad', value: 'Contraseña encriptada' },
-          { label: 'Términos', value: 'Aceptación obligatoria (2 casillas)' },
           { label: 'Acción final', value: 'Botón CONTINUAR' }
         ],
         imagePlaceholderName: '6.jpeg'
+      }
+    ]
+  },
+  {
+    id: 'cambio-seleccion-cine',
+    title: 'Selección y Cambio de Cine / Teatros',
+    shortDescription: 'Consulta los cines de Cinemark en Cali, filtra por cercanía GPS (MallPlaza o Pacific Mall), gestiona favoritos y usa el mapa.',
+    fullDescription: 'Aprende a ubicar y cambiar de teatro en la aplicación de Cinemark Colombia. Descubre cómo acceder a la pestaña de Teatros, ver la distancia exacta en kilómetros desde tu ubicación actual, guardar cines en favoritos y explorar el mapa interactivo con las tecnologías de cada sede (XD, D-BOX, Bistro).',
+    category: 'Boletas',
+    badge: 'Sedes & Ubicación',
+    durationMinutes: 2,
+    difficulty: 'Principiante',
+    totalSteps: 3,
+    isAvailable: true,
+    iconName: 'MapPin',
+    steps: [
+      {
+        id: 201,
+        stepNumber: 1,
+        title: 'Acceder a la Selección de Cine',
+        screenTitle: 'Pantalla de Inicio - Encabezado Superior',
+        category: 'cartelera',
+        summary: 'En la parte superior de la cartelera puedes cambiar de complejo cinematográfico con un solo toque.',
+        actionRequired: 'Toca en "Seleccionar cine" en el encabezado superior (al lado de CARTELERA POR CINE).',
+        detailedInstructions: [
+          'En la parte superior de la pantalla principal ubica la franja de opciones.',
+          'Al lado derecho de "CARTELERA POR CINE", toca sobre el botón "Seleccionar cine".',
+          'Esto abrirá de inmediato la lista de teatros disponibles en tu ciudad.'
+        ],
+        tips: [
+          'Este botón superior es la forma más rápida de cambiar de sala sin tener que salirte de la cartelera.'
+        ],
+        hotspot: {
+          x: 76,
+          y: 16,
+          label: 'Seleccionar cine',
+          actionText: 'Tocar en "Seleccionar cine" arriba a la derecha',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Ubicación', value: 'Encabezado superior (Subheader)' },
+          { label: 'Ciudad predeterminada', value: 'Cali' }
+        ],
+        imagePlaceholderName: '1.jpg'
+      },
+      {
+        id: 202,
+        stepNumber: 2,
+        title: 'Explorar Sedes Cercanas y Vista de Mapa',
+        screenTitle: 'Teatros - Lista de Sedes y Distancias',
+        category: 'cartelera',
+        summary: 'Visualiza las salas ordenadas por proximidad GPS (MallPlaza a 1.76 km, Pacific Mall a 5.65 km) o abre la vista de mapa.',
+        actionRequired: 'Toca el ícono de mapa en la esquina superior derecha (junto a "Cali") para ver las sedes geolocalizadas.',
+        detailedInstructions: [
+          'Observa las opciones bajo "Cercanos a ti": MallPlaza (1.76 km) y Pacific Mall (5.65 km).',
+          'En la sección "Favoritos" puedes pulsar el corazón ❤️ para fijar tu sede preferida.',
+          'En la esquina superior derecha, junto al rótulo "Cali", toca el ícono del mapa plegado para abrir la vista satelital.'
+        ],
+        tips: [
+          'MallPlaza se ubica sobre la Calle 5 en el sur de Cali, mientras que Pacific Mall está en el norte (Av. 6ta).'
+        ],
+        hotspot: {
+          x: 93,
+          y: 7.5,
+          label: 'Ver en Mapa',
+          actionText: 'Tocar ícono de mapa arriba a la derecha',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Cine más cercano', value: 'MallPlaza (1.76 km)' },
+          { label: 'Cine Favorito', value: 'Pacific Mall (5.65 km)' }
+        ],
+        imagePlaceholderName: '2.jpg'
+      },
+      {
+        id: 203,
+        stepNumber: 3,
+        title: 'Seleccionar Teatro en el Mapa Interactivo',
+        screenTitle: 'Teatros Cali - Mapa Interactivo con GPS',
+        category: 'cartelera',
+        summary: 'Navega en el mapa interactivo sobre Cali, identifica las tecnologías de sala (XD, D-BOX, Bistro) y elige tu complejo.',
+        actionRequired: 'Toca la tarjeta del cine (MallPlaza) o su marcador en el mapa para seleccionarlo como tu teatro activo.',
+        detailedInstructions: [
+          'El mapa muestra las vías principales de Cali (Calle 5, Autopista Sur) y los marcadores rojos de Cinemark.',
+          'En la tarjeta inferior se confirman las tecnologías de MallPlaza: salas XD de pantalla gigante, butacas con movimiento D-BOX y oferta gastronómica Movie Bistro.',
+          'Toca sobre la tarjeta para fijar este complejo y que la cartelera te muestre sus horarios.'
+        ],
+        tips: [
+          'Puedes deslizar horizontalmente la tarjeta inferior para alternar entre MallPlaza y Pacific Mall en el mapa.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 76,
+          label: 'Confirmar Sede',
+          actionText: 'Tocar tarjeta para seleccionar este cine',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Teatro en mapa', value: 'Cinemark MallPlaza' },
+          { label: 'Formatos disponibles', value: 'XD, D-BOX, Movie Bistro' },
+          { label: 'Dirección', value: 'Calle 5 # 52-140 Local 442' }
+        ],
+        imagePlaceholderName: '3.jpg'
+      }
+    ]
+  },
+  {
+    id: 'membresias-cine-club',
+    title: 'Membresías y Planes Cine Club',
+    shortDescription: 'Conoce los beneficios de Cine Club Gold y Pro, compara modalidades de suscripción (mensual, 3 meses, anual) y completa tu afiliación.',
+    fullDescription: 'Guía oficial para afiliarte al programa de lealtad Cine Club de Cinemark Colombia. Descubre cómo comparar los planes Gold y Pro, revisar los descuentos en boletas y confitería, elegir tu modalidad de pago y finalizar la suscripción en línea.',
+    category: 'Membresías',
+    badge: 'Beneficios & Planes',
+    durationMinutes: 5,
+    difficulty: 'Principiante',
+    totalSteps: 12,
+    isAvailable: true,
+    iconName: 'Crown',
+    steps: [
+      {
+        id: 501,
+        stepNumber: 1,
+        title: 'Acceder a la Pestaña Cine Club',
+        screenTitle: 'Pantalla de Inicio - Pestaña Cine Club',
+        category: 'cartelera',
+        summary: 'En la barra de navegación inferior ubica el ícono con la estrella titulado Cine Club para conocer las membresías oficiales.',
+        actionRequired: 'Toca el ícono de "Cine Club" en la barra inferior (al lado de Menú).',
+        detailedInstructions: [
+          'En la barra inferior de navegación ubica la penúltima opción.',
+          'Localiza el ícono del tiquete con estrella roja titulado "Cine Club".',
+          'Púlsalo para ingresar al portal de membresías y beneficios exclusivos.'
+        ],
+        tips: [
+          'Estar afiliado a Cine Club te permite acumular puntos y acceder a descuentos de hasta el 50% en entradas.'
+        ],
+        hotspot: {
+          x: 70,
+          y: 91,
+          label: 'Pestaña Cine Club',
+          actionText: 'Tocar ícono de Cine Club en barra inferior',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Pestaña', value: 'Cine Club' },
+          { label: 'Ubicación', value: 'Barra inferior de navegación' }
+        ],
+        imagePlaceholderName: '1.jpg'
+      },
+      {
+        id: 502,
+        stepNumber: 2,
+        title: 'Explorar Planes Disponibles',
+        screenTitle: 'Catálogo de Planes Cine Club',
+        category: 'cartelera',
+        summary: 'Cinemark ofrece dos categorías principales de membresía: Cine Club Pro (suscripción recurrente) y Cine Club Gold (anual con pago único).',
+        actionRequired: 'Toca en "Ver beneficios" en la tarjeta de tu interés o desplázate para comparar.',
+        detailedInstructions: [
+          'Visualiza la tarjeta superior roja "CINE CLUB Pro" ($28.900 el primer mes, luego $32.500).',
+          'Debajo se encuentra la tarjeta dorada "CINE CLUB Gold" ($28.900/año).',
+          'Toca en "Ver beneficios" para desplegar la lista detallada de descuentos.'
+        ],
+        tips: [
+          'Cine Club Gold es ideal para quienes van esporádicamente, mientras que Pro conviene a los cinéfilos frecuentes.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 58,
+          label: 'Ver Beneficios',
+          actionText: 'Tocar para desplegar beneficios de la membresía',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Planes', value: 'Pro y Gold' },
+          { label: 'Tarifa inicial Pro', value: '$28.900 COP' }
+        ],
+        imagePlaceholderName: '2.jpg'
+      },
+      {
+        id: 503,
+        stepNumber: 3,
+        title: 'Revisar Beneficios de Cine Club Gold',
+        screenTitle: 'Detalle de Beneficios - Cine Club Gold',
+        category: 'cartelera',
+        summary: 'Conoce los descuentos de la membresía Gold: hasta 30% en boletas, 20% en combos de confitería, 10% en menú Premier y combo de cumpleaños.',
+        actionRequired: 'Revisa las condiciones y presiona el botón dorado "QUIERO SER GOLD".',
+        detailedInstructions: [
+          'Despliega los beneficios Gold: hasta 30% off en boletas según día, hasta 20% en confitería seleccionada y regalo de cumpleaños.',
+          'El costo es de solo $28.900 por un año completo.',
+          'Presiona el botón "QUIERO SER GOLD" para avanzar a la contratación.'
+        ],
+        tips: [
+          'El combo de cumpleaños es válido el día de tu cumpleaños con la compra de mínimo 1 boleta.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 76.5,
+          label: 'Quiero Ser Gold',
+          actionText: 'Pulsar en botón "QUIERO SER GOLD"',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Plan', value: 'Cine Club Gold' },
+          { label: 'Vigencia', value: '1 Año' },
+          { label: 'Precio', value: '$28.900 COP/año' }
+        ],
+        imagePlaceholderName: '3.jpg'
+      },
+      {
+        id: 504,
+        stepNumber: 4,
+        title: 'Revisar Beneficios de Cine Club Pro',
+        screenTitle: 'Detalle de Beneficios - Cine Club Pro',
+        category: 'cartelera',
+        summary: 'Cine Club Pro incluye 2 boletas de regalo al mes, hasta 50% off en boletas diarias, 30% en combos, invitaciones a premieres y crispetas de bienvenida.',
+        actionRequired: 'Pulsa el botón rojo "QUIERO SER PRO" para seleccionar tu plan.',
+        detailedInstructions: [
+          'Revisa las ventajas destacadas: 2 boletas gratis cada mes, hasta 50% de descuento en un máximo de 4 boletas por día y regalo de bienvenida.',
+          'Además obtienes participación en concursos exclusivos y premieres.',
+          'Toca el botón rojo "QUIERO SER PRO" para ver las modalidades de pago.'
+        ],
+        tips: [
+          'Las 2 boletas gratis mensuales compensan con creces el valor de la suscripción.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 82.5,
+          label: 'Quiero Ser Pro',
+          actionText: 'Pulsar en botón "QUIERO SER PRO"',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Plan', value: 'Cine Club Pro' },
+          { label: 'Entradas gratis', value: '2 boletas/mes' }
+        ],
+        imagePlaceholderName: '4.jpg'
+      },
+      {
+        id: 505,
+        stepNumber: 5,
+        title: 'Seleccionar Modalidad Cine Club Gold',
+        screenTitle: 'Planes Cine Club Gold - Selección',
+        category: 'cartelera',
+        summary: 'En el plan Gold la membresía es única y anual por $28.900/año.',
+        actionRequired: 'Verifica la opción "Suscripción Membresía Gold" y presiona el botón rojo "CONTINUAR".',
+        detailedInstructions: [
+          'Confirma la selección del plan Gold anual.',
+          'En la barra inferior se refleja el valor de $28.900.',
+          'Toca "CONTINUAR" para ingresar al resumen de compra.'
+        ],
+        tips: [
+          'Esta membresía no se renueva automáticamente sin tu confirmación al cabo de un año.'
+        ],
+        hotspot: {
+          x: 73,
+          y: 92.5,
+          label: 'Pulsar Continuar',
+          actionText: 'Tocar CONTINUAR en la barra inferior',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Cobro', value: 'Anual único' },
+          { label: 'Total', value: '$28.900 COP' }
+        ],
+        imagePlaceholderName: '5.jpg'
+      },
+      {
+        id: 506,
+        stepNumber: 6,
+        title: 'Elegir Modalidad Cine Club Pro',
+        screenTitle: 'Planes Cine Club Pro - Modalidades',
+        category: 'cartelera',
+        summary: 'Para el plan Pro puedes elegir entre varias modalidades de ahorro: 3 meses anticipados ($86.000), socio nuevo ($28.900), 6 meses ($165.000) o 1 año ($325.000).',
+        actionRequired: 'Selecciona la modalidad de tu preferencia (ej: Promoción 3 meses anticipado) y pulsa "CONTINUAR".',
+        detailedInstructions: [
+          'Revisa las opciones: "Promoción 3 meses anticipado" ($86.000), "Socio Nuevo" ($28.900 primer mes), "Promoción 6 meses" o "Promoción 1 Año".',
+          'Si tienes un código promocional, puedes ingresarlo en el campo correspondiente.',
+          'Marca la opción deseada y presiona el botón rojo "CONTINUAR".'
+        ],
+        tips: [
+          'Pagar 3 meses o 1 año por anticipado te protege contra variaciones de precio en tu suscripción.'
+        ],
+        hotspot: {
+          x: 73,
+          y: 96.5,
+          label: 'Elegir y Continuar',
+          actionText: 'Pulsar CONTINUAR con la opción seleccionada',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Modalidades', value: '1 mes, 3 meses, 6 meses, 1 año' },
+          { label: 'Plan destacado', value: '3 meses anticipados ($86.000)' }
+        ],
+        imagePlaceholderName: '6.jpg'
+      },
+      {
+        id: 507,
+        stepNumber: 7,
+        title: 'Revisión del Carrito de Compras',
+        screenTitle: 'Carrito de Compras - Membresía',
+        category: 'carrito',
+        summary: 'Verifica el desglose oficial: Membresía Cine Club ($8.100) + Beneficios Pro ($20.800) = Total $28.900.',
+        actionRequired: 'Verifica que los valores coincidan y presiona el botón rojo "CONTINUAR".',
+        detailedInstructions: [
+          'Se despliega el panel inferior con el resumen del pedido.',
+          'Se desglosa el costo de la membresía y el valor de los beneficios del plan.',
+          'Pulsa el botón "CONTINUAR" para proceder a los datos de facturación.'
+        ],
+        tips: [
+          'Revisa que tu correo de cuenta coincida con el usuario donde deseas activar los beneficios.'
+        ],
+        hotspot: {
+          x: 73,
+          y: 92.5,
+          label: 'Confirmar Carrito',
+          actionText: 'Tocar CONTINUAR en el carrito',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Membresía base', value: '$8.100 COP' },
+          { label: 'Beneficios', value: '$20.800 COP' },
+          { label: 'Total final', value: '$28.900 COP' }
+        ],
+        imagePlaceholderName: '7.jpg'
+      },
+      {
+        id: 508,
+        stepNumber: 8,
+        title: 'Datos de Facturación y Aceptación de Términos',
+        screenTitle: 'Datos de Facturación',
+        category: 'facturacion',
+        summary: 'Ingreso obligatorio de tus datos personales para emisión del comprobante y vinculación de la membresía.',
+        actionRequired: 'Diligencia tus datos, marca los dos checkboxes obligatorios de términos y presiona "CONTINUAR".',
+        detailedInstructions: [
+          'Ingresa tus Nombres, Apellidos, Tipo y Número de Documento (Cédula).',
+          'Completa Ciudad, Dirección, Celular y Correo electrónico.',
+          'Marca obligatoriamente: [✓] "Acepto los términos y condiciones" y [✓] "Acepto el tratamiento de datos personales".',
+          'Presiona el botón rojo "CONTINUAR" en la barra inferior.'
+        ],
+        tips: [
+          'Asegúrate de que el correo electrónico esté bien escrito, pues allí se te confirmará la activación de la membresía.'
+        ],
+        hotspot: {
+          x: 78,
+          y: 91.5,
+          label: 'Pulsar Continuar',
+          actionText: 'Completar datos y tocar CONTINUAR',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Campos requeridos', value: 'Nombres, Cédula, Correo, Celular' },
+          { label: 'Habeas Data', value: 'Aceptación obligatoria' }
+        ],
+        imagePlaceholderName: '8.jpg'
+      },
+      {
+        id: 509,
+        stepNumber: 9,
+        title: 'Selección de Medio de Pago',
+        screenTitle: 'Medios de Pago Disponibles',
+        category: 'pagos',
+        summary: 'Elige tu método de pago preferido para pagar la membresía: Tarjeta de crédito/débito o PSE.',
+        actionRequired: 'Toca sobre la opción de "PSE" (o "Tarjeta crédito / débito") y presiona "PAGAR".',
+        detailedInstructions: [
+          'Selecciona entre "Tarjeta crédito / débito" (para pago recurrente o plásticos Visa/Mastercard) o "PSE" (débito a cuenta de ahorros).',
+          'Toca sobre la opción de tu preferencia.',
+          'Presiona el botón "PAGAR" para abrir la pasarela correspondiente.'
+        ],
+        tips: [
+          'Para membresías con cobro mensual recurrente, la tarjeta de crédito permite renovación automática sin cortes.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 81.5,
+          label: 'Elegir PSE / Tarjeta',
+          actionText: 'Seleccionar método y tocar PAGAR',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Opciones', value: 'Tarjeta Crédito/Débito y PSE' }
+        ],
+        imagePlaceholderName: '9.jpg'
+      },
+      {
+        id: 510,
+        stepNumber: 10,
+        title: 'Pago con Tarjeta de Crédito / Débito',
+        screenTitle: 'Tarjeta Crédito / Débito',
+        category: 'tarjetas',
+        summary: 'Formulario seguro para procesar el pago con tarjeta bancaria.',
+        actionRequired: 'Ingresa el nombre del titular, 16 dígitos, fecha de vencimiento (MM/AA), código CVV y cuotas.',
+        detailedInstructions: [
+          'Digita el nombre del titular exactamente como aparece en la tarjeta.',
+          'Introduce los 16 dígitos y la fecha de expiración.',
+          'Ingresa el código de seguridad (CVV) al reverso del plástico.',
+          'Selecciona 1 cuota (sin intereses) y presiona "PAGAR".'
+        ],
+        tips: [
+          'Puedes marcar "Quiero guardar esta tarjeta para mi próxima compra" para renovaciones en 1 solo clic.'
+        ],
+        hotspot: {
+          x: 80,
+          y: 91.5,
+          label: 'Pulsar PAGAR',
+          actionText: 'Tocar PAGAR para procesar la tarjeta',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Seguridad', value: 'Cifrado bancario PCI-DSS' }
+        ],
+        imagePlaceholderName: '10.jpg'
+      },
+      {
+        id: 511,
+        stepNumber: 11,
+        title: 'Pago con PSE - Datos y Banco',
+        screenTitle: 'PSE - Pagos Seguros en Línea',
+        category: 'pse',
+        summary: 'Configuración de pago directo a través de cuentas bancarias y billeteras virtuales de Colombia.',
+        actionRequired: 'Toca sobre el selector "A continuación seleccione su banco" para desplegar la lista.',
+        detailedInstructions: [
+          'Deja marcada la casilla [✓] "Usar mismos datos de facturación".',
+          'Toca el campo desplegable "Banco *" para seleccionar tu entidad financiera.',
+          'Presiona el botón rojo "PAGAR" para conectar con la pasarela bancaria.'
+        ],
+        tips: [
+          'Debes tener una cuenta registrada previamente en el portal de PSE con tu correo electrónico.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 86.5,
+          label: 'Selector de Banco',
+          actionText: 'Tocar selector para abrir bancos',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Operador', value: 'ACH Colombia (PSE)' }
+        ],
+        imagePlaceholderName: '11.jpg'
+      },
+      {
+        id: 512,
+        stepNumber: 12,
+        title: 'Seleccionar Entidad Bancaria y Finalizar',
+        screenTitle: 'Listado de Bancos y Billeteras PSE',
+        category: 'pse',
+        summary: 'Elige tu entidad (Nequi, Nu, Davivienda, Bancolombia, etc.) y autoriza la transacción.',
+        actionRequired: 'Toca sobre tu banco o billetera (ej: NEQUI o NU) y pulsa "PAGAR" para confirmar la suscripción.',
+        detailedInstructions: [
+          'Desplázate en la lista y pulsa sobre tu entidad (ej: NEQUI, NU, LULO, BANCOLOMBIA).',
+          'Toca el botón rojo "PAGAR" en la parte inferior.',
+          'Aprueba la notificación push en tu celular dentro de los 5 minutos siguientes.',
+          '¡Listo! Tu membresía Cine Club quedará activa de inmediato y podrás disfrutar de boletas con descuento y combos exclusivos.'
+        ],
+        tips: [
+          'Una vez aprobado el pago, tus beneficios de Cine Club se reflejarán automáticamente en tu perfil.'
+        ],
+        hotspot: {
+          x: 35,
+          y: 55.5,
+          label: 'Elegir NEQUI / NU',
+          actionText: 'Seleccionar entidad y presionar PAGAR',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Entidades disponibles', value: 'Lulo, Nequi, Nu, Bancolombia...' },
+          { label: 'Resultado', value: 'Membresía Cine Club activa' }
+        ],
+        imagePlaceholderName: '12.jpg'
+      }
+    ]
+  },
+  {
+    id: 'compra-boletas-confiteria',
+    title: 'Compra de Boletas y Confitería',
+    shortDescription: 'Aprende a elegir película, formato XD/Premier, asientos en sala, combos de comida y pagar con PSE o tarjeta.',
+    fullDescription: 'Guía oficial interactiva paso a paso para la aplicación móvil de Cinemark. Domina todo el flujo de compra desde la cartelera hasta la pasarela de pagos segura.',
+    category: 'Boletas',
+    badge: 'Módulo Principal',
+    durationMinutes: 6,
+    difficulty: 'Principiante',
+    totalSteps: 13,
+    isAvailable: true,
+    iconName: 'Ticket',
+    steps: [
+      {
+        id: 1,
+        stepNumber: 1,
+        title: 'Inicio y Cartelera Principal',
+        screenTitle: 'BIENVENIDO - Ingreso o registro',
+        category: 'cartelera',
+        summary: 'Pantalla principal de la app de Cinemark. Permite explorar la cartelera, promociones activas y estrenos destacados.',
+        actionRequired: 'Desliza hacia abajo para explorar los estrenos y títulos en cartelera.',
+        detailedInstructions: [
+          'Al abrir la app de Cinemark te encontrarás en la pestaña principal de Cartelera.',
+          'En la parte superior puedes elegir entre "Cartelera por cine" o "Seleccionar cine" para filtrar según tu teatro preferido.',
+          'Haz scroll hacia abajo para descubrir los estrenos de la semana y contenido destacado.'
+        ],
+        tips: [
+          'Si inicias sesión con tu cuenta de Cinemark guardas tu historial y agilizas tus compras.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 84,
+          label: 'Desliza hacia abajo (Scroll)',
+          actionText: 'Hacer scroll hacia abajo para ver estrenos',
+          type: 'scroll-down'
+        },
+        keyDetails: [
+          { label: 'Pestaña activa', value: 'Cartelera' },
+          { label: 'Formato destacado', value: 'Salas XD y 2D' }
+        ],
+        imagePlaceholderName: '1.jpg'
+      },
+      {
+        id: 2,
+        stepNumber: 2,
+        title: 'Ficha de Película y Preventas',
+        screenTitle: 'AVENGERS: ENDGAME BON - ESTRENO',
+        category: 'pelicula',
+        summary: 'Vista previa de la película seleccionada con etiqueta de ESTRENO y cartelera de próximas funciones y preventas.',
+        actionRequired: 'Desliza hacia abajo para revisar la programación, preventas y formatos de proyección.',
+        detailedInstructions: [
+          'La app muestra la ficha con la carátula oficial y el estado (ESTRENO o PREVENTA).',
+          'Al deslizar hacia abajo verás las preventas y títulos asociados.',
+          'Continúa bajando para pasar a la cartelera y formatos.'
+        ],
+        tips: [
+          'Los estrenos con alta demanda suelen habilitar salas XD y formatos especiales con días de anticipación.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 84,
+          label: 'Desliza hacia abajo (Scroll)',
+          actionText: 'Hacer scroll hacia abajo para ver preventas',
+          type: 'scroll-down'
+        },
+        keyDetails: [
+          { label: 'Estado', value: 'Estreno Oficial' }
+        ],
+        imagePlaceholderName: '2.jpg'
+      },
+      {
+        id: 3,
+        stepNumber: 3,
+        title: 'Exploración de Cartelera y Clasificaciones',
+        screenTitle: 'CARTELERA GENERAL - Películas y Clasificación',
+        category: 'cartelera',
+        summary: 'Catálogo con toda la oferta cinematográfica y sus clasificaciones por edad (15-A, 12-A, Todos).',
+        actionRequired: 'Revisa las clasificaciones de edad y duración antes de comprar boletas para menores de edad o grupos.',
+        detailedInstructions: [
+          'Cinemark organiza las películas en una cuadrícula con duración exacta (ej: 1H 45M, 2H 50M).',
+          'Cada película cuenta con su distintivo de clasificación: "15-A", "12-A" o "Todos".',
+          'Al desplazarte hacia abajo encontrarás la sección "PRÓXIMOS ESTRENOS" para agendar tus visitas futuras.'
+        ],
+        tips: [
+          'Las clasificaciones 12-A y 15-A requieren que los menores ingresen acompañados de un adulto responsable.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 40,
+          label: 'Clasificaciones y Horas',
+          actionText: 'Observar sellos informativos 12-A / 15-A',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Clasificaciones visibles', value: '15-A, 12-A, Todos' }
+        ],
+        imagePlaceholderName: '3.jpg'
+      },
+      {
+        id: 4,
+        stepNumber: 4,
+        title: 'Selección de Fecha, Formato y Horario',
+        screenTitle: 'Avengers: Endgame Bon - Funciones',
+        category: 'horarios',
+        summary: 'Elección del día de la función, cine asignado y formato de proyección (2D, 3D, XD, Premier, Doblada o Subtitulada).',
+        actionRequired: 'Selecciona la fecha deseada (ej: HOY Sáb. 26) y pulsa en la hora deseada, como el botón [17:35].',
+        detailedInstructions: [
+          'En el carrusel de fechas puedes elegir entre "HOY" o los días consecutivos de la semana.',
+          'Se especifica el cine actual ("PACIFIC MALL").',
+          'Cada función detalla sus formatos: "3D INFINITY VISION XD PREMIER" o "2D PREMIER", además del idioma.',
+          'Toca el botón con la hora deseada (ej: [17:35]) para avanzar directamente a la selección de tarifas.'
+        ],
+        tips: [
+          'Las salas XD cuentan con pantalla gigante de 4 pisos y sonido envolvente de alta potencia.'
+        ],
+        hotspot: {
+          x: 15,
+          y: 74,
+          label: 'Horario [17:35]',
+          actionText: 'Pulsar en el botón del horario 17:35',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Cine seleccionado', value: 'Pacific Mall (Cali)' },
+          { label: 'Horario', value: '17:35 (5:35 PM)' }
+        ],
+        imagePlaceholderName: '4.jpg'
+      },
+      {
+        id: 5,
+        stepNumber: 5,
+        title: 'Selección de Boletas y Tarifas',
+        screenTitle: 'Avengers: Endgame Bon - Tarifas',
+        category: 'boletas',
+        summary: 'Configuración de tipos de boleta, promociones de tarjetas aliadas (AMEX 2x1) y descuentos de membresía.',
+        actionRequired: 'Usa los botones (+) y (-) para seleccionar el número de boletas deseado y luego presiona "CONTINUAR".',
+        detailedInstructions: [
+          'Elige tu tipo de boleta (ej: "BOLETA XD PREMIER 3D" por $32.250 o tarifa 2x1 si cumples requisitos).',
+          'Al seleccionar al menos 1 boleta, la barra inferior roja se iluminará mostrando el monto acumulado.',
+          'Presiona el botón "CONTINUAR" para pasar a la selección de tus asientos en sala.'
+        ],
+        tips: [
+          'Si vas en pareja y pagas con tarjeta American Express, la opción "2X1 AMEX" te permite pagar solo 1 entrada.'
+        ],
+        hotspot: {
+          x: 80,
+          y: 91.5,
+          label: 'Pulsar Continuar',
+          actionText: 'Tocar CONTINUAR en la barra inferior',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Tarifa seleccionada', value: 'BOLETA XD PREMIER 3D' }
+        ],
+        imagePlaceholderName: '5.jpg'
+      },
+      {
+        id: 6,
+        stepNumber: 6,
+        title: 'Selección de Asientos en la Sala',
+        screenTitle: 'Ubicación en sala - Pacific Mall Sala 5',
+        category: 'asientos',
+        summary: 'Mapa interactivo de la sala para elegir tus butacas frente a la pantalla con cronómetro de retención.',
+        actionRequired: 'Toca la silla disponible que prefieras (aparecerá en verde con tu código de butaca, ej: A6) y pulsa "CONTINUAR".',
+        detailedInstructions: [
+          'En la parte superior se ilustra la curva de la "Pantalla" para orientar la vista.',
+          'Código de colores: Gris (Ocupada), Verde (Tu selección actual), Borde dorado (Sillas Premier).',
+          'En la sección inferior se confirma tu butaca elegida (ej: A6).'
+        ],
+        tips: [
+          'Las butacas de las filas centrales ofrecen la mejor simetría visual y acústica.'
+        ],
+        warnings: [
+          '¡Atención al cronómetro! Si se agotan los 10 minutos asignados, el sistema liberará los asientos.'
+        ],
+        timerNotice: '09:35 restantes',
+        hotspot: {
+          x: 40,
+          y: 31.5,
+          label: 'Butaca [A6]',
+          actionText: 'Tocar la butaca A6 en el plano',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Sala', value: 'Sala 5 - Pacific Mall' },
+          { label: 'Asiento seleccionado', value: 'A6 (Premier)' }
+        ],
+        imagePlaceholderName: '6.jpg'
+      },
+      {
+        id: 7,
+        stepNumber: 7,
+        title: 'Confitería y Alimentos Premier',
+        screenTitle: 'Avengers: Endgame Bon - Confitería',
+        category: 'confiteria',
+        summary: 'Menú gastronómico para añadir hamburguesas gourmet, combos de crispetas, gaseosas o coleccionables a tu orden.',
+        actionRequired: 'Si deseas snacks o comida, pulsa el botón (+) en el producto deseado (ej: Hamburguesa Callejera) o presiona "CONTINUAR".',
+        detailedInstructions: [
+          'Cinemark cuenta con categorías: MENU, COLECCIONABLES, COMBOS y CRISPETAS.',
+          'En salas Premier se ofrece cocina caliente directa a tu asiento.',
+          'Este paso es opcional: si no deseas comida puedes simplemente presionar "CONTINUAR".'
+        ],
+        tips: [
+          'Comprar comida desde la app te ahorra filas en la confitería tradicional.'
+        ],
+        hotspot: {
+          x: 88.5,
+          y: 45.5,
+          label: 'Agregar Alimento (+)',
+          actionText: 'Tocar (+) en Hamburguesa Callejera',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Plato sugerido', value: 'Hamburguesa Callejera ($38.000)' }
+        ],
+        imagePlaceholderName: '7.jpg'
+      },
+      {
+        id: 8,
+        stepNumber: 8,
+        title: 'Resumen de Carrito y Cargos por Servicio',
+        screenTitle: 'Carrito de compras - Pacific Mall',
+        category: 'carrito',
+        summary: 'Revisión final de ítems, fecha, hora, sala, sillas, cargos por servicio en línea y costo consolidado.',
+        actionRequired: 'Verifica meticulosamente la fecha, hora, sala y asientos elegidos. Si todo es correcto, pulsa "CONTINUAR".',
+        detailedInstructions: [
+          'La ventana desglosa: Boleta XD Premier 3D ($32.250) + Hamburguesa ($38.000) = Subtotal $70.250.',
+          'Transparencia tarifaria: Se detalla el cargo por servicio de confitería ($1.600) y de boleta ($1.600).',
+          'El total consolidado es de $73.450 COP.'
+        ],
+        tips: [
+          'Verifica dos veces la fecha y sala antes de proceder al pago.'
+        ],
+        hotspot: {
+          x: 80,
+          y: 91.5,
+          label: 'Confirmar y Continuar',
+          actionText: 'Tocar en CONTINUAR',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Total final a pagar', value: '$73.450 COP' }
+        ],
+        imagePlaceholderName: '8.jpg'
+      },
+      {
+        id: 9,
+        stepNumber: 9,
+        title: 'Datos de Facturación y Términos',
+        screenTitle: 'Avengers: Endgame Bon - Pago (Facturación)',
+        category: 'facturacion',
+        summary: 'Ingreso obligatorio de datos del titular para emisión de factura legal y envío de las entradas QR al correo.',
+        actionRequired: 'Diligencia tus nombres, cédula, dirección, teléfono y correo electrónico. Marca las dos casillas obligatorias y pulsa "CONTINUAR".',
+        detailedInstructions: [
+          'Ingresa tus Nombres y Apellidos completos.',
+          'Ingresa tu Cédula de Ciudadanía, Ciudad (Cali) y Celular.',
+          'Revisa con especial cuidado el correo electrónico: allí se enviarán las boletas con código QR de acceso.',
+          'Marca obligatoriamente las dos casillas de Términos y Tratamiento de datos personales.'
+        ],
+        warnings: [
+          'Si escribes mal tu correo electrónico no recibirás el código QR de entrada a las salas.'
+        ],
+        tips: [
+          'Si iniciaste sesión previamente, estos datos se rellenarán automáticamente.'
+        ],
+        hotspot: {
+          x: 80,
+          y: 91.5,
+          label: 'Pulsar Continuar',
+          actionText: 'Marcar casillas de términos y pulsar CONTINUAR',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Documento registrado', value: 'Cédula de ciudadanía' }
+        ],
+        imagePlaceholderName: '9.jpg'
+      },
+      {
+        id: 10,
+        stepNumber: 10,
+        title: 'Selección del Medio de Pago',
+        screenTitle: 'Medios de pago disponibles',
+        category: 'pagos',
+        summary: 'Menú con las alternativas autorizadas por Cinemark Colombia para procesar la transacción.',
+        actionRequired: 'Toca sobre "Tarjeta crédito / débito" o sobre "PSE" según el método con el que desees pagar.',
+        detailedInstructions: [
+          '1. "Tarjeta crédito / débito": Visa, Mastercard, American Express o Diners.',
+          '2. "PSE": Para pagos directos con débito a cuentas de ahorros colombianas o billeteras (Nequi, Daviplata, Nu).',
+          'Pulsa sobre PSE para transferir de forma rápida sin costo de tarjeta.'
+        ],
+        tips: [
+          'PSE no genera costos bancarios de comisión adicionales.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 82,
+          label: 'Opción PSE',
+          actionText: 'Pulsar en la tarjeta de pago PSE',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Métodos disponibles', value: 'Tarjeta Crédito/Débito y PSE' }
+        ],
+        imagePlaceholderName: '10.jpg'
+      },
+      {
+        id: 11,
+        stepNumber: 11,
+        title: 'Pago con Tarjeta de Crédito / Débito',
+        screenTitle: 'Tarjeta crédito / débito',
+        category: 'tarjetas',
+        summary: 'Formulario seguro para procesar cobros con tarjeta bancaria nacional o internacional.',
+        actionRequired: 'Escribe el nombre del titular, los 16 dígitos, fecha de vencimiento (MM/AA), código de seguridad (CVV) y cuotas.',
+        detailedInstructions: [
+          'Nombre del titular: tal como aparece en el plástico.',
+          'Número de tarjeta: los 16 dígitos continuos.',
+          'Fecha de vencimiento y CVV (código de 3 o 4 dígitos al respaldo).',
+          'Selecciona 1 cuota para evitar intereses bancarios.',
+          'Presiona el botón rojo "PAGAR" para procesar la transacción.'
+        ],
+        tips: [
+          'Tu entidad bancaria puede solicitarte una clave dinámica o código SMS de confirmación.'
+        ],
+        hotspot: {
+          x: 80,
+          y: 91.5,
+          label: 'Botón PAGAR',
+          actionText: 'Tocar en PAGAR para procesar el débito',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Cuotas habituales', value: '1 cuota (sin intereses)' }
+        ],
+        imagePlaceholderName: '11.jpg'
+      },
+      {
+        id: 12,
+        stepNumber: 12,
+        title: 'Pago con PSE (Pagos Seguros en Línea)',
+        screenTitle: 'PSE - Pagos Seguros en Línea',
+        category: 'pse',
+        summary: 'Configuración para pago directo desde cuentas bancarias y billeteras de Colombia a través de ACH PSE.',
+        actionRequired: 'Deja seleccionada la casilla "Usar mismos datos de facturación" y toca sobre el campo "Banco" para abrir el listado.',
+        detailedInstructions: [
+          'Se despliega el sello oficial de ACH PSE.',
+          'La casilla [✓] "Usar mismos datos de facturación" traslada automáticamente tus datos a la pasarela bancaria.',
+          'Toca el selector "A continuación seleccione su banco" para desplegar la lista de instituciones financieras.'
+        ],
+        tips: [
+          'Debes estar registrado previamente en el portal de PSE con tu correo electrónico personal.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 86,
+          label: 'Selector de Banco',
+          actionText: 'Tocar el campo para desplegar bancos',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Operador', value: 'ACH Colombia (PSE)' }
+        ],
+        imagePlaceholderName: '12.jpg'
+      },
+      {
+        id: 13,
+        stepNumber: 13,
+        title: 'Selección de Banco o Billetera en PSE',
+        screenTitle: 'Seleccionar Entidad Bancaria PSE',
+        category: 'pse',
+        summary: 'Listado de neobancos, billeteras y bancos colombianos (Nequi, Nu, Bancolombia, Davivienda, etc.).',
+        actionRequired: 'Selecciona tu banco (ej: NEQUI o NU) y pulsa "PAGAR" para ser redirigido a la banca en línea y confirmar la transacción.',
+        detailedInstructions: [
+          'La lista incluye opciones como NEQUI, NU, LULO, BANCOLOMBIA, DAVIVIENDA, entre otros.',
+          'Toca tu entidad para marcarla.',
+          'Al pulsar el botón rojo "PAGAR", la app te redirige a tu banco para que apruebes el débito.',
+          '¡Listo! Recibirás en pantalla y en tu correo el código QR para ingresar a la sala.'
+        ],
+        tips: [
+          'En el caso de Nequi o Daviplata, aprueba la notificación push en tu celular dentro de los primeros 5 minutos.'
+        ],
+        hotspot: {
+          x: 30,
+          y: 55.5,
+          label: 'Elegir NEQUI / NU',
+          actionText: 'Tocar sobre la entidad y confirmar con PAGAR',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Paso final', value: 'Aprobación en tu banco y descarga de Boleta QR' }
+        ],
+        imagePlaceholderName: '13.jpg'
+      }
+    ]
+  },
+  {
+    id: 'atencion-soporte-pqrsf',
+    title: 'Atención al Cliente, PQRSF y Soporte',
+    shortDescription: 'Aprende a radicar consultas, solicitar ayuda por boletas no recibidas y gestionar PQRSF desde el menú de la app.',
+    fullDescription: 'Guía oficial para acceder al Centro de Ayuda y PQRSF integrado en Cinemark Colombia. Conoce cómo abrir el menú principal, ingresar a la opción de Soporte, desplegar el selector de solicitudes en Zendesk y radicar tu caso.',
+    category: 'Cuenta y Pagos',
+    badge: 'Ayuda & PQRSF',
+    durationMinutes: 3,
+    difficulty: 'Principiante',
+    totalSteps: 4,
+    isAvailable: true,
+    iconName: 'Headphones',
+    steps: [
+      {
+        id: 401,
+        stepNumber: 1,
+        title: 'Abrir el Menú Principal',
+        screenTitle: 'Pantalla de Inicio - Pestaña Menú',
+        category: 'cartelera',
+        summary: 'En la pantalla de inicio ubica la barra de navegación inferior para desplegar las opciones generales de la aplicación.',
+        actionRequired: 'Toca el ícono de "Menú" en la esquina inferior derecha.',
+        detailedInstructions: [
+          'En la barra inferior de la pantalla ubica la esquina derecha.',
+          'Localiza el ícono con las tres líneas horizontales titulado "Menú".',
+          'Púlsalo para desplegar las opciones de cuenta, formatos y servicio al cliente.'
+        ],
+        tips: [
+          'Desde esta barra siempre puedes regresar a la Cartelera o a tus compras.'
+        ],
+        hotspot: {
+          x: 90,
+          y: 90.5,
+          label: 'Tocar Menú',
+          actionText: 'Pulsar Menú en la esquina inferior derecha',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Pestaña', value: 'Menú General' },
+          { label: 'Ubicación', value: 'Esquina inferior derecha' }
+        ],
+        imagePlaceholderName: '1.jpg'
+      },
+      {
+        id: 402,
+        stepNumber: 2,
+        title: 'Seleccionar la Opción de Soporte',
+        screenTitle: 'Menú Desplegable - Opciones',
+        category: 'cartelera',
+        summary: 'El panel inferior muestra las opciones institucionales y de configuración de Cinemark.',
+        actionRequired: 'Toca sobre la opción "Soporte" (la última opción con ícono de audífonos).',
+        detailedInstructions: [
+          'En la lista de opciones (Perfil/Registro, Formatos, Promociones, Marketing Empresarial, Soporte) desplázate hasta la última fila.',
+          'Toca sobre la tarjeta "Soporte".',
+          'La aplicación abrirá de forma segura el portal web de atención al cliente de Cinemark.'
+        ],
+        tips: [
+          'Este canal está conectado directamente con el equipo de servicio al cliente de Cinemark Colombia.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 81.5,
+          label: 'Opción Soporte',
+          actionText: 'Tocar la opción Soporte',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Servicio', value: 'Soporte y PQRSF' },
+          { label: 'Canal', value: 'Portal de Ayuda Integrado' }
+        ],
+        imagePlaceholderName: '2.jpg'
+      },
+      {
+        id: 403,
+        stepNumber: 3,
+        title: 'Seleccionar el Tipo de Formulario',
+        screenTitle: 'Zendesk Cinemark - Enviar una Solicitud',
+        category: 'cartelera',
+        summary: 'El portal de soporte requiere categorizar tu solicitud para asignarla al departamento correspondiente.',
+        actionRequired: 'Toca sobre el selector de formulario (la caja con el guion "-") para desplegar las opciones.',
+        detailedInstructions: [
+          'Revisa las notas importantes: verificar tu correo electrónico para que tu solicitud no quede suspendida.',
+          'Ubica la caja de selección que muestra un guion "-".',
+          'Tócala para abrir la lista desplegable con los tipos de inconvenientes.'
+        ],
+        tips: [
+          'No olvides tener a la mano el correo electrónico con el que compraste tus entradas.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 60,
+          label: 'Selector de Formulario',
+          actionText: 'Tocar selector para abrir opciones',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Plataforma', value: 'Zendesk Oficial Cinemark' },
+          { label: 'Requisito', value: 'Verificar correo' }
+        ],
+        imagePlaceholderName: '3.jpg'
+      },
+      {
+        id: 404,
+        stepNumber: 4,
+        title: 'Elegir el Motivo de la Solicitud',
+        screenTitle: 'Opciones de Soporte Disponibles',
+        category: 'cartelera',
+        summary: 'Selecciona la categoría exacta de tu consulta para radicar tu caso.',
+        actionRequired: 'Toca sobre la opción "No recibí las boletas." o "PQRSF Cinemark Colombia."',
+        detailedInstructions: [
+          'Entre las opciones verás: Cine Club PRO/GOLD, Soporte - Compras Online, No recibí las boletas, PQRSF Cinemark Colombia o Ventas Corporativas.',
+          'Si realizaste el pago y no llegaron tus entradas digitales, selecciona "No recibí las boletas." para atención prioritaria.',
+          '¡Listo! Luego solo deberás escribir tu número de transacción o cédula para que Cinemark te dé respuesta.'
+        ],
+        tips: [
+          'Las solicitudes radicadas como "No recibí las boletas" cuentan con tiempo de respuesta prioritario.'
+        ],
+        hotspot: {
+          x: 40,
+          y: 67.5,
+          label: 'No recibí las boletas',
+          actionText: 'Elegir motivo de la solicitud',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Opciones clave', value: 'No recibí las boletas / PQRSF' },
+          { label: 'Atención', value: 'Ticket digital con radicado' }
+        ],
+        imagePlaceholderName: '4.jpg'
       }
     ]
   }

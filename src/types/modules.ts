@@ -64,3 +64,12 @@ export interface QuizQuestion {
   correctIndex: number;
   explanation: string;
 }
+
+export interface Hotspot {
+  x: number; // percentage from left (0 - 100)
+  y: number; // percentage from top (0 - 100)
+  label: string;
+  actionText: string;
+  targetElement?: string;
+  type?: 'point' | 'scroll-down';
+}

@@ -21,7 +21,6 @@ interface HeaderProps {
   onChangeView: (view: AppViewMode) => void;
   modules?: Module[];
   onSelectTutorial?: (moduleId: string, stepNumber?: number) => void;
-  onOpenAddModule?: () => void;
   onOpenBatchUpload?: () => void;
   completedCount?: number;
   totalCount?: number;
