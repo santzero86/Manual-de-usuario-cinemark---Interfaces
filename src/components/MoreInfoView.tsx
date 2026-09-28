@@ -31,7 +31,7 @@ export const MoreInfoView: React.FC = () => {
     },
     {
       problem: 'No puedo iniciar sesión',
-      solution: 'Revisa tu correo y contraseña; usa la opción de recuperar contraseña.',
+      solution: 'Revisa tu correo y contraseña o de lo contrario, usa la opción de recuperar contraseña.',
     },
     {
       problem: 'El pago fue rechazado',
@@ -39,7 +39,7 @@ export const MoreInfoView: React.FC = () => {
     },
     {
       problem: 'Pagué pero no recibí mi boleta',
-      solution: 'Revisa "Mis compras" y tu correo; contacta a soporte con tu comprobante de pago.',
+      solution: 'Revisa "Mis compras" y tu correo o contacta a soporte con tu comprobante de pago.',
     },
     {
       problem: 'La app no encuentra teatros cercanos',
@@ -71,15 +71,15 @@ export const MoreInfoView: React.FC = () => {
   const faqs = [
     {
       q: '¿Qué hago si realicé el pago por PSE o Tarjeta y no recibí las boletas al correo?',
-      a: '1. Revisa tu carpeta de correo no deseado (Spam) o Promociones buscando "Cinemark Colombia". 2. Abre la aplicación de Cinemark, inicia sesión y entra a la sección "Mis Compras" / "Mis Boletas" en el menú inferior; las entradas con código QR aparecerán allí activas. 3. Si la transacción fue debitada pero no aparece compra, radica una solicitud inmediata con tu código de transacción CUS de PSE.'
+      a: 'Revisa tu carpeta de correo no deseado (Spam) o Promociones buscando "Cinemark Colombia", abre la aplicación de Cinemark, inicia sesión y entra a la sección "Mis Compras" / "Mis Boletas" en el menú inferior; las entradas con código QR aparecerán allí activas, si la transacción fue debitada pero no aparece compra, radica una solicitud de manera inmediata.'
     },
     {
       q: '¿Es necesario imprimir las boletas físicas en la taquilla del cine?',
-      a: 'No. La aplicación oficial de Cinemark genera un código QR digital seguro para cada boleta y combo de confitería. Puedes presentarlo directamente desde la pantalla de tu celular en el punto de acceso a las salas o en la barra express de confitería.'
+      a: 'No, la aplicación oficial de Cinemark genera un código QR digital seguro para cada boleta y combo de confitería. Puedes presentarlo directamente desde la pantalla de tu celular en el punto de acceso a las salas o en la barra express de confitería.'
     },
     {
       q: '¿Cuánto tiempo antes debo llegar al cine para reclamar mi confitería comprada en la app?',
-      a: 'Recomendamos llegar entre 15 y 20 minutos antes de la hora de la función. Dirígete a la fila señalizada como "Barra Express / Compras por App" y muestra el código QR de tu pedido de confitería para que te entreguen tus productos recién preparados.'
+      a: 'Recomendamos llegar entre 15 y 20 minutos antes de la hora de la función. Dirígete a la fila señalizada como "Compras por App" y muestra el código QR de tu pedido de confitería para que te entreguen tus productos recién preparados.'
     },
     {
       q: '¿Cómo puedo cambiar el teatro seleccionado si me equivoqué de ciudad o complejo?',
@@ -168,20 +168,17 @@ export const MoreInfoView: React.FC = () => {
               Instrucciones para actualizar el software
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Ve a Google Play, busca "Cinemark Colombia" y toca Actualizar. También puedes activar las
-              actualizaciones automáticas. Las actualizaciones traen mejoras y corrección de errores; por
-              ejemplo, una actualización reciente mejoró el orden de las boletas y añadió el cálculo de ahorro
-              con Cine Club Pro.
+              Ve a Google Play, busca "Cinemark Colombia" y toca Actualizar o también puedes activar las
+              actualizaciones automáticas, ya que con ellas se traen mejoras y corrección de errores.
             </p>
           </div>
 
           <div className="space-y-2">
             <h3 className="text-xs sm:text-sm font-bold text-slate-800">
               Procedimientos para realizar copias de seguridad
-              <span className="text-[10px] font-semibold text-slate-400 ml-1.5">(si es necesario)</span>
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              No son necesarias. Tus datos están vinculados a tu cuenta, así que si inicias sesión en otro
+              No son necesarias, tus datos están vinculados a tu cuenta, así que si inicias sesión en otro
               celular los recuperas.{' '}
             </p>
           </div>
@@ -217,8 +214,7 @@ export const MoreInfoView: React.FC = () => {
         >
           <div className="space-y-3">
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Cinemark no cuenta con canales de soporte independientes (línea telefónica, correo directo,
-              portal aparte). El único canal oficial es un{' '}
+              Cinemark no cuenta con canales de soporte independientes (línea telefónica o correo directo). El único canal oficial es un{' '}
               <strong className="text-slate-900">formulario de solicitud</strong>, disponible tanto en la
               app como en el sitio web de Cinemark: dejas tu consulta y tus datos de contacto, y el equipo
               de soporte te responde directamente por esos medios.

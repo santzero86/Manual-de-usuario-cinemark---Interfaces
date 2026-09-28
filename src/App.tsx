@@ -243,7 +243,7 @@ export default function App() {
 
           {viewMode === 'cover' && (
             <CoverPageView
-              modules={modules}
+              modules={modules.filter((m) => m.id !== 'atencion-soporte-pqrsf')}
               onOpenSimulator={(modId) => {
                 if (modId) setActiveModuleId(modId);
                 setActiveStepNumber(1);

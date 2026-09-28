@@ -38,7 +38,7 @@ export const MODULES_DATA: Module[] = [
           type: 'point'
         },
         keyDetails: [
-          { label: 'Sistema Operativo', value: 'Android 8.0 o superior' },
+          { label: 'Sistema Operativo', value: 'Android 9.0 o superior' },
           { label: 'Tienda Oficial', value: 'Google Play Store' }
         ],
         imagePlaceholderName: '1.jpg'
