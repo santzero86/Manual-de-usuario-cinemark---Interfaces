@@ -454,6 +454,240 @@ export const MODULES_DATA: Module[] = [
     ]
   },
   {
+    id: 'cambio-seleccion-cine',
+    title: 'Selección y Cambio de Cine / Teatros',
+    shortDescription: 'Consulta los cines de Cinemark en Cali, filtra por cercanía GPS (MallPlaza o Pacific Mall), gestiona favoritos y usa el mapa.',
+    fullDescription: 'Aprende a ubicar y cambiar de teatro en la aplicación de Cinemark Colombia. Descubre cómo acceder a la pestaña de Teatros, ver la distancia exacta en kilómetros desde tu ubicación actual, guardar cines en favoritos y explorar el mapa interactivo con las tecnologías de cada sede (XD, D-BOX, Bistro).',
+    category: 'Boletas',
+    badge: 'Sedes & Ubicación',
+    durationMinutes: 2,
+    difficulty: 'Principiante',
+    totalSteps: 3,
+    isAvailable: true,
+    iconName: 'MapPin',
+    steps: [
+      {
+        id: 201,
+        stepNumber: 1,
+        title: 'Acceder a la Selección de Cine',
+        screenTitle: 'Pantalla de Inicio - Encabezado Superior',
+        category: 'cartelera',
+        summary: 'En la parte superior de la cartelera puedes cambiar de complejo cinematográfico con un solo toque.',
+        actionRequired: 'Toca en "Seleccionar cine" en el encabezado superior (al lado de CARTELERA POR CINE).',
+        detailedInstructions: [
+          'En la parte superior de la pantalla principal ubica la franja de opciones.',
+          'Al lado derecho de "CARTELERA POR CINE", toca sobre el botón "Seleccionar cine".',
+          'Esto abrirá de inmediato la lista de teatros disponibles en tu ciudad.'
+        ],
+        tips: [
+          'Este botón superior es la forma más rápida de cambiar de sala sin tener que salirte de la cartelera.'
+        ],
+        hotspot: {
+          x: 76,
+          y: 16,
+          label: 'Seleccionar cine',
+          actionText: 'Tocar en "Seleccionar cine" arriba a la derecha',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Ubicación', value: 'Encabezado superior (Subheader)' },
+          { label: 'Ciudad predeterminada', value: 'Cali' }
+        ],
+        imagePlaceholderName: '1.jpg'
+      },
+      {
+        id: 202,
+        stepNumber: 2,
+        title: 'Explorar Sedes Cercanas y Vista de Mapa',
+        screenTitle: 'Teatros - Lista de Sedes y Distancias',
+        category: 'cartelera',
+        summary: 'Visualiza las salas ordenadas por proximidad GPS (MallPlaza a 1.76 km, Pacific Mall a 5.65 km) o abre la vista de mapa.',
+        actionRequired: 'Toca el ícono de mapa en la esquina superior derecha (junto a "Cali") para ver las sedes geolocalizadas.',
+        detailedInstructions: [
+          'Observa las opciones bajo "Cercanos a ti": MallPlaza (1.76 km) y Pacific Mall (5.65 km).',
+          'En la sección "Favoritos" puedes pulsar el corazón ❤️ para fijar tu sede preferida.',
+          'En la esquina superior derecha, junto al rótulo "Cali", toca el ícono del mapa plegado para abrir la vista satelital.'
+        ],
+        tips: [
+          'MallPlaza se ubica sobre la Calle 5 en el sur de Cali, mientras que Pacific Mall está en el norte (Av. 6ta).'
+        ],
+        hotspot: {
+          x: 93,
+          y: 7.5,
+          label: 'Ver en Mapa',
+          actionText: 'Tocar ícono de mapa arriba a la derecha',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Cine más cercano', value: 'MallPlaza (1.76 km)' },
+          { label: 'Cine Favorito', value: 'Pacific Mall (5.65 km)' }
+        ],
+        imagePlaceholderName: '2.jpg'
+      },
+      {
+        id: 203,
+        stepNumber: 3,
+        title: 'Seleccionar Teatro en el Mapa Interactivo',
+        screenTitle: 'Teatros Cali - Mapa Interactivo con GPS',
+        category: 'cartelera',
+        summary: 'Navega en el mapa interactivo sobre Cali, identifica las tecnologías de sala (XD, D-BOX, Bistro) y elige tu complejo.',
+        actionRequired: 'Toca la tarjeta del cine (MallPlaza) o su marcador en el mapa para seleccionarlo como tu teatro activo.',
+        detailedInstructions: [
+          'El mapa muestra las vías principales de Cali (Calle 5, Autopista Sur) y los marcadores rojos de Cinemark.',
+          'En la tarjeta inferior se confirman las tecnologías de MallPlaza: salas XD de pantalla gigante, butacas con movimiento D-BOX y oferta gastronómica Movie Bistro.',
+          'Toca sobre la tarjeta para fijar este complejo y que la cartelera te muestre sus horarios.'
+        ],
+        tips: [
+          'Puedes deslizar horizontalmente la tarjeta inferior para alternar entre MallPlaza y Pacific Mall en el mapa.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 76,
+          label: 'Confirmar Sede',
+          actionText: 'Tocar tarjeta para seleccionar este cine',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Teatro en mapa', value: 'Cinemark MallPlaza' },
+          { label: 'Formatos disponibles', value: 'XD, D-BOX, Movie Bistro' },
+          { label: 'Dirección', value: 'Calle 5 # 52-140 Local 442' }
+        ],
+        imagePlaceholderName: '3.jpg'
+      }
+    ]
+  },
+  {
+    id: 'atencion-soporte-pqrsf',
+    title: 'Atención al Cliente, PQRSF y Soporte',
+    shortDescription: 'Aprende a radicar consultas, solicitar reembolsos y resolver inquietudes sobre boletas desde el menú de la app.',
+    fullDescription: 'Guía oficial para acceder al Centro de Ayuda y PQRSF integrado en Cinemark Colombia. Conoce cómo abrir el menú principal, ingresar al soporte Zendesk oficial, seleccionar tu requerimiento (No recibí las boletas, compras online) y radicar tu caso.',
+    category: 'Cuenta y Pagos',
+    badge: 'Ayuda & PQRSF',
+    durationMinutes: 3,
+    difficulty: 'Principiante',
+    totalSteps: 4,
+    isAvailable: true,
+    iconName: 'Headphones',
+    steps: [
+      {
+        id: 401,
+        stepNumber: 1,
+        title: 'Abrir el Menú Principal',
+        screenTitle: 'Pantalla de Inicio - Pestaña Menú',
+        category: 'cartelera',
+        summary: 'En la pantalla de inicio ubica la barra de navegación inferior para desplegar las opciones generales de la aplicación.',
+        actionRequired: 'Toca el ícono de "Menú" en la esquina inferior derecha.',
+        detailedInstructions: [
+          'En la barra inferior de la pantalla ubica la esquina derecha.',
+          'Localiza el ícono con las tres líneas horizontales titulado "Menú".',
+          'Púlsalo para desplegar las opciones de cuenta, formatos y servicio al cliente.'
+        ],
+        tips: [
+          'Desde esta barra siempre puedes regresar a la Cartelera o a tus compras.'
+        ],
+        hotspot: {
+          x: 90,
+          y: 90.5,
+          label: 'Tocar Menú',
+          actionText: 'Pulsar Menú en la esquina inferior derecha',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Pestaña', value: 'Menú General' },
+          { label: 'Ubicación', value: 'Esquina inferior derecha' }
+        ],
+        imagePlaceholderName: '1.jpg'
+      },
+      {
+        id: 402,
+        stepNumber: 2,
+        title: 'Seleccionar la Opción de Soporte',
+        screenTitle: 'Menú Desplegable - Opciones',
+        category: 'cartelera',
+        summary: 'El panel inferior muestra las opciones institucionales y de configuración de Cinemark.',
+        actionRequired: 'Toca sobre la opción "Soporte" (con ícono de diadema/auriculares).',
+        detailedInstructions: [
+          'En la lista de opciones (Perfil, Formatos, Promociones, Marketing Empresarial, Soporte) desplázate hasta la última fila.',
+          'Toca sobre "Soporte".',
+          'La aplicación abrirá de forma segura el portal web de atención al cliente de Cinemark.'
+        ],
+        tips: [
+          'Este canal está conectado directamente con el equipo de servicio al cliente de Cinemark Colombia.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 81.5,
+          label: 'Opción Soporte',
+          actionText: 'Tocar la opción Soporte',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Servicio', value: 'Soporte y PQRSF' },
+          { label: 'Canal', value: 'Portal de Ayuda Integrado' }
+        ],
+        imagePlaceholderName: '2.jpeg'
+      },
+      {
+        id: 403,
+        stepNumber: 3,
+        title: 'Seleccionar el Tipo de Formulario',
+        screenTitle: 'Zendesk Cinemark - Enviar una Solicitud',
+        category: 'cartelera',
+        summary: 'El portal de soporte requiere categorizar tu solicitud para asignarla al departamento correspondiente.',
+        actionRequired: 'Toca sobre el selector de formulario (la caja con el guion "-") para desplegar las opciones.',
+        detailedInstructions: [
+          'Revisa las notas importantes: verificar tu correo electrónico para que tu solicitud no quede suspendida.',
+          'Ubica la caja de selección que muestra un guion "-".',
+          'Tócala para abrir la lista desplegable con los tipos de inconvenientes.'
+        ],
+        tips: [
+          'No olvides tener a la mano el correo electrónico con el que compraste tus entradas.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 59.5,
+          label: 'Selector de Formulario',
+          actionText: 'Tocar selector para abrir opciones',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Plataforma', value: 'Zendesk Oficial Cinemark' },
+          { label: 'Requisito', value: 'Verificar correo' }
+        ],
+        imagePlaceholderName: '3.jpeg'
+      },
+      {
+        id: 404,
+        stepNumber: 4,
+        title: 'Elegir el Motivo de la Solicitud',
+        screenTitle: 'Opciones de Soporte Disponibles',
+        category: 'cartelera',
+        summary: 'Selecciona la categoría exacta de tu consulta para radicar tu caso.',
+        actionRequired: 'Toca sobre la opción correspondiente a tu caso, por ejemplo "No recibí las boletas." o "PQRSF Cinemark Colombia."',
+        detailedInstructions: [
+          'Entre las opciones verás: Cine Club PRO/GOLD, Soporte - Compras Online, No recibí las boletas, PQRSF Cinemark Colombia o Ventas Corporativas.',
+          'Si realizaste el pago y no llegaron tus entradas digitales, selecciona "No recibí las boletas." para atención prioritaria.',
+          '¡Listo! Luego solo deberás escribir tu número de transacción o cédula para que Cinemark te dé respuesta.'
+        ],
+        tips: [
+          'Las solicitudes radicadas como "No recibí las boletas" cuentan con tiempo de respuesta prioritario.'
+        ],
+        hotspot: {
+          x: 40,
+          y: 67.5,
+          label: 'No recibí las boletas',
+          actionText: 'Elegir motivo de la solicitud',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Opciones clave', value: 'No recibí las boletas / PQRSF' },
+          { label: 'Atención', value: 'Ticket digital con radicado' }
+        ],
+        imagePlaceholderName: '4.jpg'
+      }
+    ]
+  },
+  {
     id: 'compra-boletas-confiteria',
     title: 'Compra de Boletas y Confitería',
     shortDescription: 'Aprende a elegir película, formato XD/Premier, asientos en sala, combos de comida y pagar con PSE o tarjeta.',
@@ -537,7 +771,7 @@ export const MODULES_DATA: Module[] = [
         actionRequired: 'Revisa las clasificaciones de edad y duración antes de comprar boletas para menores de edad o grupos.',
         detailedInstructions: [
           'Cinemark organiza las películas en una cuadrícula con duración exacta (ej: 1H 45M, 2H 50M).',
-          'Cada película cuenta con su distintivo de clasificación: "15-A" (mayores de 15 años), "12-A" (mayores de 12 años) o "Todos" (apta para todo público).',
+          'Cada película cuenta con su distintivo de clasificación: "15-A", "12-A" o "Todos".',
           'Al desplazarte hacia abajo encontrarás la sección "PRÓXIMOS ESTRENOS" para agendar tus visitas futuras.'
         ],
         tips: [

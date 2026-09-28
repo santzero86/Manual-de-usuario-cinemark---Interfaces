@@ -8,7 +8,9 @@ const bundledImages = import.meta.glob('../assets/**/*.{jpg,jpeg,png,webp,JPG,JP
 const ASSET_FOLDER_BY_MODULE: Record<string, string> = {
   'descarga-del-aplicativo': 'descargar el aplicativo',
   'login-registro-cuenta': 'Login-SignUp',
+  'cambio-seleccion-cine': 'Cambiar de cine',
   'compra-boletas-confiteria': 'Evento de compra de tiquetes',
+  'atencion-soporte-pqrsf': 'Soporte y PQRSF',
 };
 
 export function hasBundledScreenshots(moduleId: string): boolean {
@@ -29,12 +31,16 @@ export function getBundledScreenshot(module: Module, step: Step): string | null 
   ].filter(Boolean) as string[];
 
   for (const fileName of candidates) {
-    // Busca en la ruta exacta y variantes por si tiene mayúsculas
     const possiblePaths = [
       `../assets/${folder}/${fileName}`,
+      `../assets/Soporte/${fileName}`,
+      `../assets/soporte/${fileName}`,
+      `../assets/Cambiar de cine/${fileName}`,
+      `../assets/cambiar de cine/${fileName}`,
       `../assets/descargar el aplicativo/${fileName}`,
       `../assets/Descargar el aplicativo/${fileName}`,
-      `../assets/Descarga del aplicativo/${fileName}`,
+      `../assets/Login-SignUp/${fileName}`,
+      `../assets/Evento de compra de tiquetes/${fileName}`,
     ];
 
     for (const path of possiblePaths) {
