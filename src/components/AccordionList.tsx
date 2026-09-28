@@ -47,6 +47,7 @@ export const AccordionList: React.FC<AccordionListProps> = ({ items, defaultOpen
               <button
                 type="button"
                 onClick={() => toggle(idx)}
+                aria-expanded={isOpen}
                 className="w-full flex items-center justify-between gap-3 text-left pt-0.5 pb-1 cursor-pointer group"
               >
                 <span className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-red-600 transition-colors">
