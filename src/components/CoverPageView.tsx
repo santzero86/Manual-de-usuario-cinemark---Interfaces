@@ -9,7 +9,8 @@ import {
   Ticket,
   UtensilsCrossed,
   Headphones,
-  Sparkles
+  Sparkles,
+  Download
 } from 'lucide-react';
 
 interface CoverPageViewProps {
@@ -25,6 +26,8 @@ export const CoverPageView: React.FC<CoverPageViewProps> = ({
 }) => {
   const getModuleIcon = (iconName: string) => {
     switch (iconName) {
+      case 'Download':
+        return <Download className="w-6 h-6 text-red-600" />;
       case 'User':
       case 'LogIn':
         return <User className="w-6 h-6 text-red-600" />;
