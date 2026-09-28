@@ -1,19 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Info, 
-  FileText, 
-  Home, 
-  Search, 
-  X, 
-  ChevronRight, 
+import {
+  Info,
+  Home,
+  Search,
+  X,
+  ChevronRight,
   Sparkles,
   Ticket,
   User,
-  ArrowRight
+  ArrowRight,
+  BookOpen,
+  Headphones
 } from 'lucide-react';
 import { Module } from '../types/modules';
 
-export type AppViewMode = 'landing' | 'cover' | 'simulator' | 'info';
+export type AppViewMode = 'landing' | 'manual' | 'cover' | 'simulator' | 'info';
 
 interface HeaderProps {
   currentView: AppViewMode;
@@ -97,16 +98,16 @@ export const Header: React.FC<HeaderProps> = ({
         <button 
           onClick={() => onChangeView('landing')}
           className="flex items-center gap-2.5 text-left group cursor-pointer"
-          title="Cinemark Academy"
+          title="Cinemark"
         >
           <div className="w-8 h-8 rounded-full bg-[#d6001c] flex items-center justify-center text-white font-black text-lg tracking-tighter shadow-md shadow-red-900/20 group-hover:scale-105 transition-transform shrink-0">
             C
           </div>
           <div className="hidden sm:block">
             <div className="text-sm sm:text-base font-bold tracking-tight text-slate-900 flex items-center gap-1.5 group-hover:text-red-600 transition-colors">
-              <span>Cinemark Academy</span>
+              <span>Cinemark</span>
             </div>
-            <div className="text-[10px] text-slate-500">Guía Interactiva · Cali</div>
+            <div className="text-[10px] text-slate-500">Guía Interactiva</div>
           </div>
         </button>
       </div>
@@ -123,7 +124,7 @@ export const Header: React.FC<HeaderProps> = ({
               setIsOpen(true);
             }}
             onFocus={() => setIsOpen(true)}
-            placeholder="Buscar tutoriales disponibles..."
+            placeholder="Buscar en el Manual..."
             className="w-full pl-9 pr-8 py-1.5 bg-neutral-100 hover:bg-neutral-200/80 focus:bg-white border border-neutral-300 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 rounded-full text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 transition-all outline-none"
           />
           {searchQuery && (
@@ -147,9 +148,9 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="flex items-center gap-1.5 text-neutral-800">
                 <Sparkles className="w-3.5 h-3.5 text-red-600" />
                 <span>
-                  {query 
-                    ? `Resultados (${filteredResults.length})` 
-                    : `Tutoriales Disponibles (${modules.length})`
+                  {query
+                    ? `Resultados (${filteredResults.length})`
+                    : `Módulos del Manual (${modules.length})`
                   }
                 </span>
               </span>
@@ -165,7 +166,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <Search className="w-5 h-5" />
                   </div>
                   <p className="text-xs font-bold text-neutral-800">
-                    No se encontraron tutoriales con "{searchQuery}"
+                    No se encontraron resultados en el manual con "{searchQuery}"
                   </p>
                   <p className="text-[11px] text-neutral-500 max-w-xs mx-auto">
                     Prueba buscando términos como <span className="font-semibold text-red-600">"boletas"</span>, <span className="font-semibold text-red-600">"asientos"</span>, <span className="font-semibold text-red-600">"registro"</span> o <span className="font-semibold text-red-600">"pse"</span>.
@@ -261,16 +262,29 @@ export const Header: React.FC<HeaderProps> = ({
         </button>
 
         <button
+          onClick={() => onChangeView('manual')}
+          className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all duration-200 whitespace-nowrap cursor-pointer active:scale-95 ${
+            currentView === 'manual'
+              ? 'bg-[#d6001c] text-white shadow-md shadow-red-950/20 ring-1 ring-red-400 scale-[1.02]'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 hover:scale-[1.02]'
+          }`}
+          title="Información de la app"
+        >
+          <Info className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Información de la app</span>
+        </button>
+
+        <button
           onClick={() => onChangeView('cover')}
           className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl transition-all duration-200 whitespace-nowrap cursor-pointer active:scale-95 ${
             currentView === 'cover'
               ? 'bg-[#d6001c] text-white shadow-md shadow-red-950/20 ring-1 ring-red-400 scale-[1.02]'
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 hover:scale-[1.02]'
           }`}
-          title="Tutoriales"
+          title="Manual"
         >
-          <FileText className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Tutoriales</span>
+          <BookOpen className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Manual</span>
         </button>
 
         <button
@@ -280,10 +294,10 @@ export const Header: React.FC<HeaderProps> = ({
               ? 'bg-[#d6001c] text-white shadow-md shadow-red-950/20 ring-1 ring-red-400 scale-[1.02]'
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 hover:scale-[1.02]'
           }`}
-          title="Más Información"
+          title="Soportes y ayudas"
         >
-          <Info className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Más Información</span>
+          <Headphones className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Soportes y ayudas</span>
         </button>
       </nav>
     </header>

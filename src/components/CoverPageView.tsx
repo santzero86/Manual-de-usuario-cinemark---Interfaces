@@ -16,13 +16,15 @@ import {
 interface CoverPageViewProps {
   modules: Module[];
   onOpenSimulator: (moduleId?: string) => void;
-  onBackToLanding?: () => void;
+  onGoBack?: () => void;
+  backLabel?: string;
 }
 
 export const CoverPageView: React.FC<CoverPageViewProps> = ({
   modules,
   onOpenSimulator,
-  onBackToLanding,
+  onGoBack,
+  backLabel,
 }) => {
   const getModuleIcon = (iconName: string) => {
     switch (iconName) {
@@ -51,15 +53,15 @@ export const CoverPageView: React.FC<CoverPageViewProps> = ({
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6 pb-16 animate-fade-in text-slate-800">
       
-      {/* Top Bar with Return to Landing option */}
-      {onBackToLanding && (
+      {/* Top Bar with Return to previous page option */}
+      {onGoBack && (
         <div className="flex items-center">
           <button
-            onClick={onBackToLanding}
+            onClick={onGoBack}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer shadow-xs group hover:scale-[1.02]"
           >
             <ArrowLeft className="w-3.5 h-3.5 text-red-600 group-hover:-translate-x-1 transition-transform" />
-            <span>Volver a la portada de bienvenida</span>
+            <span>Volver a {backLabel}</span>
           </button>
         </div>
       )}
