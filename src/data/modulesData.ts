@@ -2,6 +2,458 @@ import { Module, QuizQuestion } from '../types/modules';
 
 export const MODULES_DATA: Module[] = [
   {
+    id: 'descarga-del-aplicativo',
+    title: 'Descarga e Instalación del Aplicativo',
+    shortDescription: 'Aprende a buscar, descargar e instalar la app oficial de Cinemark Colombia desde Google Play Store en Android.',
+    fullDescription: 'Guía paso a paso para la instalación en dispositivos móviles Android: búsqueda en la tienda de apps de Google, validación del desarrollador oficial (SunDevs), instalación, permisos de notificaciones y primer ingreso.',
+    category: 'Cuenta y Pagos',
+    badge: 'Inicio / Instalación',
+    durationMinutes: 3,
+    difficulty: 'Principiante',
+    totalSteps: 8,
+    isAvailable: true,
+    iconName: 'Download',
+    steps: [
+      {
+        id: 101,
+        stepNumber: 1,
+        title: 'Abrir la Google Play Store',
+        screenTitle: 'Menú de Aplicaciones / Carpeta Google',
+        category: 'cartelera',
+        summary: 'En tu dispositivo móvil Android, ingresa a la tienda oficial de aplicaciones para iniciar la búsqueda.',
+        actionRequired: 'Toca el ícono de Google Play Store para abrir la tienda.',
+        detailedInstructions: [
+          'Desbloquea tu teléfono y abre el cajón de aplicaciones o la carpeta de Google.',
+          'Localiza el ícono triangular multicolor de "Play Store".',
+          'Púlsalo para ingresar a la tienda de apps.'
+        ],
+        tips: [
+          'Asegúrate de contar con conexión a Wi-Fi o datos móviles activos.',
+          'Verifica tener espacio suficiente de almacenamiento (aprox. 50 MB libres).'
+        ],
+        hotspot: {
+          x: 27,
+          y: 82,
+          label: 'Abrir Play Store',
+          actionText: 'Tocar el ícono de Play Store',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Sistema Operativo', value: 'Android 8.0 o superior' },
+          { label: 'Tienda Oficial', value: 'Google Play Store' }
+        ],
+        imagePlaceholderName: '1.jpg'
+      },
+      {
+        id: 102,
+        stepNumber: 2,
+        title: 'Buscar la Aplicación',
+        screenTitle: 'Google Play Store - Explorador',
+        category: 'cartelera',
+        summary: 'Utiliza el buscador integrado en la parte superior para encontrar la app oficial de Cinemark.',
+        actionRequired: 'Toca la barra superior "Buscar apps y juegos" y escribe "cinemark".',
+        detailedInstructions: [
+          'En la parte superior de la Play Store ubica la barra de búsqueda con el ícono de lupa.',
+          'Toca sobre el campo de texto.',
+          'Escribe la palabra "cinemark" y presiona la tecla de búsqueda.'
+        ],
+        tips: [
+          'No es necesario escribir el nombre completo, con "cinemark" aparecerá de primera.'
+        ],
+        hotspot: {
+          x: 42,
+          y: 7.5,
+          label: 'Barra de Búsqueda',
+          actionText: 'Tocar barra para escribir "cinemark"',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Término de búsqueda', value: 'cinemark' },
+          { label: 'Categoría', value: 'Entretenimiento' }
+        ],
+        imagePlaceholderName: '2.jpg'
+      },
+      {
+        id: 103,
+        stepNumber: 3,
+        title: 'Seleccionar Cinemark Colombia',
+        screenTitle: 'Resultados de Búsqueda',
+        category: 'cartelera',
+        summary: 'Verifica la versión correspondiente a Colombia desarrollada por SunDevs.',
+        actionRequired: 'Toca el primer resultado oficial "Cinemark Colombia".',
+        detailedInstructions: [
+          'Observa el listado de resultados.',
+          'Elige la opción que dice "Cinemark Colombia" con desarrollador "SunDevs" y el ícono del círculo rojo con la letra "C" blanca.',
+          'Toca sobre el título para entrar a la ficha técnica de la app.'
+        ],
+        tips: [
+          'Evita descargar versiones de otros países como Centroamérica o Chile para que puedas consultar las salas de Cali y Colombia.'
+        ],
+        hotspot: {
+          x: 48,
+          y: 17,
+          label: 'Cinemark Colombia',
+          actionText: 'Tocar el resultado oficial',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Desarrollador', value: 'SunDevs' },
+          { label: 'Peso descarga', value: '17 MB' },
+          { label: 'Calificación', value: '4.3 estrellas' }
+        ],
+        imagePlaceholderName: '3.jpg'
+      },
+      {
+        id: 104,
+        stepNumber: 4,
+        title: 'Descargar e Instalar',
+        screenTitle: 'Ficha de Instalación - Cinemark Colombia',
+        category: 'cartelera',
+        summary: 'Inicia la instalación automática de la app oficial en tu dispositivo.',
+        actionRequired: 'Presiona el botón azul "Instalar".',
+        detailedInstructions: [
+          'En la ficha de la aplicación confirma el nombre "Cinemark Colombia".',
+          'Toca el botón azul "Instalar".',
+          'Google Play verificará el archivo con Play Protect y comenzará la descarga.'
+        ],
+        tips: [
+          'La app pesa solo 17 MB, por lo que la descarga tomará unos pocos segundos.'
+        ],
+        hotspot: {
+          x: 44,
+          y: 36.5,
+          label: 'Botón Instalar',
+          actionText: 'Pulsar en Instalar',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Acción', value: 'Descarga e Instalación' },
+          { label: 'Licencia', value: 'Gratuita' }
+        ],
+        imagePlaceholderName: '4.jpg'
+      },
+      {
+        id: 105,
+        stepNumber: 5,
+        title: 'Progreso de la Instalación',
+        screenTitle: 'Instalando en el Dispositivo...',
+        category: 'cartelera',
+        summary: 'El sistema descarga los paquetes y los instala en la memoria del teléfono.',
+        actionRequired: 'Espera a que el proceso complete el 100%. Toca la pantalla para continuar.',
+        detailedInstructions: [
+          'El círculo de progreso girará mientras finaliza la descarga.',
+          'El estado cambiará de "Descargando..." a "Instalando...".',
+          'No cierres la tienda hasta que termine la instalación.'
+        ],
+        tips: [
+          'Puedes activar la casilla "Abrir automáticamente al terminar" si lo deseas.'
+        ],
+        hotspot: {
+          x: 35,
+          y: 18.5,
+          label: 'Instalando...',
+          actionText: 'Tocar para avanzar',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Estado', value: 'Instalando en segundo plano' }
+        ],
+        imagePlaceholderName: '5.jpg'
+      },
+      {
+        id: 106,
+        stepNumber: 6,
+        title: 'Abrir la Aplicación',
+        screenTitle: 'Instalación Finalizada',
+        category: 'cartelera',
+        summary: 'La aplicación se instaló correctamente y ya se encuentra en tu pantalla de inicio.',
+        actionRequired: 'Pulsa el botón azul "Abrir" para iniciar Cinemark.',
+        detailedInstructions: [
+          'Verifica que el botón de instalación cambió a un botón azul llamado "Abrir".',
+          'Púlsalo para iniciar la app por primera vez.',
+          'También se habrá creado un acceso directo en tu menú de aplicaciones.'
+        ],
+        tips: [
+          'A partir de ahora podrás ingresar directamente tocando el ícono de Cinemark en tu pantalla de inicio.'
+        ],
+        hotspot: {
+          x: 74,
+          y: 26.5,
+          label: 'Botón Abrir',
+          actionText: 'Pulsar en Abrir',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Estado', value: 'Listo para usar' }
+        ],
+        imagePlaceholderName: '6.jpg'
+      },
+      {
+        id: 107,
+        stepNumber: 7,
+        title: 'Permisos de Notificaciones',
+        screenTitle: 'Primer Inicio - Permisos del Sistema',
+        category: 'cartelera',
+        summary: 'Cinemark solicita autorización para enviarte avisos de tus funciones, reservas y promociones.',
+        actionRequired: 'Toca en "Permitir" para recibir notificaciones sobre tus boletas.',
+        detailedInstructions: [
+          'Al abrir la app por primera vez, Android mostrará la ventana flotante de permisos.',
+          'Lee el mensaje: "¿Permitir que Cinemark Colombia te envíe notificaciones?".',
+          'Toca el botón "Permitir" para que te avisen con antelación el inicio de tu película o promociones de combos.'
+        ],
+        tips: [
+          'Permitir notificaciones es muy útil para recibir alertas si hay cambios de sala o cuando tu pedido de confitería express esté listo.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 84,
+          label: 'Pulsar Permitir',
+          actionText: 'Tocar Permitir notificaciones',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Permiso', value: 'Notificaciones Push' },
+          { label: 'Recomendación', value: 'Permitir' }
+        ],
+        imagePlaceholderName: '7.jpg'
+      },
+      {
+        id: 108,
+        stepNumber: 8,
+        title: 'Cerrar Pop-up de Bienvenida y Entrar a Cartelera',
+        screenTitle: 'Pantalla de Inicio - Pop-up Promocional',
+        category: 'cartelera',
+        summary: 'Al cargar la cartelera se muestra el banner de bienvenida de Cine Club. Ciérralo para empezar a navegar.',
+        actionRequired: 'Toca la "X" en la esquina superior derecha para cerrar el pop-up e ingresar a la cartelera.',
+        detailedInstructions: [
+          'Se mostrará la ventana emergente de bienvenida con la promoción de "Boletas Gratis por Comprar o Renovar".',
+          'Ubica el círculo blanco con la "X" roja en la esquina superior derecha.',
+          'Púlsala firmemente para cerrar el anuncio y acceder a la cartelera de películas de Cinemark.'
+        ],
+        tips: [
+          '¡Listo! Ya tienes la app instalada y configurada. Ahora puedes continuar con los módulos de Registro de Cuenta o Compra de Boletas.'
+        ],
+        hotspot: {
+          x: 85,
+          y: 24,
+          label: 'Cerrar Pop-up (X)',
+          actionText: 'Tocar la X para entrar a la app',
+          type: 'point'
+        },
+        keyDetails: [
+          { label: 'Estado final', value: 'App lista y navegable' },
+          { label: 'Siguiente paso sugerido', value: 'Iniciar sesión o elegir película' }
+        ],
+        imagePlaceholderName: '8.jpg'
+      }
+    ]
+  },
+  {
+    id: 'login-registro-cuenta',
+    title: 'Inicio de Sesión y Registro de Cuenta',
+    shortDescription: 'Guía de 6 pasos desde el splash screen y cierre de pop-up hasta el modal de login y formulario de registro con términos.',
+    fullDescription: 'Manual interactivo oficial de 6 pasos para la autenticación en la app de Cinemark. Aprende el flujo completo desde la apertura de la app, el cierre del anuncio emergente de Cine Club, el acceso a "Ingreso o registro", la autenticación por correo/contraseña y el diligenciamiento del formulario de registro con aceptación de términos.',
+    category: 'Cuenta y Pagos',
+    badge: 'Autenticación & Perfil',
+    durationMinutes: 4,
+    difficulty: 'Principiante',
+    totalSteps: 6,
+    isAvailable: true,
+    iconName: 'User',
+    steps: [
+      {
+        id: 301,
+        stepNumber: 1,
+        title: 'Apertura de la App y Pantalla de Carga (Splash Screen)',
+        screenTitle: 'CINEMARK - Pantalla de Carga Inicial',
+        category: 'login',
+        summary: 'Al abrir la aplicación móvil de Cinemark se presenta la pantalla blanca oficial con el logotipo CINEMARK™ mientras cargan los servicios y configuraciones iniciales.',
+        actionRequired: 'Espera a que cargue la aplicación o toca en cualquier parte de la pantalla para avanzar.',
+        detailedInstructions: [
+          'Inicia la aplicación de Cinemark en tu teléfono.',
+          'Visualiza la pantalla de bienvenida / carga con el logotipo corporativo oficial CINEMARK™ centrado.',
+          'La app sincroniza en segundo plano tu ciudad, versión y ofertas vigentes.',
+          'Toca la pantalla o espera unos segundos para ingresar a la pantalla principal.'
+        ],
+        tips: [
+          'Esta pantalla se presenta brevemente cada vez que la app se inicia desde cero.',
+          'Asegúrate de contar con conexión a internet para que las carteleras y promociones carguen correctamente.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 48,
+          label: 'Iniciar Cinemark',
+          actionText: 'Tocar pantalla para continuar'
+        },
+        keyDetails: [
+          { label: 'Aplicación', value: 'Cinemark Colombia Oficial' },
+          { label: 'Estado', value: 'Carga inicial (Splash Screen)' },
+          { label: 'Transición', value: 'Automática al inicio' }
+        ],
+        imagePlaceholderName: '1.jpeg'
+      },
+      {
+        id: 302,
+        stepNumber: 2,
+        title: 'Cerrar Pop-up Publicitario Inicial',
+        screenTitle: 'Cine Club - Anuncio Emergente con Botón X',
+        category: 'login',
+        summary: 'Antes de navegar, la app despliega un pop-up con la promoción de Cine Club ("Boletas gratis por comprar o renovar"). Para acceder al menú de login debes cerrarlo con la "X".',
+        actionRequired: 'Toca la "X" roja dentro del círculo blanco en la esquina superior derecha del banner promocional.',
+        detailedInstructions: [
+          'Al cargar la pantalla principal, se superpone una ventana emergente publicitaria con beneficios de membresía Cine Club Gold y Cine Club Pro.',
+          'Ubica en la esquina superior derecha del recuadro promocional el botón circular blanco con la "X" roja.',
+          'Toca firmemente la "X" para cerrar la publicidad y dejar al descubierto la pantalla de inicio.'
+        ],
+        tips: [
+          'Cerrar este pop-up no anula tus beneficios; la promoción sigue disponible en la pestaña inferior "Cine Club".',
+          'Si no tocas la "X", el contenido de la app permanecerá bloqueado bajo la capa oscura semitransparente.'
+        ],
+        hotspot: {
+          x: 85,
+          y: 23,
+          label: 'Cerrar Pop-up (X)',
+          actionText: 'Pulsar la "X" para cerrar el anuncio'
+        },
+        keyDetails: [
+          { label: 'Promoción', value: 'Boletas gratis Cine Club Gold/Pro' },
+          { label: 'Botón de cierre', value: 'Círculo blanco con "X" roja' },
+          { label: 'Ubicación botón', value: 'Esquina superior derecha del banner' }
+        ],
+        imagePlaceholderName: '2.jpeg'
+      },
+      {
+        id: 303,
+        stepNumber: 3,
+        title: 'Acceso a Ingreso o Registro de Cuenta',
+        screenTitle: 'BIENVENIDO - Ingreso o registro',
+        category: 'login',
+        summary: 'En la parte superior de la pantalla principal, junto al logo de Cinemark, pulsa la sección "BIENVENIDO - Ingreso o registro" para desplegar las opciones de cuenta.',
+        actionRequired: 'Toca sobre el texto "BIENVENIDO - Ingreso o registro" en la barra superior izquierda de la app.',
+        detailedInstructions: [
+          'Una vez en la pantalla de inicio ("Cartelera por Cine"), observa el encabezado superior.',
+          'Junto al ícono circular rojo "C", lee el rótulo "BIENVENIDO" y el subtítulo "Ingreso o registro".',
+          'Toca directamente sobre esta área para abrir el panel inferior de inicio de sesión y registro.'
+        ],
+        tips: [
+          'Iniciar sesión te permite acumular puntos Cine Club, guardar métodos de pago y recibir tus entradas digitales sin reingresar datos.',
+          'Puedes comprar boletos como invitado, pero registrarte te brinda acceso a promociones exclusivas.'
+        ],
+        hotspot: {
+          x: 35,
+          y: 8.5,
+          label: 'Tocar Ingreso o registro',
+          actionText: 'Pulsar en "BIENVENIDO - Ingreso o registro"'
+        },
+        keyDetails: [
+          { label: 'Encabezado', value: 'BIENVENIDO' },
+          { label: 'Acción', value: 'Ingreso o registro' },
+          { label: 'Estado usuario', value: 'No autenticado / Invitado' }
+        ],
+        imagePlaceholderName: '3.jpeg'
+      },
+      {
+        id: 304,
+        stepNumber: 4,
+        title: 'Modal de Inicio de Sesión o Crear Cuenta',
+        screenTitle: 'INICIAR SESIÓN - Panel Inferior',
+        category: 'login',
+        summary: 'En el modal inferior ingresa tu correo y contraseña para acceder, o pulsa el botón blanco "CREAR UNA CUENTA" para registrarte por primera vez.',
+        actionRequired: 'Ingresa tus credenciales y pulsa "INICIAR SESIÓN", o toca "CREAR UNA CUENTA" si no tienes usuario.',
+        detailedInstructions: [
+          'Se despliega el panel inferior modal titulado "INICIAR SESIÓN".',
+          'Si ya estás registrado: digita tu "Email*" y "Contraseña*", y pulsa el botón rojo "INICIAR SESIÓN".',
+          'Si olvidaste tu clave, utiliza el enlace rojo "Olvidé mi contraseña".',
+          'Si eres un usuario nuevo: pulsa el botón blanco con borde rojo "CREAR UNA CUENTA" para abrir el formulario de registro.'
+        ],
+        tips: [
+          'El campo contraseña cuenta con un ícono de ojo para verificar que escribiste los caracteres correctamente.',
+          'Tocar "CREAR UNA CUENTA" te llevará al formulario de registro en dos secciones.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 90,
+          label: 'Iniciar Sesión / Crear Cuenta',
+          actionText: 'Pulsar botón de autenticación'
+        },
+        keyDetails: [
+          { label: 'Campos', value: 'Email*, Contraseña*' },
+          { label: 'Botón principal', value: 'INICIAR SESIÓN (Rojo)' },
+          { label: 'Botón secundario', value: 'CREAR UNA CUENTA (Blanco)' }
+        ],
+        imagePlaceholderName: '4.jpeg'
+      },
+      {
+        id: 305,
+        stepNumber: 5,
+        title: 'Formulario de Registro: Datos Personales (Parte 1)',
+        screenTitle: 'Registrarse - Datos Personales y Documento',
+        category: 'registro',
+        summary: 'Completa la primera parte del formulario con tu información básica: nombres, apellidos, correo de confirmación, celular, dirección, cédula y ciudad (Cali).',
+        actionRequired: 'Rellena los campos obligatorios marcados con asterisco (*) y desplázate hacia abajo para ver la sección de contraseña y términos.',
+        detailedInstructions: [
+          'En el encabezado confirma que estás en la pantalla "<- Registrarse".',
+          'Verifica el "Tipo de persona *" (por defecto "Natural").',
+          'Ingresa tus "Nombres *" y "Apellidos *" tal como figuran en tu documento.',
+          'Digita tu "Correo electrónico *" y confírmalo en "Confirmación correo electrónico *".',
+          'Escribe tu número de "Celular *" y "Dirección *".',
+          'Selecciona tu "Tipo de documento *" (Cédula de Ciudadanía) e introduce tu número.',
+          'Confirma tu "Ciudad *" (Cali) y selecciona tu "Teatro de preferencia *".',
+          'Desplázate hacia la parte inferior del formulario para fijar tu contraseña y aceptar términos.'
+        ],
+        tips: [
+          'Asegúrate de que el correo electrónico coincida exactamente en ambos campos para evitar rechazos de registro.',
+          'El teatro de preferencia se guardará como tu sede predeterminada para futuras compras.'
+        ],
+        hotspot: {
+          x: 75,
+          y: 76,
+          label: 'Diligenciar Datos y Bajar',
+          actionText: 'Llenar campos y desplazarse a la sección final'
+        },
+        keyDetails: [
+          { label: 'Tipo persona', value: 'Natural' },
+          { label: 'Documento', value: 'Cédula de Ciudadanía' },
+          { label: 'Ciudad', value: 'Cali' },
+          { label: 'Teatro', value: 'Pacific Mall (Preferente)' }
+        ],
+        imagePlaceholderName: '5.jpeg'
+      },
+      {
+        id: 306,
+        stepNumber: 6,
+        title: 'Finalización de Registro y Aceptación de Términos (Parte 2)',
+        screenTitle: 'Registrarse - Contraseña y Aceptación de Políticas',
+        category: 'registro',
+        summary: 'Crea tu contraseña, marca obligatoriamente las casillas de Términos y Condiciones y Tratamiento de Datos Personales, y pulsa CONTINUAR para activar tu cuenta.',
+        actionRequired: 'Ingresa tu contraseña, marca los dos checkboxes requeridos y pulsa el botón "CONTINUAR" para finalizar el registro.',
+        detailedInstructions: [
+          'En la parte inferior del formulario, introduce tu "Contraseña *".',
+          'Marca la casilla obligatoria: "Acepto los términos y condiciones" (enlace rojo de consulta).',
+          'Marca la segunda casilla obligatoria: "Acepto el tratamiento de datos personales".',
+          'Verifica que no queden campos con advertencia de error.',
+          'Pulsa el botón "CONTINUAR" para enviar tu registro y acceder a la sesión activa en Cinemark.'
+        ],
+        tips: [
+          'Ambos checkboxes son obligatorios por ley de protección de datos (Habeas Data en Colombia).',
+          'Al pulsar CONTINUAR, tu cuenta quedará vinculada automáticamente a la app y se cerrará el modal de bienvenida.'
+        ],
+        hotspot: {
+          x: 50,
+          y: 96,
+          label: 'Pulsar CONTINUAR',
+          actionText: 'Tocar botón CONTINUAR para finalizar el registro'
+        },
+        keyDetails: [
+          { label: 'Seguridad', value: 'Contraseña encriptada' },
+          { label: 'Términos', value: 'Aceptación obligatoria (2 casillas)' },
+          { label: 'Acción final', value: 'Botón CONTINUAR' }
+        ],
+        imagePlaceholderName: '6.jpeg'
+      }
+    ]
+  },
+  {
     id: 'compra-boletas-confiteria',
     title: 'Compra de Boletas y Confitería',
     shortDescription: 'Aprende a elegir película, formato XD/Premier, asientos en sala, combos de comida y pagar con PSE o tarjeta.',
@@ -419,211 +871,6 @@ export const MODULES_DATA: Module[] = [
           { label: 'Paso final', value: 'Aprobación en tu banco y descarga de Boleta QR' }
         ],
         imagePlaceholderName: '14.jpg'
-      }
-    ]
-  },
-  {
-    id: 'login-registro-cuenta',
-    title: 'Inicio de Sesión y Registro de Cuenta',
-    shortDescription: 'Guía de 6 pasos desde el splash screen y cierre de pop-up hasta el modal de login y formulario de registro con términos.',
-    fullDescription: 'Manual interactivo oficial de 6 pasos para la autenticación en la app de Cinemark. Aprende el flujo completo desde la apertura de la app, el cierre del anuncio emergente de Cine Club, el acceso a "Ingreso o registro", la autenticación por correo/contraseña y el diligenciamiento del formulario de registro con aceptación de términos.',
-    category: 'Cuenta y Pagos',
-    badge: 'Autenticación & Perfil',
-    durationMinutes: 4,
-    difficulty: 'Principiante',
-    totalSteps: 6,
-    isAvailable: true,
-    iconName: 'User',
-    steps: [
-      {
-        id: 301,
-        stepNumber: 1,
-        title: 'Apertura de la App y Pantalla de Carga (Splash Screen)',
-        screenTitle: 'CINEMARK - Pantalla de Carga Inicial',
-        category: 'login',
-        summary: 'Al abrir la aplicación móvil de Cinemark se presenta la pantalla blanca oficial con el logotipo CINEMARK™ mientras cargan los servicios y configuraciones iniciales.',
-        actionRequired: 'Espera a que cargue la aplicación o toca en cualquier parte de la pantalla para avanzar.',
-        detailedInstructions: [
-          'Inicia la aplicación de Cinemark en tu teléfono.',
-          'Visualiza la pantalla de bienvenida / carga con el logotipo corporativo oficial CINEMARK™ centrado.',
-          'La app sincroniza en segundo plano tu ciudad, versión y ofertas vigentes.',
-          'Toca la pantalla o espera unos segundos para ingresar a la pantalla principal.'
-        ],
-        tips: [
-          'Esta pantalla se presenta brevemente cada vez que la app se inicia desde cero.',
-          'Asegúrate de contar con conexión a internet para que las carteleras y promociones carguen correctamente.'
-        ],
-        hotspot: {
-          x: 50,
-          y: 48,
-          label: 'Iniciar Cinemark',
-          actionText: 'Tocar pantalla para continuar'
-        },
-        keyDetails: [
-          { label: 'Aplicación', value: 'Cinemark Colombia Oficial' },
-          { label: 'Estado', value: 'Carga inicial (Splash Screen)' },
-          { label: 'Transición', value: 'Automática al inicio' }
-        ],
-        imagePlaceholderName: '1.jpeg'
-      },
-      {
-        id: 302,
-        stepNumber: 2,
-        title: 'Cerrar Pop-up Publicitario Inicial',
-        screenTitle: 'Cine Club - Anuncio Emergente con Botón X',
-        category: 'login',
-        summary: 'Antes de navegar, la app despliega un pop-up con la promoción de Cine Club ("Boletas gratis por comprar o renovar"). Para acceder al menú de login debes cerrarlo con la "X".',
-        actionRequired: 'Toca la "X" roja dentro del círculo blanco en la esquina superior derecha del banner promocional.',
-        detailedInstructions: [
-          'Al cargar la pantalla principal, se superpone una ventana emergente publicitaria con beneficios de membresía Cine Club Gold y Cine Club Pro.',
-          'Ubica en la esquina superior derecha del recuadro promocional el botón circular blanco con la "X" roja.',
-          'Toca firmemente la "X" para cerrar la publicidad y dejar al descubierto la pantalla de inicio.'
-        ],
-        tips: [
-          'Cerrar este pop-up no anula tus beneficios; la promoción sigue disponible en la pestaña inferior "Cine Club".',
-          'Si no tocas la "X", el contenido de la app permanecerá bloqueado bajo la capa oscura semitransparente.'
-        ],
-        hotspot: {
-          x: 85,
-          y: 23,
-          label: 'Cerrar Pop-up (X)',
-          actionText: 'Pulsar la "X" para cerrar el anuncio'
-        },
-        keyDetails: [
-          { label: 'Promoción', value: 'Boletas gratis Cine Club Gold/Pro' },
-          { label: 'Botón de cierre', value: 'Círculo blanco con "X" roja' },
-          { label: 'Ubicación botón', value: 'Esquina superior derecha del banner' }
-        ],
-        imagePlaceholderName: '2.jpeg'
-      },
-      {
-        id: 303,
-        stepNumber: 3,
-        title: 'Acceso a Ingreso o Registro de Cuenta',
-        screenTitle: 'BIENVENIDO - Ingreso o registro',
-        category: 'login',
-        summary: 'En la parte superior de la pantalla principal, junto al logo de Cinemark, pulsa la sección "BIENVENIDO - Ingreso o registro" para desplegar las opciones de cuenta.',
-        actionRequired: 'Toca sobre el texto "BIENVENIDO - Ingreso o registro" en la barra superior izquierda de la app.',
-        detailedInstructions: [
-          'Una vez en la pantalla de inicio ("Cartelera por Cine"), observa el encabezado superior.',
-          'Junto al ícono circular rojo "C", lee el rótulo "BIENVENIDO" y el subtítulo "Ingreso o registro".',
-          'Toca directamente sobre esta área para abrir el panel inferior de inicio de sesión y registro.'
-        ],
-        tips: [
-          'Iniciar sesión te permite acumular puntos Cine Club, guardar métodos de pago y recibir tus entradas digitales sin reingresar datos.',
-          'Puedes comprar boletos como invitado, pero registrarte te brinda acceso a promociones exclusivas.'
-        ],
-        hotspot: {
-          x: 35,
-          y: 8.5,
-          label: 'Tocar Ingreso o registro',
-          actionText: 'Pulsar en "BIENVENIDO - Ingreso o registro"'
-        },
-        keyDetails: [
-          { label: 'Encabezado', value: 'BIENVENIDO' },
-          { label: 'Acción', value: 'Ingreso o registro' },
-          { label: 'Estado usuario', value: 'No autenticado / Invitado' }
-        ],
-        imagePlaceholderName: '3.jpeg'
-      },
-      {
-        id: 304,
-        stepNumber: 4,
-        title: 'Modal de Inicio de Sesión o Crear Cuenta',
-        screenTitle: 'INICIAR SESIÓN - Panel Inferior',
-        category: 'login',
-        summary: 'En el modal inferior ingresa tu correo y contraseña para acceder, o pulsa el botón blanco "CREAR UNA CUENTA" para registrarte por primera vez.',
-        actionRequired: 'Ingresa tus credenciales y pulsa "INICIAR SESIÓN", o toca "CREAR UNA CUENTA" si no tienes usuario.',
-        detailedInstructions: [
-          'Se despliega el panel inferior modal titulado "INICIAR SESIÓN".',
-          'Si ya estás registrado: digita tu "Email*" y "Contraseña*", y pulsa el botón rojo "INICIAR SESIÓN".',
-          'Si olvidaste tu clave, utiliza el enlace rojo "Olvidé mi contraseña".',
-          'Si eres un usuario nuevo: pulsa el botón blanco con borde rojo "CREAR UNA CUENTA" para abrir el formulario de registro.'
-        ],
-        tips: [
-          'El campo contraseña cuenta con un ícono de ojo para verificar que escribiste los caracteres correctamente.',
-          'Tocar "CREAR UNA CUENTA" te llevará al formulario de registro en dos secciones.'
-        ],
-        hotspot: {
-          x: 50,
-          y: 90,
-          label: 'Iniciar Sesión / Crear Cuenta',
-          actionText: 'Pulsar botón de autenticación'
-        },
-        keyDetails: [
-          { label: 'Campos', value: 'Email*, Contraseña*' },
-          { label: 'Botón principal', value: 'INICIAR SESIÓN (Rojo)' },
-          { label: 'Botón secundario', value: 'CREAR UNA CUENTA (Blanco)' }
-        ],
-        imagePlaceholderName: '4.jpeg'
-      },
-      {
-        id: 305,
-        stepNumber: 5,
-        title: 'Formulario de Registro: Datos Personales (Parte 1)',
-        screenTitle: 'Registrarse - Datos Personales y Documento',
-        category: 'registro',
-        summary: 'Completa la primera parte del formulario con tu información básica: nombres, apellidos, correo de confirmación, celular, dirección, cédula y ciudad (Cali).',
-        actionRequired: 'Rellena los campos obligatorios marcados con asterisco (*) y desplázate hacia abajo para ver la sección de contraseña y términos.',
-        detailedInstructions: [
-          'En el encabezado confirma que estás en la pantalla "<- Registrarse".',
-          'Verifica el "Tipo de persona *" (por defecto "Natural").',
-          'Ingresa tus "Nombres *" y "Apellidos *" tal como figuran en tu documento.',
-          'Digita tu "Correo electrónico *" y confírmalo en "Confirmación correo electrónico *".',
-          'Escribe tu número de "Celular *" y "Dirección *".',
-          'Selecciona tu "Tipo de documento *" (Cédula de Ciudadanía) e introduce tu número.',
-          'Confirma tu "Ciudad *" (Cali) y selecciona tu "Teatro de preferencia *".',
-          'Desplázate hacia la parte inferior del formulario para fijar tu contraseña y aceptar términos.'
-        ],
-        tips: [
-          'Asegúrate de que el correo electrónico coincida exactamente en ambos campos para evitar rechazos de registro.',
-          'El teatro de preferencia se guardará como tu sede predeterminada para futuras compras.'
-        ],
-        hotspot: {
-          x: 75,
-          y: 76,
-          label: 'Diligenciar Datos y Bajar',
-          actionText: 'Llenar campos y desplazarse a la sección final'
-        },
-        keyDetails: [
-          { label: 'Tipo persona', value: 'Natural' },
-          { label: 'Documento', value: 'Cédula de Ciudadanía' },
-          { label: 'Ciudad', value: 'Cali' },
-          { label: 'Teatro', value: 'Pacific Mall (Preferente)' }
-        ],
-        imagePlaceholderName: '5.jpeg'
-      },
-      {
-        id: 306,
-        stepNumber: 6,
-        title: 'Finalización de Registro y Aceptación de Términos (Parte 2)',
-        screenTitle: 'Registrarse - Contraseña y Aceptación de Políticas',
-        category: 'registro',
-        summary: 'Crea tu contraseña, marca obligatoriamente las casillas de Términos y Condiciones y Tratamiento de Datos Personales, y pulsa CONTINUAR para activar tu cuenta.',
-        actionRequired: 'Ingresa tu contraseña, marca los dos checkboxes requeridos y pulsa el botón "CONTINUAR" para finalizar el registro.',
-        detailedInstructions: [
-          'En la parte inferior del formulario, introduce tu "Contraseña *".',
-          'Marca la casilla obligatoria: "Acepto los términos y condiciones" (enlace rojo de consulta).',
-          'Marca la segunda casilla obligatoria: "Acepto el tratamiento de datos personales".',
-          'Verifica que no queden campos con advertencia de error.',
-          'Pulsa el botón "CONTINUAR" para enviar tu registro y acceder a la sesión activa en Cinemark.'
-        ],
-        tips: [
-          'Ambos checkboxes son obligatorios por ley de protección de datos (Habeas Data en Colombia).',
-          'Al pulsar CONTINUAR, tu cuenta quedará vinculada automáticamente a la app y se cerrará el modal de bienvenida.'
-        ],
-        hotspot: {
-          x: 50,
-          y: 96,
-          label: 'Pulsar CONTINUAR',
-          actionText: 'Tocar botón CONTINUAR para finalizar el registro'
-        },
-        keyDetails: [
-          { label: 'Seguridad', value: 'Contraseña encriptada' },
-          { label: 'Términos', value: 'Aceptación obligatoria (2 casillas)' },
-          { label: 'Acción final', value: 'Botón CONTINUAR' }
-        ],
-        imagePlaceholderName: '6.jpeg'
       }
     ]
   }

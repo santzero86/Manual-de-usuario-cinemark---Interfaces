@@ -13,6 +13,7 @@ import {
   Headphones, 
   HelpCircle,
   Sparkles,
+  Download,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -34,6 +35,7 @@ export const ModuleSelectorBar: React.FC<ModuleSelectorBarProps> = ({
 
   const getIcon = (name: string) => {
     switch (name) {
+      case 'Download': return <Download className="w-4 h-4" />;
       case 'Ticket': return <Ticket className="w-4 h-4" />;
       case 'Crown': return <Crown className="w-4 h-4" />;
       case 'Popcorn': return <UtensilsCrossed className="w-4 h-4" />;
