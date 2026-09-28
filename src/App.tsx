@@ -7,6 +7,7 @@ import { PhoneSimulator } from './components/PhoneSimulator';
 import { StepGuidePanel } from './components/StepGuidePanel';
 import { CoverPageView } from './components/CoverPageView';
 import { WelcomeLandingView } from './components/WelcomeLandingView';
+import { ManualDocumentView } from './components/ManualDocumentView';
 import { MoreInfoView } from './components/MoreInfoView';
 import { AddModuleModal } from './components/AddModuleModal';
 import { BatchUploadModal } from './components/BatchUploadModal';
@@ -30,15 +31,31 @@ import {
   Film
 } from 'lucide-react';
 
+const VIEW_LABELS: Record<AppViewMode, string> = {
+  landing: 'Inicio',
+  manual: 'Información de la app',
+  cover: 'Manual',
+  simulator: 'Manual',
+  info: 'Soportes y ayudas',
+};
+
 export default function App() {
   const [modules, setModules] = useState<Module[]>(MODULES_DATA);
   const [activeModuleId, setActiveModuleId] = useState<string>('login-registro-cuenta');
   const [activeStepNumber, setActiveStepNumber] = useState<number>(1);
   const [viewMode, setViewMode] = useState<AppViewMode>('landing');
+  const [previousViewMode, setPreviousViewMode] = useState<AppViewMode>('landing');
   const [isAddModuleOpen, setIsAddModuleOpen] = useState(false);
   const [isBatchUploadOpen, setIsBatchUploadOpen] = useState(false);
   const [completedSteps, setCompletedSteps] = useState<number[]>([1]);
   const [showCompletionBanner, setShowCompletionBanner] = useState(false);
+
+  // Navigates between tabs while remembering the view we came from, so
+  // "back" buttons can return to the previous page instead of always Inicio.
+  const navigateTo = (view: AppViewMode) => {
+    setPreviousViewMode(viewMode);
+    setViewMode(view);
+  };
 
   // Load progress from localStorage on mount
   useEffect(() => {
@@ -195,13 +212,13 @@ export default function App() {
       {/* Top Bar Header */}
       <Header
         currentView={viewMode}
-        onChangeView={setViewMode}
+        onChangeView={navigateTo}
         modules={modules}
         onSelectTutorial={(modId, stepNum) => {
           setActiveModuleId(modId);
           setActiveStepNumber(stepNum || 1);
           setShowCompletionBanner(false);
-          setViewMode('simulator');
+          navigateTo('simulator');
         }}
         onOpenAddModule={() => setIsAddModuleOpen(true)}
         onOpenBatchUpload={usesBundledScreenshots ? undefined : () => setIsBatchUploadOpen(true)}
@@ -253,7 +270,20 @@ export default function App() {
         <div key={viewMode} className="animate-fade-scale">
           {viewMode === 'landing' && (
             <WelcomeLandingView
-              onContinue={() => setViewMode('cover')}
+              onContinue={() => navigateTo('cover')}
+            />
+          )}
+
+          {viewMode === 'manual' && (
+            <ManualDocumentView
+              onGoBack={() => navigateTo(previousViewMode)}
+              backLabel={VIEW_LABELS[previousViewMode]}
+              onGoToTutorials={() => navigateTo('cover')}
+              onGoToSimulator={(modId) => {
+                if (modId) setActiveModuleId(modId);
+                setActiveStepNumber(1);
+                navigateTo('simulator');
+              }}
             />
           )}
 
@@ -263,21 +293,15 @@ export default function App() {
               onOpenSimulator={(modId) => {
                 if (modId) setActiveModuleId(modId);
                 setActiveStepNumber(1);
-                setViewMode('simulator');
+                navigateTo('simulator');
               }}
-              onBackToLanding={() => setViewMode('landing')}
+              onGoBack={() => navigateTo(previousViewMode)}
+              backLabel={VIEW_LABELS[previousViewMode]}
             />
           )}
 
           {viewMode === 'info' && (
-            <MoreInfoView
-              onGoToTutorials={() => setViewMode('cover')}
-              onGoToSimulator={(modId) => {
-                if (modId) setActiveModuleId(modId);
-                setActiveStepNumber(1);
-                setViewMode('simulator');
-              }}
-            />
+            <MoreInfoView />
           )}
 
           {viewMode === 'simulator' && (
@@ -285,11 +309,11 @@ export default function App() {
               {/* Top Return Button matching reference image */}
               <div className="flex items-center justify-between pb-1">
                 <button
-                  onClick={() => setViewMode('cover')}
+                  onClick={() => navigateTo(previousViewMode)}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold transition-all duration-200 border border-slate-300 cursor-pointer shadow-xs group hover:scale-[1.02] active:scale-95"
                 >
                   <ArrowLeft className="w-4 h-4 text-red-600 group-hover:-translate-x-1 transition-transform duration-200" />
-                  <span>Volver a la portada / Bienvenida</span>
+                  <span>Volver a {VIEW_LABELS[previousViewMode]}</span>
                 </button>
 
                 <span className="text-xs text-slate-600 hidden sm:inline-block">
@@ -316,7 +340,7 @@ export default function App() {
 
                   <div className="flex items-center gap-2 shrink-0">
                     <button
-                      onClick={() => setViewMode('cover')}
+                      onClick={() => navigateTo('cover')}
                       className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-bold shadow-md transition-all duration-200 active:scale-95 flex items-center gap-1.5 cursor-pointer hover:scale-105"
                     >
                       <span>Ver Otros Tutoriales</span>
@@ -372,17 +396,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-red-600"></span>
-            <span className="font-semibold text-slate-700">Cinemark Academy · Manual Educativo Interactivo</span>
+            <span className="font-semibold text-slate-700">Cinemark · Manual Educativo Interactivo</span>
           </div>
 
           {/* Centered Version Badge */}
-          <div className="flex items-center justify-center">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 font-mono text-[11px] font-bold border border-slate-300 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-              <span>Versión v1.0.0.00</span>
-            </span>
-          </div>
-
           <div className="text-slate-500">
             Diseñado para aprendizaje paso a paso por módulos · Cinemark Colombia
           </div>
